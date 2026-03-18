@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Non-Veg Biriyani | FoodVerse</title>
+
+<style>
+
+body{
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(to right,#eef2f3,#d9e4ec);
+  margin:0;
+  text-align:center;
+}
+
+/* NAVBAR */
+/* ===== NAVBAR ANIMATION UPGRADE ===== */
+
+.top-bar{
+  background:#000;
+  padding:12px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  /* slide animation when page loads */
+  animation: slideDown 0.6s ease;
+}
+
+@keyframes slideDown{
+  from{
+    transform:translateY(-40px);
+    opacity:0;
+  }
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
+}
+
+.logo{
+  color:white;
+  font-size:24px;
+  font-weight:bold;
+  padding-top:5px;
+  padding-left: 40px;
+  /* smooth hover effect */
+  transition:transform 0.3s ease, color 0.3s ease;
+}
+
+.logo:hover{
+  color:orange;
+  transform:scale(1.08);
+}
+
+.menu a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  margin-left:15px;
+  margin-right:15px;
+  position:relative;
+
+  /* smooth hover transition */
+  transition:color 0.3s ease;
+}
+
+/* animated underline effect */
+.menu a::after{
+  content:"";
+  position:absolute;
+  width:0%;
+  height:2px;
+  left:0;
+  bottom:-3px;
+  background:orange;
+  transition:width 0.35s ease;
+}
+
+.menu a:hover{
+  color:orange;
+}
+
+.menu a:hover::after{
+  width:100%;
+}
+/* TITLE BAR */
+h2{
+  background: linear-gradient(to right, #ffd700, #d9e86b);
+  color:white;
+  padding:18px;
+  margin:0;
+  letter-spacing:2px;
+  transition: all 0.4s ease-in-out;
+}
+h2:hover {
+  background: linear-gradient(to right, #fff9c4, #fff176, #ffd54f, #ffca28, #ffc107);
+transform: scale(1.05);
+}
+h2:not(:hover){
+  animation: whiteFlash 0.3s ease;
+}
+
+@keyframes whiteFlash{
+  0%{ background:white; color:#d9e86b; }
+  100%{ background:#d9e86b; color:white; }
+}
+/* FOOD CARDS */
+.food{
+  padding:40px 20px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+}
+
+.page{
+  background:white;
+  border-radius:14px;
+  padding:12px;
+  width:240px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  transition:0.35s ease;
+}
+.page:hover{
+  transform:translateY(-10px) scale(1.05);
+}
+
+.page img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.page h3{
+  color:#d9e86b;
+  margin-top:10px;
+}
+
+/* MENU HEADING */
+.ptag{
+  font-size:32px;
+  text-decoration:underline;
+  margin:20px;
+  transition:.3s;
+}
+.ptag:hover{
+  transform:scale(1.15);
+  color:#4a7bd4;
+}
+
+/* TABLE */
+.table1{
+  display: flex;
+  justify-content: center;   /* centers horizontally */
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.table1 table{
+  border-collapse: collapse;
+  background:white;
+  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+  border-radius:12px;
+  overflow:hidden;
+}
+.table1 table:hover{
+  transform:scale(1.03);
+}
+
+.table1 th{
+  background:#d9e86b;
+  color:white;
+}
+
+.table1 th, .table1 td{
+  padding:15px 25px;
+  border-bottom:1px solid #eee;
+}
+
+/* FOOTER */
+.footer{
+  background:#000;
+  color:white;
+  padding:18px;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+  .menu{
+    display:none;
+  }
+  .logo{
+    margin:auto;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+  <div class="logo">FoodVerse</div>
+  <div class="menu">
+    <a href="index.html">Home</a>
+            <!-- <a href="menu.html">Menu</a> -->
+            <a href="tiffins.html">Tiffins</a>
+            <a href="vegstarters.html">Veg Starters</a>
+            <a href="vegbiriyani.html">Veg Biriyanis</a>
+            <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
+            <a href="desserts.html">Desserts</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="contact.html">Contact</a>
+  </div>
+</div>
+
+<h2>NON-VEG BIRIYANI'S</h2>
+
+<div class="food">
+
+<div class="page">
+<img src="https://www.shutterstock.com/image-photo/traditional-chicken-biryani-served-brass-600nw-2622739739.jpg">
+<h3>Chicken Biryani</h3>
+</div>
+
+<div class="page">
+<img src="https://happietrio.com/wp-content/uploads/2023/10/MuttonBiryani1-500x500.jpg">
+<h3>Mutton Biryani</h3>
+</div>
+
+<div class="page">
+<img src="https://i.ytimg.com/vi/hFuG4wlztMo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLAvDe5MsjyEQqMaO29ieMyqhyEfmg">
+<h3>Fry Chicken Biriyani</h3>
+</div>
+
+<div class="page">
+<img src="https://www.foodiaq.com/wp-content/uploads/2024/02/Chicken-Biryani-scaled.jpg">
+<h3>Chicken Boneless Biriyani</h3>
+</div>
+<div class="page">
+<img src="https://www.bigbasket.com/media/uploads/recipe/w-l/1025_1.jpg">
+<h3>Fish Biryani</h3>
+</div>
+<div class="page">
+<img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_366/RX_THUMBNAIL/IMAGES/VENDOR/2025/1/17/45298397-5071-44d6-9633-e0a4bf2220c0_224868%20(1).jpg">
+<h3>Ambur Dum Biryani</h3>
+</div>
+<div class="page">
+<img src="https://www.pavaniskitchen.com/wp-content/uploads/2021/04/egg-biryani-recipe.jpg">
+<h3>Egg Biryani</h3>
+</div>
+<div class="page">
+<img src="https://i.ytimg.com/vi/1CKoOHggozY/maxresdefault.jpg">
+<h3>Ckicken Kabab Biriyani Biryani</h3>
+</div>
+</div>
+
+<p class="ptag">Menu</p>
+
+<div class="table1">
+<table>
+<tr>
+<th>S.No</th>
+<th>Item</th>
+<th>Cost</th>
+</tr>
+<tr><td>1</td><td>Chicken Dum Biryani</td><td>₹180</td></tr>
+<tr><td>2</td><td>Mutton Biryani</td><td>₹250</td></tr>
+<tr><td>3</td><td>Fry Chicken Biriyani</td><td>₹140</td></tr>
+<tr><td>4</td><td>Chicken Boneless Biriyani</td><td>₹160</td></tr>
+<tr><td>5</td><td>Fish Biryani</td><td>₹200</td></tr>
+<tr><td>6</td><td>Ambur Dum Biryani</td><td>₹190</td></tr>
+<tr><td>7</td><td>Egg Biryani</td><td>₹140</td></tr>
+<tr><td>8</td><td>Chicken Kabab Biriyani</td><td>₹250</td></tr>
+
+</table>
+</div>
+
+<div class="footer">
+© 2026 FoodVerse | Taste the Best, Feel the Freshness
+</div>
+
+</body>
+</html>

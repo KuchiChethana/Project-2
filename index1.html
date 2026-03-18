@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Food Verse | Register</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Background */
+    body {
+      background: url("https://t4.ftcdn.net/jpg/01/25/12/31/360_F_125123133_3reb4qSyXMF8yEa8rVuAofGJEpUvZYIT.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 100vh;
+    }
+
+    /* Registration container */
+    .register-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 70px);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    /* Registration box */
+    .register-box {
+      background: rgba(0,0,0,0.65);
+      padding: 35px;
+      width: 380px;
+      border-radius: 12px;
+      text-align: center;
+      color: white;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .register-box:hover {
+      transform: scale(1.02);
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.4);
+    }
+
+    .register-box h2 {
+      margin-bottom: 10px;
+    }
+
+    .register-box p {
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    /* Inputs */
+    .register-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 6px;
+      border: none;
+      background: rgba(255, 255, 255, 0.9);
+      transition: all 0.4s ease-in-out;
+    }
+
+    .register-box input:focus {
+      outline: none;
+      border: 2px solid orange;
+      transform: scale(1.03);
+      animation: glow 0.8s ease-in-out infinite alternate;
+    }
+
+    .register-box input:hover {
+      background: rgba(255, 255, 255, 1);
+      box-shadow: 0px 4px 12px rgba(255, 165, 0, 0.4);
+    }
+
+    /* Button */
+    .register-box button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: orange;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.4s ease-in-out;
+    }
+
+    .register-box button:hover {
+      background: darkorange;
+      transform: translateY(-3px);
+    }
+
+    /* Login text */
+    .login-text {
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    .login-text a {
+      color: orange;
+      text-decoration: none;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .login-text a:hover {
+      text-decoration: underline;
+      color: darkorange;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: orange;
+      color: white;
+      padding: 15px;
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    /* Keyframe animation */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes glow {
+      from {
+        box-shadow: 0 0 5px orange;
+      }
+      to {
+        box-shadow: 0 0 15px darkorange;
+      }
+    }
+
+    /* Responsive media queries */
+    @media (max-width: 768px) {
+      .register-box {
+        width: 90%;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .register-box h2 {
+        font-size: 20px;
+      }
+      .register-box p {
+        font-size: 13px;
+      }
+      .register-box input, .register-box button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <form action="homepage.html" method="GET">
+    <div class="register-container">
+      <div class="register-box">
+        <h2>Register for FoodVerse</h2>
+        <p>Sign up to explore delicious dishes!</p>
+        <input type="text" placeholder="Enter your First name" required>
+        <input type="text" placeholder="Enter your Last name" required>
+        <input type="email" placeholder="Enter your email" required>
+        <input type="tel" placeholder="Enter your mobile number" required>
+        <input type="password" placeholder="Create a password" required>
+        <input type="password" placeholder="Confirm your password" required>
+        <button type="submit">Sign Up</button>
+        <p class="login-text">
+          Already have an account?
+          <a href="#">Log in</a>
+        </p>
+      </div>
+    </div>
+  </form>
+
+  <div class="footer">
+    © 2026 FoodVerse | Taste the Best, Feel the Freshness
+  </div>
+</body>
+</html>
