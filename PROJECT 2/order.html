@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Order Confirmation</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, sans-serif;
+}
+
+body{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background: linear-gradient(135deg, #a8e063, #56ab2f);
+}
+.box{
+    background:white;
+    padding:40px;
+    border-radius:16px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(0,0,0,0.2);
+    animation: fadeIn 0.8s ease;
+    width:90%;
+    max-width:400px;
+}
+.icon{
+    font-size:60px;
+    margin-bottom:15px;
+    animation: pop 0.6s ease;
+}
+.box h1{
+    color:#2e7d32;
+    margin-bottom:10px;
+}
+
+.box p{
+    color:#555;
+    margin-bottom:25px;
+}
+button{
+    padding:12px 25px;
+    background: linear-gradient(135deg, #43a047, #2e7d32);
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    transform:translateY(-3px);
+    box-shadow:0 6px 15px rgba(0,0,0,0.2);
+}
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes pop{
+    0%{transform:scale(0);}
+    80%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+@media(max-width:480px){
+    .box{
+        padding:25px;
+    }
+
+    .icon{
+        font-size:50px;
+    }
+
+    button{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body onload="clearCart()">
+
+<div class="box">
+    <div class="icon">✅</div>
+    <h1>Order Placed Successfully!</h1>
+    <p>Thank you for ordering from <b>FoodVerse</b> 🍽️</p>
+
+    <button onclick="goHome()">🏠 Go to Home</button>
+</div>
+
+<script>
+function clearCart(){
+    localStorage.removeItem("cart");
+}
+
+function goHome(){
+    window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Home | FoodVerse</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    font-family: Arial, sans-serif;
+    box-sizing:border-box;
+}
+
+body{
+    background-color: rgb(245,250,246);
+    color: rgb(40,40,40);
+    text-align:center;
+}
+
+.top-bar{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(0,0,0,0.9);
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    animation: slideDown 0.7s ease;
+}
+
+@keyframes slideDown{
+    from{transform:translateY(-60px);opacity:0;}
+    to{transform:translateY(0);opacity:1;}
+}
+
+.logo{
+    color:white;
+    font-size:26px;
+    font-weight:bold;
+    transition:0.3s ease;
+}
+.logo:hover{
+    color:orange;
+    transform:scale(1.1);
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    margin:0 14px;
+    position:relative;
+    padding:6px 0;
+    transition:color 0.3s ease;
+}
+
+.menu a::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    left:0;
+    bottom:0;
+    background:orange;
+    transition:width 0.35s ease;
+}
+.menu a:hover{color:orange;}
+.menu a:hover::after{width:100%;}
+
+.hero{
+    background:linear-gradient(135deg,seagreen,mediumseagreen);
+    padding:70px 20px;
+    color:white;
+    animation: fadeIn 1.2s ease;
+}
+.hero h1{
+    font-size:48px;
+    margin-bottom:12px;
+}
+.hero h3{font-size:22px;margin-bottom:10px;}
+.hero p{font-size:17px;}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(30px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+.content{padding:40px 20px;}
+
+.section{
+    background:white;
+    width:300px;
+    padding:22px;
+    margin:15px;
+    display:inline-block;
+    border-radius:14px;
+    box-shadow:0 5px 10px rgba(0,0,0,0.15);
+    transition:0.4s ease;
+}
+.section:hover{
+    transform:translateY(-8px) scale(1.02);
+    box-shadow:0 12px 22px rgba(0,0,0,0.2);
+}
+
+.section h2{
+    color:seagreen;
+    margin-bottom:10px;
+}
+.section p{
+    font-size:15px;
+    color:rgb(70,70,70);
+}
+
+.comment{
+    margin-top:30px;
+}
+
+textarea{
+    width:80%;
+    max-width:500px;
+    padding:12px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:15px;
+    resize:none;
+    transition:0.3s ease;
+}
+textarea:focus{
+    outline:none;
+    border-color:seagreen;
+    box-shadow:0 0 8px rgba(0,128,0,0.3);
+}
+
+button{
+    margin-top:15px;
+    padding:12px 28px;
+    background:seagreen;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:15px;
+    transition:0.3s ease;
+}
+button:hover{
+    background:rgb(0,110,70);
+    transform:scale(1.05);
+}
+
+.footer{
+    background:seagreen;
+    color:white;
+    padding:15px;
+    margin-top:40px;
+}
+@media(max-width:700px){
+    .top-bar{
+        flex-direction:column;
+        text-align:center;
+    }
+    .menu{margin-top:10px;}
+    .menu a{display:inline-block;margin:8px;}
+    .section{width:90%;}
+    textarea{width:90%;}
+}
+
+.cart-btn{
+    margin-top:10px;
+    padding:10px 18px;
+    background:linear-gradient(135deg, #ff7a18, #ffb347);
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+
+.cart-btn:hover{
+    background:linear-gradient(135deg, #ff5e00, #ffa500);
+    transform:translateY(-2px) scale(1.05);
+    box-shadow:0 6px 12px rgba(0,0,0,0.2);
+}
+
+
+.cart-btn:active{
+    transform:scale(0.95);
+}
+
+@media(max-width:600px){
+    .cart-btn{
+        width:100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-bar">
+    <div class="logo">FoodVerse</div>
+    <div class="menu">
+        <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="tiffins.html">Tiffins</a>
+            <a href="vegstarters.html">Veg Starters</a>
+            <a href="vegbiriyani.html">Veg Biriyanis</a>
+            <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
+            <a href="desserts.html">Desserts</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart 🛒 (<span id="cartCount">0</span>)</a>
+    </div>
+</div>
+
+<div class="hero">
+    <h1>Welcome to FoodVerse</h1>
+    <h3>Your Favorite Food, Made Fresh Every Day</h3>
+    <p>Enjoy delicious meals prepared with quality ingredients and authentic taste.</p>
+</div>
+
+<div class="content">
+
+    <div class="section">
+        <h2>About Us</h2>
+        <p>FoodVerse is dedicated to serving fresh, hygienic, and flavorful food for every customer.</p>
+    </div>
+
+    <div class="section">
+        <h2>Our Menu</h2>
+        <p>Tiffins, Biriyanis, Starters, Desserts and refreshing beverages prepared with care.</p>
+    </div>
+
+    <div class="section">
+        <h2>Our Speciality</h2>
+        <p>Traditional recipes, perfect spices, and consistent taste in every dish.</p>
+    </div>
+
+    <div class="section">
+        <h2>Why Choose Us</h2>
+        <p>Fresh ingredients, clean kitchen, affordable prices and fast service.</p>
+    </div>
+
+    <div class="section">
+        <h2>Customer Promise</h2>
+        <p>We promise quality food and complete satisfaction for every meal you enjoy with us.</p>
+    </div>
+
+</div>
+
+<div class="comment">
+    <h3>Leave a Comment</h3>
+    <form action="submit.html" method="GET">
+        <textarea name="comment" rows="6" placeholder="Write a comment..."></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+<div class="footer">
+© 2026 FoodVerse | Taste the Best, Feel the Freshness
+</div>
+
+</body>
+</html>

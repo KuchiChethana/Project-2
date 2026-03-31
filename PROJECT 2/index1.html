@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FoodVerse | Register/Login</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial;
+}
+
+body{
+  background:url("https://t4.ftcdn.net/jpg/01/25/12/31/360_F_125123133_3reb4qSyXMF8yEa8rVuAofGJEpUvZYIT.jpg");
+  background-size:cover;
+}
+
+.box{
+  width:350px;
+  margin:80px auto;
+  background:rgba(0,0,0,0.7);
+  padding:30px;
+  border-radius:10px;
+  color:white;
+  text-align:center;
+}
+
+input{
+  width:100%;
+  padding:10px;
+  margin:8px 0;
+  border-radius:5px;
+  border:none;
+}
+
+button{
+  width:100%;
+  padding:10px;
+  background:orange;
+  border:none;
+  color:white;
+  font-weight:bold;
+  margin-top:10px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:darkorange;
+}
+
+.toggle{
+  margin-top:10px;
+  cursor:pointer;
+  color:orange;
+}
+
+.hidden{
+  display:none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2 id="title">Register</h2>
+
+<div id="registerForm">
+
+<input type="text" id="fname" placeholder="First Name" required>
+<input type="text" id="lname" placeholder="Last Name" required>
+<input type="email" id="email" placeholder="Email" required>
+<input type="tel" id="mobile" placeholder="Mobile Number" required>
+<input type="password" id="pass" placeholder="Password" required>
+<input type="password" id="cpass" placeholder="Confirm Password" required>
+
+<button onclick="register()">Register</button>
+
+<p class="toggle" onclick="showLogin()">Already have account? Login</p>
+
+</div>
+
+<div id="otpSection" class="hidden">
+<h3>Enter OTP</h3>
+<input type="text" id="otpInput" placeholder="Enter OTP">
+<button onclick="verifyOTP()">Verify OTP</button>
+</div>
+
+<div id="loginForm" class="hidden">
+
+<input type="text" id="loginUser" placeholder="Email or Mobile">
+<input type="password" id="loginPass" placeholder="Password">
+
+<button onclick="login()">Login</button>
+
+<p class="toggle" onclick="showRegister()">Create new account</p>
+
+</div>
+
+</div>
+
+<script>
+
+let generatedOTP = "";
+
+function register(){
+
+let fname = document.getElementById("fname").value.trim();
+let lname = document.getElementById("lname").value.trim();
+let email = document.getElementById("email").value.trim().toLowerCase();
+let mobile = document.getElementById("mobile").value.trim();
+let pass = document.getElementById("pass").value.trim();
+let cpass = document.getElementById("cpass").value.trim();
+
+let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+if(!email.match(emailPattern)){
+    alert("Enter valid email");
+    return;
+}
+
+if(pass !== cpass){
+    alert("Passwords do not match");
+    return;
+}
+
+let users = JSON.parse(localStorage.getItem("users")) || [];
+
+let exists = users.find(u => u.email === email || u.mobile === mobile);
+
+if(exists){
+    alert("User already exists! Please login.");
+    showLogin();
+    return;
+}
+
+generatedOTP = Math.floor(1000 + Math.random()*9000);
+alert("Your OTP is: " + generatedOTP);
+
+localStorage.setItem("tempUser", JSON.stringify({
+    fname,lname,email,mobile,pass
+}));
+
+document.getElementById("registerForm").classList.add("hidden");
+document.getElementById("otpSection").classList.remove("hidden");
+}
+
+function verifyOTP(){
+
+let entered = document.getElementById("otpInput").value.trim();
+
+if(entered == generatedOTP){
+
+let users = JSON.parse(localStorage.getItem("users")) || [];
+let temp = JSON.parse(localStorage.getItem("tempUser"));
+
+users.push(temp);
+
+localStorage.setItem("users", JSON.stringify(users));
+
+alert("Registration Successful!");
+
+window.location.href="homepage.html";
+
+}else{
+alert("Wrong OTP");
+}
+
+}
+function login(){
+
+let user = document.getElementById("loginUser").value.trim().toLowerCase();
+let pass = document.getElementById("loginPass").value.trim();
+
+let users = JSON.parse(localStorage.getItem("users")) || [];
+
+let found = users.find(u => 
+    (u.email === user || u.mobile === user) && 
+    u.pass === pass
+);
+
+if(found){
+    alert("Login Successful!");
+    window.location.href="homepage.html";
+}else{
+    alert("Invalid credentials");
+}
+
+}
+
+
+function showLogin(){
+document.getElementById("registerForm").classList.add("hidden");
+document.getElementById("loginForm").classList.remove("hidden");
+document.getElementById("title").innerText="Login";
+}
+
+function showRegister(){
+document.getElementById("loginForm").classList.add("hidden");
+document.getElementById("registerForm").classList.remove("hidden");
+document.getElementById("title").innerText="Register";
+}
+
+</script>
+
+</body>
+</html>

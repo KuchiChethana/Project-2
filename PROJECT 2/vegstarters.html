@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veg Starters | FoodVerse</title>
+
+<style>
+
+body{
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(to right,#eef2f3,#d9e4ec);
+  margin:0;
+  text-align:center;
+}
+
+.top-bar{
+  background:#000;
+  padding:12px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  animation: slideDown 0.6s ease;
+}
+
+@keyframes slideDown{
+  from{
+    transform:translateY(-40px);
+    opacity:0;
+  }
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
+}
+
+.logo{
+  color:white;
+  font-size:24px;
+  font-weight:bold;
+  padding-top:5px;
+padding-left: 40px;
+  transition:transform 0.3s ease, color 0.3s ease;
+}
+
+.logo:hover{
+  color:orange;
+  transform:scale(1.08);
+}
+
+.menu a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  margin-left:15px;
+  margin-right:15px;
+  position:relative;
+  transition:color 0.3s ease;
+}
+.menu a::after{
+  content:"";
+  position:absolute;
+  width:0%;
+  height:2px;
+  left:0;
+  bottom:-3px;
+  background:orange;
+  transition:width 0.35s ease;
+}
+
+.menu a:hover{
+  color:orange;
+}
+
+.menu a:hover::after{
+  width:100%;
+}
+h2{
+  background: linear-gradient(to right, #8a2be2, #ff69b4);
+  color:white;
+  padding:18px;
+  margin:0;
+  letter-spacing:2px;
+  transition: all 0.4s ease-in-out;
+}
+h2:hover{
+  background: linear-gradient(to right, #ffb6c1, #ff69b4, #ff1493, #db7093, #c71585);
+  transform: scale(1.05);
+}
+h2:not(:hover){
+  animation: whiteFlash 0.3s ease;
+}
+
+@keyframes whiteFlash{
+  0%{ background:white; color:rgb(179,20,139); }
+  100%{ background:rgb(179,20,139); color:white; }
+}
+.food{
+  padding:40px 20px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+}
+
+.page{
+  background:white;
+  border-radius:14px;
+  padding:12px;
+  width:240px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  transition:0.35s ease;
+}
+.page:hover{
+  transform:translateY(-10px) scale(1.05);
+}
+
+.page img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:10px;
+}
+
+.page h3{
+  color:rgb(179,20,139);
+  margin-top:10px;
+}
+.ptag{
+  font-size:32px;
+  text-decoration:underline;
+  margin:20px;
+  transition:.3s;
+}
+.ptag:hover{
+  transform:scale(1.15);
+  color:#4a7bd4;
+}
+.table1{
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.table1 table{
+  border-collapse: collapse;
+  background:white;
+  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+  border-radius:12px;
+  overflow:hidden;
+}
+.table1 table:hover{
+  transform:scale(1.03);
+}
+
+.table1 th{
+  background:rgb(179,20,139);
+  color:white;
+}
+
+.table1 th, .table1 td{
+  padding:15px 25px;
+  border-bottom:1px solid #eee;
+}
+.footer{
+  background:#000;
+  color:white;
+  padding:18px;
+}
+@media(max-width:700px){
+  .menu{
+    display:none;
+  }
+  .logo{
+    margin:auto;
+  }
+}
+.cart-btn{
+    margin-top:10px;
+    padding:10px 18px;
+    background:linear-gradient(135deg, #ff7a18, #ffb347);
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+.cart-btn:hover{
+    background:linear-gradient(135deg, #ff5e00, #ffa500);
+    transform:translateY(-2px) scale(1.05);
+    box-shadow:0 6px 12px rgba(0,0,0,0.2);
+}
+
+.cart-btn:active{
+    transform:scale(0.95);
+}
+@media(max-width:600px){
+    .cart-btn{
+        width:100%;
+    }
+}
+  </style>
+</head>
+
+<body>
+<div class="overlay">
+
+    <div class="top-bar">
+        <div class="logo">FoodVerse</div>
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="tiffins.html">Tiffins</a>
+            <a href="vegstarters.html">Veg Starters</a>
+            <a href="vegbiriyani.html">Veg Biriyanis</a>
+            <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
+            <a href="desserts.html">Desserts</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart 🛒 (<span id="cartCount">0</span>)</a>
+        </div>
+    </div>
+    </div>
+  <h2>VEG STARTERS</h2>
+
+  <div class="food">
+
+    <div class="page">
+      <img src="https://gurukripahotel.com/wp-content/uploads/2025/03/Vegetable-Spring.jpeg" alt="Spring Roll">
+      <h3>Spring Roll</h3>
+      <button class="cart-btn" onclick="addToCart('Spring Roll',120)">Add to Cart</button>
+    </div>
+
+    <div class="page">
+      <img src="https://aayanshkitchen.com/wp-content/uploads/2024/01/Chilli-Baby-Corn-1024x576.jpg" alt="Crispy Chilli Baby Corn">
+      <h3>Crispy Chilli Baby Corn</h3>
+      <button class="cart-btn" onclick="addToCart('Crispy Chilli Baby Corn',100)">Add to Cart</button>
+    </div>
+
+    <div class="page">
+      <img src="https://www.cookingcarnival.com/wp-content/uploads/2021/07/Hariyali-Paneer-Tikka-4.jpg" alt="Paneer Tikka">
+      <h3>Paneer Tikka</h3>
+      <button class="cart-btn" onclick="addToCart('Paneer Tikka',110)">Add to Cart</button>
+    </div>
+
+    <div class="page">
+      <img src="https://i0.wp.com/blendofspicesbysara.com/wp-content/uploads/2021/07/PXL_20210708_193414268.PORTRAIT-01.jpeg?w=800&ssl=1" alt="Gobi Tandoori">
+      <h3>Gobi Tandoori</h3>
+      <button class="cart-btn" onclick="addToCart('Gobi Tandoori',90)">Add to Cart</button>
+    </div>
+<div class="page">
+      <img src="https://www.thespruceeats.com/thmb/X_JGM04VusvkuGqTVan4QmBRqjI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/how-to-make-homemade-french-fries-2215971-hero-01-02f62a016f3e4aa4b41d0c27539885c3.jpg" alt="French Fries">
+      <h3>French Fries</h3>
+      <button class="cart-btn" onclick="addToCart('French Fries',50)">Add to Cart</button>
+    </div>
+    <div class="page">
+      <img src="https://milk.co.uk/wp-content/uploads/2022/01/Optimised-3.jpg" alt="Cheese Pakoda">
+      <h3>Cheese Pakoda</h3>
+      <button class="cart-btn" onclick="addToCart('Cheese Pakoda',99)">Add to Cart</button>
+    </div>
+    <div class="page">
+      <img src="https://passion2cook.com/wp-content/uploads/2023/03/paneer-momos-2-1024x576.jpg" alt="Momos">
+      <h3>Momos</h3>
+      <button class="cart-btn" onclick="addToCart('Momos',90)">Add to Cart</button>
+    </div>
+    <div class="page">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQseYSkVkLZ9DPl9FEmEeB3Q47tqgfQ7W8u7Q&s" alt="Cutlet">
+      <h3>Cutlet</h3>
+      <button class="cart-btn" onclick="addToCart('Cutlet',100)">Add to Cart</button>
+    </div>
+  </div>
+  <p class="ptag">Menu</p>
+  <div class="table1">
+<table border="1" cellpadding="13" cellspacing="0">
+  <tr>
+    <th>S.No</th>
+    <th>Item</th>
+    <th>Cost</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Spring Roll</td>
+    <td>₹120</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Crispy Chilli Baby Corn</td>
+    <td>₹100</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Paneer Tikka</td>
+    <td>₹110</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Gobi Tandoori</td>
+    <td>₹90</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>French Fries</td>
+    <td>₹50</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Cheese Pakoda</td>
+    <td>₹99</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Momos</td>
+    <td>₹90</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>Cutlet</td>
+    <td>₹100</td>
+  </tr>
+</table>
+</div>
+   <div class="footer">
+        © 2026 FoodVerse | Taste the Best, Feel the Freshness
+    </div>
+<script src="cart.js"></script>
+</body>
+</html>

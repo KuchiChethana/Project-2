@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tiffins | FoodVerse</title>
+
+<style>
+
+body{
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(to right,#eef2f3,#d9e4ec);
+  margin:0;
+  text-align:center;
+}
+
+.top-bar{
+  background:#000;
+  padding:12px 0;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  animation: slideDown 0.6s ease;
+}
+
+@keyframes slideDown{
+  from{
+    transform:translateY(-40px);
+    opacity:0;
+  }
+  to{
+    transform:translateY(0);
+    opacity:1;
+  }
+}
+
+.logo{
+  color:white;
+  font-size:24px;
+  font-weight:bold;
+  padding-top:5px;
+padding-left: 40px;
+  transition:transform 0.3s ease, color 0.3s ease;
+}
+
+.logo:hover{
+  color:orange;
+  transform:scale(1.08);
+}
+
+.menu a{
+  color:white;
+  text-decoration:none;
+  font-size:16px;
+  margin-left:15px;
+  margin-right:15px;
+  position:relative;
+  transition:color 0.3s ease;
+}
+.menu a::after{
+  content:"";
+  position:absolute;
+  width:0%;
+  height:2px;
+  left:0;
+  bottom:-3px;
+  background:orange;
+  transition:width 0.35s ease;
+}
+
+.menu a:hover{
+  color:orange;
+}
+
+.menu a:hover::after{
+  width:100%;
+}
+h2{
+ background: linear-gradient(to right, #2b0bca, #6a5acd);
+  color:white;
+  padding:18px;
+  margin:0;
+  letter-spacing:2px;
+  transition: all 0.4s ease-in-out;
+  transform: scale(1.05);
+}
+h2:hover{
+   background: linear-gradient(to right, #001f3f, #003366, #004c99, #0066cc, #3399ff);
+}
+h2:not(:hover){
+  animation: whiteFlash 0.3s ease;
+}
+
+@keyframes whiteFlash{
+  0%{ background:white; color:#2b0bca; }
+  100%{ background:#2b0bca; color:white; }
+}
+.food{
+  padding:40px 20px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
+}
+
+.page{
+  background:white;
+  border-radius:14px;
+  padding:12px;
+  width:240px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.15);
+  transition:0.35s ease;
+}
+.page:hover{
+  transform:translateY(-10px) scale(1.05);
+}
+
+.page img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:10px;
+}
+.page h3{
+  color:#2b0bca;
+  margin-top:10px;
+}
+
+.ptag{
+  font-size:32px;
+  text-decoration:underline;
+  margin:20px;
+  transition:.3s;
+}
+.ptag:hover{
+  transform:scale(1.15);
+  color:#2b0bca;
+}
+.table1{
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.table1 table{
+  border-collapse: collapse;
+  background:white;
+  box-shadow:0 10px 20px rgba(0,0,0,0.15);
+  border-radius:12px;
+  overflow:hidden;
+}
+.table1 table:hover{
+  transform:scale(1.03);
+}
+
+.table1 th{
+  background:#2b0bca;
+  color:white;
+}
+
+.table1 th, .table1 td{
+  padding:15px 25px;
+  border-bottom:1px solid #eee;
+}
+.footer{
+  background:#000;
+  color:white;
+  padding:18px;
+}
+@media(max-width:700px){
+  .menu{
+    display:none;
+  }
+  .logo{
+    margin:auto;
+  }
+}
+.cart-btn{
+    margin-top:10px;
+    padding:10px 18px;
+    background:linear-gradient(135deg, #ff7a18, #ffb347);
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:14px;
+    font-weight:bold;
+    cursor:pointer;
+    transition: all 0.3s ease;
+}
+.cart-btn:hover{
+    background:linear-gradient(135deg, #ff5e00, #ffa500);
+    transform:translateY(-2px) scale(1.05);
+    box-shadow:0 6px 12px rgba(0,0,0,0.2);
+}
+
+.cart-btn:active{
+    transform:scale(0.95);
+}
+
+@media(max-width:600px){
+    .cart-btn{
+        width:100%;
+    }
+}
+  </style>
+</head>
+
+<body>
+  <div class="overlay">
+
+    <div class="top-bar">
+        <div class="logo">FoodVerse</div>
+        <div class="menu">
+            <a href="index.html">Home</a>
+            <a href="menu.html">Menu</a>
+            <a href="tiffins.html">Tiffins</a>
+            <a href="vegstarters.html">Veg Starters</a>
+            <a href="vegbiriyani.html">Veg Biriyanis</a>
+            <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
+            <a href="desserts.html">Desserts</a>
+            <a href="aboutus.html">About Us</a>
+            <a href="contact.html">Contact</a>
+            <a href="cart.html">Cart 🛒 (<span id="cartCount">0</span>)</a>
+        </div>
+    </div>
+    </div>
+  <h2>TIFFINS</h2>
+
+  <div class="food">
+
+    <div class="page">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLoS0ZNPxOdDLTIdJYuwHAF_WNtPyMKZq3pw&s" alt="Dosa">
+      <h3>Dosa</h3>
+      <button class="cart-btn" onclick="addToCart('Dosa',50)">Add to Cart</button>
+    </div>
+
+    <div class="page">
+      <img src="https://i0.wp.com/www.chitrasfoodbook.com/wp-content/uploads/2018/12/Instant-Suji-idli.jpg?ssl=1" alt="Idly">
+      <h3>Idly</h3>
+      <button class="cart-btn" onclick="addToCart('Idly',40)">Add to Cart</button>
+    </div>
+
+    <div class="page">
+      <img src="https://www.shutterstock.com/image-photo/medu-vada-tiffin-sambar-coconut-600nw-1581488188.jpg" alt="Vada">
+      <h3>Vada</h3>
+      <button class="cart-btn" onclick="addToCart('Vada',30)">Add to Cart</button>
+    </div>
+
+    <div class="page">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMo1SjO6Pc4r--XqFJ8KzVPYnjInEeQhLhkA&s" alt="Poori">
+      <h3>Poori</h3>
+      <button class="cart-btn" onclick="addToCart('Poori',40)">Add to Cart</button>
+    </div>
+<div class="page">
+      <img src="https://www.awesomecuisine.com/wp-content/uploads/2015/08/mangalore-bonda.jpg" alt="Bonda">
+      <h3>Bonda</h3>
+      <button class="cart-btn" onclick="addToCart('Bonda',45)">Add to Cart</button>
+    </div>
+    <div class="page">
+      <img src="https://media.istockphoto.com/id/482366402/photo/pongal.jpg?s=612x612&w=0&k=20&c=tUYfVMQ-xj6H4LJ1wOj6SQmRqTV4wxeTVNRSHaiqzNg=" alt="Pongal">
+      <h3>Pongal</h3>
+      <button class="cart-btn" onclick="addToCart('Pongal',30)">Add to Cart</button>
+    </div>
+    <div class="page">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNviqYRu3NUiH3bGBpsTSUxddYW1GIryF4tQ&s" alt="Poha">
+      <h3>Poha</h3>
+      <button class="cart-btn" onclick="addToCart('Poha',45)">Add to Cart</button>
+    </div>
+    <div class="page">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgnUirnikbWnl7FZ3mJLujTfJ3KocdSYI0Rg&s" alt="Idiappam">
+      <h3>Idiappam</h3>
+      <button class="cart-btn" onclick="addToCart('Idiappam',40)">Add to Cart</button>
+    </div>
+  </div>
+  <p class="ptag">Menu</p>
+  <div class="table1">
+  <table border="1" cellpadding="13" cellspacing="0">
+  <tr>
+    <th>S.No</th>
+    <th>Item</th>
+    <th>Cost</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>Idly</td>
+    <td>₹40</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>Dosa</td>
+    <td>₹50</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>Vada</td>
+    <td>₹30</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>Poori</td>
+    <td>₹40</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>Bonda</td>
+    <td>₹45</td>
+  </tr>
+  <tr>
+    <td>6</td>
+    <td>Pongal</td>
+    <td>₹30</td>
+  </tr>
+  <tr>
+    <td>7</td>
+    <td>Poha</td>
+    <td>₹45</td>
+    <tr>
+    <td>8</td>
+    <td>Idiappam</td>
+    <td>₹40</td>
+  </tr>
+</table>
+</div>
+<div class="footer">
+        © 2026 FoodVerse | Taste the Best, Feel the Freshness
+   </div> 
+   <script src="cart.js"></script>
+</body>
+</html>
+ 
