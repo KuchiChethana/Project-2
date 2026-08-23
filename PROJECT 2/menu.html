@@ -2,1198 +2,714 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>FoodVerse | Menu</title>
-
-    <style>
-
-        /* =========================
-           GLOBAL STYLES
-        ========================= */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #fff7ed, #ffe8d6);
-            color: #333;
-            min-height: 100vh;
-        }
-
-
-        /* =========================
-           NAVIGATION BAR
-        ========================= */
-
-        .top-bar {
-            background: rgba(20, 20, 20, 0.97);
-            padding: 14px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
-        }
-
-        .logo {
-            color: white;
-            font-size: 25px;
-            font-weight: bold;
-            padding-left: 15px;
-            transition: 0.3s ease;
-        }
-
-        .logo:hover {
-            color: #ff9f1c;
-            transform: scale(1.05);
-        }
-
-        .menu {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-            margin: 5px 10px;
-            position: relative;
-            transition: 0.3s ease;
-        }
-
-        .menu a:hover {
-            color: #ff9f1c;
-        }
-
-        .menu a::after {
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 2px;
-            left: 0;
-            bottom: -5px;
-            background: #ff9f1c;
-            transition: 0.3s ease;
-        }
-
-        .menu a:hover::after {
-            width: 100%;
-        }
-
-
-        /* =========================
-           MENU HEADING
-        ========================= */
-
-        .menu-heading {
-            text-align: center;
-            padding: 55px 20px;
-            background:
-                linear-gradient(rgba(80, 25, 15, 0.78), rgba(80, 25, 15, 0.78)),
-                url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe");
-            background-size: cover;
-            background-position: center;
-            color: white;
-            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.2);
-        }
-
-        .menu-heading .icon {
-            font-size: 45px;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .menu-heading h1 {
-            font-size: 48px;
-            letter-spacing: 2px;
-            margin-bottom: 12px;
-            color: #ffd166;
-            text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
-        }
-
-        .menu-heading p {
-            font-size: 18px;
-            color: #fff3e0;
-            max-width: 700px;
-            margin: auto;
-            line-height: 1.6;
-        }
-
-
-        /* =========================
-           MENU CONTAINER
-        ========================= */
-
-        .menu-container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 45px auto;
-        }
-
-
-        /* =========================
-           CATEGORY LABEL
-        ========================= */
-
-        .category-label {
-            display: inline-block;
-            padding: 8px 18px;
-            margin-bottom: 12px;
-            border-radius: 20px;
-            background: #8e3b2e;
-            color: white;
-            font-size: 13px;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-
-        /* =========================
-           FOOD CARDS
-        ========================= */
-
-        .card {
-            background: white;
-            width: 100%;
-            border-radius: 18px;
-            overflow: hidden;
-            margin-bottom: 35px;
-            display: flex;
-            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.12);
-            border: 1px solid #f1d8c9;
-            transition: all 0.4s ease;
-            animation: fadeUp 0.7s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
-        }
-
-
-        /* =========================
-           FOOD IMAGES
-        ========================= */
-
-        .card img {
-            width: 300px;
-            min-height: 300px;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .card:hover img {
-            transform: scale(1.06);
-        }
-
-        .image-container {
-            width: 300px;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-
-        /* =========================
-           CARD CONTENT
-        ========================= */
-
-        .content {
-            padding: 28px;
-            flex: 1;
-        }
-
-        .content h2 {
-            color: #8e3b2e;
-            font-size: 27px;
-            margin-bottom: 8px;
-        }
-
-        .description {
-            color: #777;
-            font-size: 14px;
-            margin-bottom: 18px;
-            line-height: 1.5;
-        }
-
-        ul {
-            padding: 0;
-            list-style: none;
-        }
-
-        li {
-            padding: 12px 5px;
-            border-bottom: 1px dashed #ddd;
-            font-size: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 10px;
-            transition: 0.3s ease;
-        }
-
-        li:hover {
-            background: #fff7ed;
-            padding-left: 10px;
-            border-radius: 6px;
-        }
-
-
-        /* =========================
-           PRICE
-        ========================= */
-
-        .price {
-            font-weight: bold;
-            color: #8e3b2e;
-            white-space: nowrap;
-            font-size: 16px;
-        }
-
-
-        /* =========================
-           ADD TO CART BUTTON
-        ========================= */
-
-        .cart-btn {
-            padding: 7px 12px;
-            background: linear-gradient(135deg, #ff7a18, #ffb347);
-            color: white;
-            border: none;
-            border-radius: 7px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .cart-btn:hover {
-            background: linear-gradient(135deg, #e85d04, #ff9f1c);
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .cart-btn:active {
-            transform: scale(0.95);
-        }
-
-
-        /* =========================
-           ANIMATIONS
-        ========================= */
-
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(25px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .top-bar {
-            animation: slideDown 0.6s ease;
-        }
-
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        .footer {
-            background: #222;
-            color: #fff;
-            text-align: center;
-            padding: 22px;
-            margin-top: 50px;
-            font-size: 14px;
-        }
-
-        .footer span {
-            color: #ffb347;
-        }
-
-
-        /* =========================
-           TABLET RESPONSIVE
-        ========================= */
-
-        @media (max-width: 1000px) {
-
-            .top-bar {
-                flex-direction: column;
-                gap: 12px;
-            }
-
-            .logo {
-                padding-left: 0;
-            }
-
-            .menu {
-                width: 100%;
-            }
-
-            .menu a {
-                margin: 6px 8px;
-            }
-
-            .card img,
-            .image-container {
-                width: 250px;
-            }
-
-        }
-
-
-        /* =========================
-           MOBILE RESPONSIVE
-        ========================= */
-
-        @media (max-width: 768px) {
-
-            .menu-heading {
-                padding: 40px 15px;
-            }
-
-            .menu-heading h1 {
-                font-size: 34px;
-            }
-
-            .menu-heading p {
-                font-size: 15px;
-            }
-
-            .menu-container {
-                width: 94%;
-                margin: 30px auto;
-            }
-
-            .card {
-                flex-direction: column;
-            }
-
-            .image-container {
-                width: 100%;
-                height: 230px;
-            }
-
-            .card img {
-                width: 100%;
-                height: 230px;
-                min-height: 0;
-            }
-
-            .content {
-                padding: 20px;
-            }
-
-            .content h2 {
-                font-size: 24px;
-            }
-
-            li {
-                flex-wrap: wrap;
-            }
-
-        }
-
-
-        /* =========================
-           SMALL MOBILE
-        ========================= */
-
-        @media (max-width: 480px) {
-
-            .top-bar {
-                padding: 12px 10px;
-            }
-
-            .menu a {
-                font-size: 13px;
-                margin: 5px;
-            }
-
-            .menu-heading h1 {
-                font-size: 28px;
-            }
-
-            .menu-heading .icon {
-                font-size: 35px;
-            }
-
-            .content {
-                padding: 16px;
-            }
-
-            .content h2 {
-                font-size: 21px;
-            }
-
-            li {
-                font-size: 14px;
-            }
-
-            .price {
-                font-size: 14px;
-            }
-
-            .cart-btn {
-                padding: 6px 9px;
-                font-size: 11px;
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>FoodVerse | Menu</title>
+
+<style>
+
+/* =========================
+   GENERAL STYLING
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#fff8f0,#f4e1d2);
+    color:#333;
+    min-height:100vh;
+}
+
+/* =========================
+   NAVIGATION BAR
+========================= */
+
+.top-bar{
+    background:rgba(0,0,0,0.95);
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 4px 12px rgba(0,0,0,0.25);
+    animation:slideDown 0.6s ease;
+}
+
+@keyframes slideDown{
+    from{
+        transform:translateY(-40px);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+.logo{
+    color:white;
+    font-size:25px;
+    font-weight:bold;
+    padding-left:20px;
+    transition:0.3s ease;
+}
+
+.logo:hover{
+    color:#ff9800;
+    transform:scale(1.08);
+}
+
+.menu{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+}
+
+.menu a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+    margin:5px 10px;
+    padding:6px 0;
+    position:relative;
+    transition:0.3s ease;
+}
+
+.menu a::after{
+    content:"";
+    position:absolute;
+    width:0;
+    height:2px;
+    left:0;
+    bottom:0;
+    background:#ff9800;
+    transition:width 0.3s ease;
+}
+
+.menu a:hover{
+    color:#ff9800;
+}
+
+.menu a:hover::after{
+    width:100%;
+}
+
+/* =========================
+   PAGE HEADING
+========================= */
+
+.page-header{
+    text-align:center;
+    padding:45px 20px;
+    background:linear-gradient(135deg,#8e3b2e,#c85a3b);
+    color:white;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.page-header h1{
+    font-size:45px;
+    margin-bottom:10px;
+    letter-spacing:2px;
+    text-shadow:0 3px 8px rgba(0,0,0,0.3);
+}
+
+.page-header p{
+    font-size:18px;
+    opacity:0.95;
+}
+
+/* =========================
+   MENU CONTAINER
+========================= */
+
+.menu-container{
+    width:90%;
+    max-width:1200px;
+    margin:40px auto;
+}
+
+/* =========================
+   CATEGORY LABEL
+========================= */
+
+.category-label{
+    display:inline-block;
+    background:#8e3b2e;
+    color:white;
+    padding:8px 18px;
+    border-radius:20px;
+    margin-bottom:15px;
+    font-size:14px;
+    font-weight:bold;
+    letter-spacing:0.5px;
+}
+
+/* =========================
+   FOOD CARDS
+========================= */
+
+.card{
+    background:rgba(255,255,255,0.95);
+    border-radius:15px;
+    overflow:hidden;
+    margin-bottom:35px;
+    display:flex;
+    min-height:250px;
+    box-shadow:0 5px 18px rgba(0,0,0,0.12);
+    border:1px solid rgba(142,59,46,0.12);
+    transition:transform 0.4s ease,
+               box-shadow 0.4s ease,
+               border-color 0.4s ease;
+    animation:fadeUp 0.7s ease;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 12px 28px rgba(0,0,0,0.2);
+    border-color:#d66a4c;
+}
+
+.card img{
+    width:300px;
+    height:280px;
+    object-fit:cover;
+    transition:transform 0.5s ease;
+}
+
+.card:hover img{
+    transform:scale(1.05);
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(25px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   FOOD CONTENT
+========================= */
+
+.content{
+    padding:25px;
+    flex:1;
+}
+
+.content h2{
+    margin-bottom:8px;
+    color:#8e3b2e;
+    font-size:27px;
+}
+
+.description{
+    color:#666;
+    font-size:14px;
+    line-height:1.5;
+    margin-bottom:15px;
+}
+
+.food-list{
+    padding:0;
+    list-style:none;
+}
+
+.food-list li{
+    padding:10px 0;
+    border-bottom:1px dashed #ddd;
+    font-size:15px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+    transition:padding-left 0.3s ease;
+}
+
+.food-list li:hover{
+    padding-left:8px;
+    color:#8e3b2e;
+}
+
+.price{
+    font-weight:bold;
+    color:#8e3b2e;
+    white-space:nowrap;
+}
+
+/* =========================
+   ADD TO CART BUTTON
+========================= */
+
+.cart-btn{
+    margin-top:15px;
+    padding:9px 16px;
+    background:linear-gradient(135deg,#ff7a18,#ffb347);
+    color:white;
+    border:none;
+    border-radius:8px;
+    font-size:13px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:all 0.3s ease;
+}
+
+.cart-btn:hover{
+    background:linear-gradient(135deg,#ff5e00,#ffa500);
+    transform:translateY(-2px) scale(1.05);
+    box-shadow:0 6px 12px rgba(0,0,0,0.2);
+}
+
+.cart-btn:active{
+    transform:scale(0.95);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+    font-size:14px;
+}
+
+/* =========================
+   TABLET RESPONSIVENESS
+========================= */
+
+@media(max-width:900px){
+
+    .top-bar{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .logo{
+        padding-left:0;
+    }
+
+    .menu a{
+        margin:5px 7px;
+        font-size:14px;
+    }
+
+    .card img{
+        width:250px;
+    }
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
+
+@media(max-width:768px){
+
+    .page-header h1{
+        font-size:34px;
+    }
+
+    .page-header p{
+        font-size:16px;
+    }
+
+    .card{
+        flex-direction:column;
+    }
+
+    .card img{
+        width:100%;
+        height:230px;
+    }
+
+    .content{
+        padding:20px;
+    }
+
+    .content h2{
+        font-size:23px;
+    }
+
+    .food-list li{
+        font-size:14px;
+    }
+}
+
+@media(max-width:500px){
+
+    .top-bar{
+        padding:12px 10px;
+    }
+
+    .menu a{
+        display:inline-block;
+        margin:4px;
+        font-size:13px;
+    }
+
+    .page-header{
+        padding:30px 15px;
+    }
+
+    .page-header h1{
+        font-size:28px;
+    }
+
+    .menu-container{
+        width:94%;
+        margin:25px auto;
+    }
+
+    .card img{
+        height:200px;
+    }
+
+    .content{
+        padding:16px;
+    }
+
+    .food-list li{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:4px;
+    }
+
+    .cart-btn{
+        width:100%;
+    }
+}
+
+</style>
 </head>
-
 
 <body>
 
-    <!-- =========================
-         NAVIGATION
-    ========================= -->
+<!-- =========================
+     NAVIGATION
+========================= -->
 
-    <div class="top-bar">
+<div class="top-bar">
 
-        <div class="logo">
-            FoodVerse
-        </div>
+    <div class="logo">
+        FoodVerse
+    </div>
 
-        <div class="menu">
+    <div class="menu">
 
-            <a href="index.html">Home</a>
-            <a href="menu.html">Menu</a>
-            <a href="tiffins.html">Tiffins</a>
-            <a href="vegstarters.html">Veg Starters</a>
-            <a href="vegbiriyani.html">Veg Biriyanis</a>
-            <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
-            <a href="desserts.html">Desserts</a>
-            <a href="aboutus.html">About Us</a>
-            <a href="contact.html">Contact</a>
-
-            <a href="cart.html">
-                Cart 🛒 (<span id="cartCount">0</span>)
-            </a>
-
-        </div>
+        <a href="index.html">Home</a>
+        <a href="menu.html">Menu</a>
+        <a href="tiffins.html">Tiffins</a>
+        <a href="vegstarters.html">Veg Starters</a>
+        <a href="vegbiriyani.html">Veg Biriyanis</a>
+        <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
+        <a href="desserts.html">Desserts</a>
+        <a href="aboutus.html">About Us</a>
+        <a href="contact.html">Contact</a>
+        <a href="cart.html">Cart 🛒</a>
 
     </div>
 
+</div>
 
-    <!-- =========================
-         MENU HEADER
-    ========================= -->
 
-    <div class="menu-heading">
+<!-- =========================
+     PAGE HEADING
+========================= -->
 
-        <span class="icon">🍽️</span>
+<div class="page-header">
 
-        <h1>FoodVerse Menu</h1>
+    <h1>🍽️ FoodVerse Menu</h1>
 
-        <p>
-            Explore our delicious collection of fresh food,
-            authentic flavors and tasty treats.
-        </p>
-
-    </div>
-
-
-    <!-- =========================
-         MENU ITEMS
-    ========================= -->
+    <p>
+        Explore our delicious collection of fresh and tasty dishes
+    </p>
 
-    <div class="menu-container">
+</div>
 
 
-        <!-- VEG BIRYANI -->
+<!-- =========================
+     MENU
+========================= -->
 
-        <span class="category-label">
-            🌱 Vegetarian
-        </span>
+<div class="menu-container">
 
-        <div class="card">
 
-            <div class="image-container">
+<!-- VEG BIRYANIS -->
 
-                <img
-                    src="https://t4.ftcdn.net/jpg/12/78/88/15/360_F_1278881550_NsK2UT9gKl0a0EZJCpCwuhsqkBcQlN0B.jpg"
-                    alt="Vegetable Biryani">
+<div class="category-label">
+    🌱 VEG BIRIYANIS
+</div>
 
-            </div>
+<div class="card">
 
-            <div class="content">
+<img
+src="https://t4.ftcdn.net/jpg/12/78/88/15/360_F_1278881550_NsK2UT9gKl0a0EZJCpCwuhsqkBcQlN0B.jpg"
+alt="Veg Biryani">
 
-                <h2>Veg Biryanis</h2>
+<div class="content">
 
-                <p class="description">
-                    Flavorful vegetarian biryanis prepared with aromatic
-                    rice, fresh vegetables and traditional spices.
-                </p>
+<h2>Veg Biryanis</h2>
 
-                <ul>
+<p class="description">
+Flavorful vegetarian biryanis prepared with aromatic spices,
+fresh vegetables and fragrant basmati rice.
+</p>
 
-                    <li>
-                        Gobi 65 Biryani
-                        <span class="price">₹180</span>
-                        <button class="cart-btn" onclick="addToCart('Gobi 65 Biryani', 180)">
-                            Add
-                        </button>
-                    </li>
+<ul class="food-list">
 
-                    <li>
-                        Mushroom Biryani
-                        <span class="price">₹250</span>
-                        <button class="cart-btn" onclick="addToCart('Mushroom Biryani', 250)">
-                            Add
-                        </button>
-                    </li>
+<li>Gobi 65 Biryani <span class="price">₹180</span></li>
+<li>Mushroom Biryani <span class="price">₹250</span></li>
+<li>Paneer Biryani <span class="price">₹140</span></li>
+<li>Veg Biryani <span class="price">₹160</span></li>
+<li>Kaju Biryani <span class="price">₹200</span></li>
+<li>Baby Corn Biryani <span class="price">₹190</span></li>
+<li>Aloo Dum Biryani <span class="price">₹140</span></li>
+<li>White Channa Biryani <span class="price">₹250</span></li>
 
-                    <li>
-                        Paneer Biryani
-                        <span class="price">₹140</span>
-                        <button class="cart-btn" onclick="addToCart('Paneer Biryani', 140)">
-                            Add
-                        </button>
-                    </li>
+</ul>
 
-                    <li>
-                        Veg Biryani
-                        <span class="price">₹160</span>
-                        <button class="cart-btn" onclick="addToCart('Veg Biryani', 160)">
-                            Add
-                        </button>
-                    </li>
+<button class="cart-btn">
+Add to Cart 🛒
+</button>
 
-                    <li>
-                        Kaju Biryani
-                        <span class="price">₹200</span>
-                        <button class="cart-btn" onclick="addToCart('Kaju Biryani', 200)">
-                            Add
-                        </button>
-                    </li>
+</div>
+</div>
 
-                    <li>
-                        Baby Corn Biryani
-                        <span class="price">₹190</span>
-                        <button class="cart-btn" onclick="addToCart('Baby Corn Biryani', 190)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Aloo Dum Biryani
-                        <span class="price">₹140</span>
-                        <button class="cart-btn" onclick="addToCart('Aloo Dum Biryani', 140)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        White Channa Biryani
-                        <span class="price">₹250</span>
-                        <button class="cart-btn" onclick="addToCart('White Channa Biryani', 250)">
-                            Add
-                        </button>
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <!-- NON VEG BIRYANI -->
-
-        <span class="category-label">
-            🍗 Non-Vegetarian
-        </span>
-
-        <div class="card">
-
-            <div class="image-container">
-
-                <img
-                    src="https://t3.ftcdn.net/jpg/05/66/68/36/360_F_566683667_BeBecGFABNQYkZhquqJxhSj7UOcCY7ZJ.jpg"
-                    alt="Chicken Biryani">
-
-            </div>
 
-            <div class="content">
+<!-- NON VEG BIRIYANIS -->
 
-                <h2>Non-Veg Biryanis</h2>
+<div class="category-label">
+    🍗 NON-VEG BIRIYANIS
+</div>
 
-                <p class="description">
-                    Delicious biryanis made with tender meat,
-                    aromatic rice and authentic spices.
-                </p>
+<div class="card">
 
-                <ul>
+<img
+src="https://t3.ftcdn.net/jpg/05/66/68/36/360_F_566683667_BeBecGFABNQYkZhquqJxhSj7UOcCY7ZJ.jpg"
+alt="Non-Veg Biryani">
 
-                    <li>
-                        Chicken Biryani
-                        <span class="price">₹180</span>
-                        <button class="cart-btn" onclick="addToCart('Chicken Biryani', 180)">
-                            Add
-                        </button>
-                    </li>
+<div class="content">
 
-                    <li>
-                        Mutton Biryani
-                        <span class="price">₹250</span>
-                        <button class="cart-btn" onclick="addToCart('Mutton Biryani', 250)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Fry Chicken Biryani
-                        <span class="price">₹140</span>
-                        <button class="cart-btn" onclick="addToCart('Fry Chicken Biryani', 140)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Chicken Boneless Biryani
-                        <span class="price">₹160</span>
-                        <button class="cart-btn" onclick="addToCart('Chicken Boneless Biryani', 160)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Fish Biryani
-                        <span class="price">₹200</span>
-                        <button class="cart-btn" onclick="addToCart('Fish Biryani', 200)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Ambur Dum Biryani
-                        <span class="price">₹190</span>
-                        <button class="cart-btn" onclick="addToCart('Ambur Dum Biryani', 190)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Egg Biryani
-                        <span class="price">₹140</span>
-                        <button class="cart-btn" onclick="addToCart('Egg Biryani', 140)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Chicken Kabab Biryani
-                        <span class="price">₹250</span>
-                        <button class="cart-btn" onclick="addToCart('Chicken Kabab Biryani', 250)">
-                            Add
-                        </button>
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <!-- TIFFINS -->
-
-        <span class="category-label">
-            🥞 South Indian Tiffins
-        </span>
-
-        <div class="card">
-
-            <div class="image-container">
-
-                <img
-                    src="https://media-cdn.tripadvisor.com/media/photo-s/15/c7/f4/fb/all-tiffins-on-display.jpg"
-                    alt="South Indian Tiffins">
-
-            </div>
-
-            <div class="content">
-
-                <h2>Tiffins</h2>
-
-                <p class="description">
-                    Traditional South Indian breakfast favorites
-                    served fresh and hot.
-                </p>
-
-                <ul>
-
-                    <li>
-                        Idly
-                        <span class="price">₹40</span>
-                        <button class="cart-btn" onclick="addToCart('Idly', 40)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Dosa
-                        <span class="price">₹50</span>
-                        <button class="cart-btn" onclick="addToCart('Dosa', 50)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Vada
-                        <span class="price">₹30</span>
-                        <button class="cart-btn" onclick="addToCart('Vada', 30)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Poori
-                        <span class="price">₹40</span>
-                        <button class="cart-btn" onclick="addToCart('Poori', 40)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Bonda
-                        <span class="price">₹45</span>
-                        <button class="cart-btn" onclick="addToCart('Bonda', 45)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Pongal
-                        <span class="price">₹30</span>
-                        <button class="cart-btn" onclick="addToCart('Pongal', 30)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Poha
-                        <span class="price">₹45</span>
-                        <button class="cart-btn" onclick="addToCart('Poha', 45)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Idiappam
-                        <span class="price">₹40</span>
-                        <button class="cart-btn" onclick="addToCart('Idiappam', 40)">
-                            Add
-                        </button>
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <!-- VEG STARTERS -->
-
-        <span class="category-label">
-            🥗 Vegetarian Starters
-        </span>
-
-        <div class="card">
-
-            <div class="image-container">
-
-                <img
-                    src="https://vishwaratnahotel.com/wp-content/uploads/2024/11/Paneer-Tikka-1024x688.webp"
-                    alt="Paneer Tikka">
-
-            </div>
-
-            <div class="content">
-
-                <h2>Veg Starters</h2>
-
-                <p class="description">
-                    Crispy and flavorful vegetarian starters
-                    perfect for every food lover.
-                </p>
-
-                <ul>
-
-                    <li>
-                        Spring Roll
-                        <span class="price">₹120</span>
-                        <button class="cart-btn" onclick="addToCart('Spring Roll', 120)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Crispy Chilli Baby Corn
-                        <span class="price">₹100</span>
-                        <button class="cart-btn" onclick="addToCart('Crispy Chilli Baby Corn', 100)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Paneer Tikka
-                        <span class="price">₹110</span>
-                        <button class="cart-btn" onclick="addToCart('Paneer Tikka', 110)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Gobi Tandoori
-                        <span class="price">₹90</span>
-                        <button class="cart-btn" onclick="addToCart('Gobi Tandoori', 90)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        French Fries
-                        <span class="price">₹50</span>
-                        <button class="cart-btn" onclick="addToCart('French Fries', 50)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Cheese Pakoda
-                        <span class="price">₹99</span>
-                        <button class="cart-btn" onclick="addToCart('Cheese Pakoda', 99)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Momos
-                        <span class="price">₹90</span>
-                        <button class="cart-btn" onclick="addToCart('Momos', 90)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Cutlet
-                        <span class="price">₹100</span>
-                        <button class="cart-btn" onclick="addToCart('Cutlet', 100)">
-                            Add
-                        </button>
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <!-- NON VEG STARTERS -->
-
-        <span class="category-label">
-            🍗 Non-Veg Starters
-        </span>
-
-        <div class="card">
-
-            <div class="image-container">
-
-                <img
-                    src="https://thumbs.dreamstime.com/b/indo-chinese-veg-starter-paneer-manchurian-indian-vegetarian-manchurian-indo-chinese-manchurian-snack-prepared-cabbage-green-163905542.jpg"
-                    alt="Non-Veg Starters">
-
-            </div>
-
-            <div class="content">
-
-                <h2>Non-Veg Starters</h2>
-
-                <p class="description">
-                    Spicy, crispy and delicious starters prepared
-                    with quality ingredients.
-                </p>
-
-                <ul>
-
-                    <li>
-                        Egg Manchuria
-                        <span class="price">₹120</span>
-                        <button class="cart-btn" onclick="addToCart('Egg Manchuria', 120)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Chicken 65
-                        <span class="price">₹140</span>
-                        <button class="cart-btn" onclick="addToCart('Chicken 65', 140)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Apollo Fish
-                        <span class="price">₹180</span>
-                        <button class="cart-btn" onclick="addToCart('Apollo Fish', 180)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Prawns Manchuria
-                        <span class="price">₹190</span>
-                        <button class="cart-btn" onclick="addToCart('Prawns Manchuria', 190)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Chilli Fish
-                        <span class="price">₹150</span>
-                        <button class="cart-btn" onclick="addToCart('Chilli Fish', 150)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Dragon Chicken
-                        <span class="price">₹199</span>
-                        <button class="cart-btn" onclick="addToCart('Dragon Chicken', 199)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Chicken Spring Rolls
-                        <span class="price">₹190</span>
-                        <button class="cart-btn" onclick="addToCart('Chicken Spring Rolls', 190)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Egg Spring Rolls
-                        <span class="price">₹100</span>
-                        <button class="cart-btn" onclick="addToCart('Egg Spring Rolls', 100)">
-                            Add
-                        </button>
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-
-        <!-- DESSERTS -->
-
-        <span class="category-label">
-            🍰 Desserts
-        </span>
-
-        <div class="card">
-
-            <div class="image-container">
-
-                <img
-                    src="https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/2025-01/360_F_176331484_nLHY9EoW0ETwPZaS9OBXPGbCJhT70GZe.jpg"
-                    alt="Desserts">
-
-            </div>
-
-            <div class="content">
-
-                <h2>Desserts</h2>
-
-                <p class="description">
-                    Sweet treats to finish your meal with
-                    something delicious.
-                </p>
-
-                <ul>
-
-                    <li>
-                        Gulab Jamun
-                        <span class="price">₹60</span>
-                        <button class="cart-btn" onclick="addToCart('Gulab Jamun', 60)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Ice Cream
-                        <span class="price">₹50</span>
-                        <button class="cart-btn" onclick="addToCart('Ice Cream', 50)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Rasgulla
-                        <span class="price">₹65</span>
-                        <button class="cart-btn" onclick="addToCart('Rasgulla', 65)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Fruit Salad
-                        <span class="price">₹70</span>
-                        <button class="cart-btn" onclick="addToCart('Fruit Salad', 70)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Chocolate Ice Cream
-                        <span class="price">₹75</span>
-                        <button class="cart-btn" onclick="addToCart('Chocolate Ice Cream', 75)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Strawberry Cake
-                        <span class="price">₹80</span>
-                        <button class="cart-btn" onclick="addToCart('Strawberry Cake', 80)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Chocolate Brownie
-                        <span class="price">₹90</span>
-                        <button class="cart-btn" onclick="addToCart('Chocolate Brownie', 90)">
-                            Add
-                        </button>
-                    </li>
-
-                    <li>
-                        Fruit Cream
-                        <span class="price">₹100</span>
-                        <button class="cart-btn" onclick="addToCart('Fruit Cream', 100)">
-                            Add
-                        </button>
-                    </li>
-
-                </ul>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <div class="footer">
-
-        © 2026 FoodVerse |
-        <span>Taste the Best, Feel the Freshness</span>
-
-    </div>
-
-
-    <!-- =========================
-         CART JAVASCRIPT
-    ========================= -->
-
-    <script>
-
-        function updateCartCount() {
-
-            let cart = JSON.parse(localStorage.getItem("foodVerseCart")) || [];
-
-            let count = 0;
-
-            cart.forEach(function(item) {
-                count += item.quantity;
-            });
-
-            document.getElementById("cartCount").textContent = count;
-        }
-
-
-        function addToCart(name, price) {
-
-            let cart =
-                JSON.parse(localStorage.getItem("foodVerseCart")) || [];
-
-            let existingItem =
-                cart.find(function(item) {
-                    return item.name === name;
-                });
-
-            if (existingItem) {
-
-                existingItem.quantity++;
-
-            } else {
-
-                cart.push({
-                    name: name,
-                    price: price,
-                    quantity: 1
-                });
-
-            }
-
-            localStorage.setItem(
-                "foodVerseCart",
-                JSON.stringify(cart)
-            );
-
-            updateCartCount();
-
-            alert(name + " added to cart! 🛒");
-        }
-
-
-        updateCartCount();
-
-    </script>
+<h2>Non-Veg Biryanis</h2>
+
+<p class="description">
+Rich and aromatic biryanis prepared with tender meat,
+traditional spices and fragrant basmati rice.
+</p>
+
+<ul class="food-list">
+
+<li>Chicken Biryani <span class="price">₹180</span></li>
+<li>Mutton Biryani <span class="price">₹250</span></li>
+<li>Fry Chicken Biryani <span class="price">₹140</span></li>
+<li>Chicken Boneless Biryani <span class="price">₹160</span></li>
+<li>Fish Biryani <span class="price">₹200</span></li>
+<li>Ambur Dum Biryani <span class="price">₹190</span></li>
+<li>Egg Biryani <span class="price">₹140</span></li>
+<li>Chicken Kabab Biryani <span class="price">₹250</span></li>
+
+</ul>
+
+<button class="cart-btn">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+
+
+<!-- TIFFINS -->
+
+<div class="category-label">
+    🥞 TIFFINS
+</div>
+
+<div class="card">
+
+<img
+src="https://media-cdn.tripadvisor.com/media/photo-s/15/c7/f4/fb/all-tiffins-on-display.jpg"
+alt="Tiffins">
+
+<div class="content">
+
+<h2>Tiffins</h2>
+
+<p class="description">
+Fresh and delicious South Indian breakfast options
+perfect for a light and tasty meal.
+</p>
+
+<ul class="food-list">
+
+<li>Idly <span class="price">₹40</span></li>
+<li>Dosa <span class="price">₹50</span></li>
+<li>Vada <span class="price">₹30</span></li>
+<li>Poori <span class="price">₹40</span></li>
+<li>Bonda <span class="price">₹45</span></li>
+<li>Pongal <span class="price">₹30</span></li>
+<li>Poha <span class="price">₹45</span></li>
+<li>Idiappam <span class="price">₹40</span></li>
+
+</ul>
+
+<button class="cart-btn">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+
+
+<!-- VEG STARTERS -->
+
+<div class="category-label">
+    🥗 VEG STARTERS
+</div>
+
+<div class="card">
+
+<img
+src="https://vishwaratnahotel.com/wp-content/uploads/2024/11/Paneer-Tikka-1024x688.webp"
+alt="Veg Starters">
+
+<div class="content">
+
+<h2>Veg Starters</h2>
+
+<p class="description">
+Crispy and delicious vegetarian starters made with
+fresh ingredients and flavorful seasonings.
+</p>
+
+<ul class="food-list">
+
+<li>Spring Roll <span class="price">₹120</span></li>
+<li>Crispy Chilli Baby Corn <span class="price">₹100</span></li>
+<li>Paneer Tikka <span class="price">₹110</span></li>
+<li>Gobi Tandoori <span class="price">₹90</span></li>
+<li>French Fries <span class="price">₹50</span></li>
+<li>Cheese Pakoda <span class="price">₹99</span></li>
+<li>Momos <span class="price">₹90</span></li>
+<li>Cutlet <span class="price">₹100</span></li>
+
+</ul>
+
+<button class="cart-btn">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+
+
+<!-- NON VEG STARTERS -->
+
+<div class="category-label">
+    🍗 NON-VEG STARTERS
+</div>
+
+<div class="card">
+
+<img
+src="https://thumbs.dreamstime.com/b/indo-chinese-veg-starter-paneer-manchurian-indian-vegetarian-manchurian-indo-chinese-manchurian-snack-prepared-cabbage-green-163905542.jpg"
+alt="Non-Veg Starters">
+
+<div class="content">
+
+<h2>Non-Veg Starters</h2>
+
+<p class="description">
+Delicious non-vegetarian starters packed with bold flavors
+and carefully selected ingredients.
+</p>
+
+<ul class="food-list">
+
+<li>Egg Manchuria <span class="price">₹120</span></li>
+<li>Chicken 65 <span class="price">₹140</span></li>
+<li>Apollo Fish <span class="price">₹180</span></li>
+<li>Prawns Manchuria <span class="price">₹190</span></li>
+<li>Chilli Fish <span class="price">₹150</span></li>
+<li>Dragon Chicken <span class="price">₹199</span></li>
+<li>Chicken Spring Rolls <span class="price">₹190</span></li>
+<li>Egg Spring Rolls <span class="price">₹100</span></li>
+
+</ul>
+
+<button class="cart-btn">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+
+
+<!-- DESSERTS -->
+
+<div class="category-label">
+    🍰 DESSERTS
+</div>
+
+<div class="card">
+
+<img
+src="https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/2025-01/360_F_176331484_nLHY9EoW0ETwPZaS9OBXPGbCJhT70GZe.jpg"
+alt="Desserts">
+
+<div class="content">
+
+<h2>Desserts</h2>
+
+<p class="description">
+Sweet treats to finish your meal with a delicious
+and satisfying experience.
+</p>
+
+<ul class="food-list">
+
+<li>Gulab Jamun <span class="price">₹60</span></li>
+<li>Ice Cream <span class="price">₹50</span></li>
+<li>Rasgulla <span class="price">₹65</span></li>
+<li>Fruit Salad <span class="price">₹70</span></li>
+<li>Chocolate Ice Cream <span class="price">₹75</span></li>
+<li>Strawberry Cake <span class="price">₹80</span></li>
+<li>Chocolate Brownie <span class="price">₹90</span></li>
+<li>Fruit Custard <span class="price">₹100</span></li>
+
+</ul>
+
+<button class="cart-btn">
+Add to Cart 🛒
+</button>
+
+</div>
+</div>
+
+
+</div>
+
+
+<!-- FOOTER -->
+
+<div class="footer">
+
+© 2026 FoodVerse | Taste the Best, Feel the Freshness
+
+</div>
 
 </body>
-
 </html>
