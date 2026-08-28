@@ -15,6 +15,10 @@
             font-family: Arial, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background-image: url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe");
             background-size: cover;
@@ -149,6 +153,18 @@
             font-size: 17px;
             margin-bottom: 20px;
             line-height: 1.6;
+        }
+
+        /* Hero Badge */
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-bottom: 18px;
+            border: 1px solid rgb(255, 183, 3);
+            border-radius: 20px;
+            color: rgb(255, 217, 102);
+            background: rgba(255, 183, 3, 0.12);
+            font-weight: bold;
         }
 
         /* Explore Menu Button */
@@ -328,8 +344,6 @@
 
                 <a href="index.html">Home</a>
 
-                <!-- Menu link removed because Explore Our Menu button is provided below -->
-
                 <a href="tiffins.html">Tiffins</a>
                 <a href="vegstarters.html">Veg Starters</a>
                 <a href="vegbiriyani.html">Veg Biriyanis</a>
@@ -348,6 +362,10 @@
 
         <!-- Main Content -->
         <div class="content">
+
+            <div class="hero-badge">
+                🍴 Fresh • Delicious • Hygienic
+            </div>
 
             <h1>Welcome to FoodVerse</h1>
 
