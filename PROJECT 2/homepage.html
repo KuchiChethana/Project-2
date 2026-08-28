@@ -318,28 +318,45 @@
             margin-top: 8px;
         }
 
-        /* Cart Button */
-        .cart-btn {
-            margin-top: 10px;
-            padding: 10px 18px;
-            background: linear-gradient(135deg, #ff7a18, #ffb347);
-            color: white;
-            border: none;
-            border-radius: 8px;
+        /* Why Choose FoodVerse */
+        .features {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .feature-card {
+            flex: 1;
+            min-width: 200px;
+            padding: 22px 15px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 183, 3, 0.3);
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgb(255, 183, 3);
+            background: rgba(255, 183, 3, 0.12);
+        }
+
+        .feature-icon {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .feature-card h3 {
+            color: rgb(255, 217, 102);
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        .feature-card p {
             font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .cart-btn:hover {
-            background: linear-gradient(135deg, #ff5e00, #ffa500);
-            transform: translateY(-2px) scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .cart-btn:active {
-            transform: scale(0.95);
+            margin-bottom: 0;
         }
 
         /* Footer */
@@ -405,11 +422,13 @@
                 margin: 8px;
             }
 
-            .popular-items {
+            .popular-items,
+            .features {
                 flex-direction: column;
             }
 
-            .food-item {
+            .food-item,
+            .feature-card {
                 width: 100%;
             }
         }
@@ -435,14 +454,6 @@
             .explore-btn {
                 width: 100%;
                 max-width: 250px;
-            }
-
-            .cart-btn {
-                width: 100%;
-            }
-
-            .offer-box {
-                padding: 18px;
             }
 
             .rating-stars {
@@ -609,6 +620,65 @@
 
             </div>
 
+            <!-- Why Choose FoodVerse -->
+            <div class="box">
+
+                <h2>Why Choose FoodVerse?</h2>
+
+                <div class="features">
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            🥗
+                        </div>
+
+                        <h3>
+                            Fresh Ingredients
+                        </h3>
+
+                        <p>
+                            Carefully selected ingredients for delicious and quality meals.
+                        </p>
+
+                    </div>
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            ⚡
+                        </div>
+
+                        <h3>
+                            Fast Service
+                        </h3>
+
+                        <p>
+                            Quick preparation and smooth service for every order.
+                        </p>
+
+                    </div>
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            💰
+                        </div>
+
+                        <h3>
+                            Affordable Prices
+                        </h3>
+
+                        <p>
+                            Enjoy great food at prices that are friendly to your pocket.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
             <!-- What We Offer -->
             <div class="box">
 
@@ -616,18 +686,6 @@
 
                 <p>
                     Tiffins • Biriyanis • Starters • Desserts
-                </p>
-
-            </div>
-
-            <!-- Why Choose FoodVerse -->
-            <div class="box">
-
-                <h2>Why Choose FoodVerse?</h2>
-
-                <p>
-                    Fresh ingredients, authentic taste, affordable prices,
-                    and food made with love.
                 </p>
 
             </div>
