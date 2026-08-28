@@ -32,7 +32,7 @@
             min-height: 100vh;
         }
 
-        /* Navigation Bar */
+        /* Navigation */
         .top-bar {
             position: sticky;
             top: 0;
@@ -62,9 +62,8 @@
             color: white;
             font-size: 24px;
             font-weight: bold;
-            padding-top: 5px;
             padding-left: 40px;
-            transition: transform 0.3s ease, color 0.3s ease;
+            transition: 0.3s ease;
         }
 
         .logo:hover {
@@ -72,7 +71,6 @@
             transform: scale(1.08);
         }
 
-        /* Navigation Links */
         .menu a {
             color: white;
             text-decoration: none;
@@ -80,7 +78,7 @@
             margin: 0 15px;
             position: relative;
             padding: 6px 0;
-            transition: color 0.3s ease;
+            transition: 0.3s ease;
         }
 
         .menu a::after {
@@ -91,7 +89,7 @@
             left: 0;
             bottom: 0;
             background: orange;
-            transition: width 0.35s ease;
+            transition: 0.35s ease;
         }
 
         .menu a:hover {
@@ -102,7 +100,7 @@
             width: 100%;
         }
 
-        /* Main Content */
+        /* Main */
         .content {
             width: 900px;
             max-width: 90%;
@@ -123,6 +121,17 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            margin-bottom: 18px;
+            border: 1px solid rgb(255, 183, 3);
+            border-radius: 20px;
+            color: rgb(255, 217, 102);
+            background: rgba(255, 183, 3, 0.12);
+            font-weight: bold;
         }
 
         .content h1 {
@@ -154,19 +163,7 @@
             line-height: 1.6;
         }
 
-        /* Badge */
-        .hero-badge {
-            display: inline-block;
-            padding: 8px 16px;
-            margin-bottom: 18px;
-            border: 1px solid rgb(255, 183, 3);
-            border-radius: 20px;
-            color: rgb(255, 217, 102);
-            background: rgba(255, 183, 3, 0.12);
-            font-weight: bold;
-        }
-
-        /* Explore Button */
+        /* Button */
         .explore-btn {
             display: inline-block;
             margin: 10px 0 25px;
@@ -177,7 +174,7 @@
             border-radius: 8px;
             font-size: 16px;
             font-weight: bold;
-            transition: all 0.3s ease;
+            transition: 0.3s ease;
         }
 
         .explore-btn:hover {
@@ -188,7 +185,7 @@
         /* Common Box */
         .box {
             background: rgba(255, 255, 255, 0.1);
-            padding: 20px;
+            padding: 25px;
             margin-top: 25px;
             border-radius: 12px;
             transition: 0.4s ease;
@@ -196,16 +193,16 @@
         }
 
         .box:hover {
-            transform: translateY(-8px);
+            transform: translateY(-7px);
             background: rgba(255, 255, 255, 0.16);
         }
 
         .box h2 {
             color: rgb(255, 183, 3);
-            margin-bottom: 15px;
+            margin-bottom: 18px;
         }
 
-        /* Special Categories */
+        /* Categories */
         .categories {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -213,11 +210,11 @@
         }
 
         .category-card {
-            padding: 22px 12px;
+            padding: 20px 10px;
             border-radius: 12px;
             background: rgba(0, 0, 0, 0.28);
             border: 1px solid rgba(255, 183, 3, 0.3);
-            transition: all 0.4s ease;
+            transition: 0.4s ease;
         }
 
         .category-card:hover {
@@ -227,8 +224,8 @@
         }
 
         .category-icon {
-            font-size: 42px;
-            margin-bottom: 12px;
+            font-size: 40px;
+            margin-bottom: 10px;
         }
 
         .category-card h3 {
@@ -239,7 +236,7 @@
 
         .category-card p {
             font-size: 13px;
-            margin-bottom: 14px;
+            margin-bottom: 12px;
         }
 
         .category-btn {
@@ -258,7 +255,7 @@
             transform: scale(1.08);
         }
 
-        /* Popular Items */
+        /* Popular */
         .popular-items {
             display: flex;
             gap: 16px;
@@ -327,7 +324,7 @@
             border-radius: 12px;
             background: rgba(0, 0, 0, 0.25);
             border: 1px solid rgba(255, 183, 3, 0.3);
-            transition: all 0.4s ease;
+            transition: 0.4s ease;
         }
 
         .feature-card:hover {
@@ -403,6 +400,46 @@
             margin-bottom: 0;
         }
 
+        /* FoodVerse Promise */
+        .promise-intro {
+            max-width: 700px;
+            margin: 0 auto 22px;
+        }
+
+        .promise-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }
+
+        .promise-card {
+            padding: 20px 12px;
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.25);
+            transition: 0.4s ease;
+        }
+
+        .promise-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 183, 3, 0.14);
+        }
+
+        .promise-icon {
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+
+        .promise-card h3 {
+            color: rgb(255, 217, 102);
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .promise-card p {
+            font-size: 13px;
+            margin-bottom: 0;
+        }
+
         /* Footer */
         .footer {
             background-color: rgb(255, 217, 102);
@@ -410,22 +447,9 @@
             padding: 15px;
             margin-top: 20px;
             text-align: center;
-            animation: slideUp 1.2s ease;
         }
 
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Tablet */
+        /* Responsive */
         @media (max-width: 1024px) {
 
             .content {
@@ -444,12 +468,12 @@
                 margin: 0 7px;
             }
 
-            .categories {
+            .categories,
+            .promise-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        /* Mobile */
         @media (max-width: 700px) {
 
             .top-bar {
@@ -471,7 +495,8 @@
                 margin: 8px;
             }
 
-            .categories {
+            .categories,
+            .promise-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -521,7 +546,7 @@
 
     <div class="overlay">
 
-        <!-- Navigation -->
+        <!-- Navigation Bar -->
         <div class="top-bar">
 
             <div class="logo">
@@ -547,16 +572,20 @@
 
         </div>
 
-        <!-- Main -->
+        <!-- Main Content -->
         <div class="content">
 
             <div class="hero-badge">
                 🍴 Fresh • Delicious • Hygienic
             </div>
 
-            <h1>Welcome to FoodVerse</h1>
+            <h1>
+                Welcome to FoodVerse
+            </h1>
 
-            <h3>Where Taste Meets Happiness</h3>
+            <h3>
+                Where Taste Meets Happiness
+            </h3>
 
             <p>
                 FoodVerse is your destination for delicious, fresh, and hygienic food.
@@ -570,7 +599,9 @@
             <!-- Today's Special -->
             <div class="box">
 
-                <h2>🔥 Today's Special</h2>
+                <h2>
+                    🔥 Today's Special
+                </h2>
 
                 <p>
                     Enjoy our delicious Biriyani Feast prepared with fresh ingredients
@@ -583,10 +614,12 @@
 
             </div>
 
-            <!-- Special Categories -->
+            <!-- Categories -->
             <div class="box">
 
-                <h2>🍽️ Explore Our Categories</h2>
+                <h2>
+                    🍽️ Explore Our Categories
+                </h2>
 
                 <div class="categories">
 
@@ -674,10 +707,12 @@
 
             </div>
 
-            <!-- Popular Today -->
+            <!-- Popular -->
             <div class="box">
 
-                <h2>🔥 Popular Today</h2>
+                <h2>
+                    🔥 Popular Today
+                </h2>
 
                 <div class="popular-items">
 
@@ -736,7 +771,9 @@
             <!-- Rating -->
             <div class="box rating-box">
 
-                <h2>⭐ Customer Rating</h2>
+                <h2>
+                    ⭐ Customer Rating
+                </h2>
 
                 <div class="rating-stars">
                     ★ ★ ★ ★ ★
@@ -755,7 +792,9 @@
             <!-- Features -->
             <div class="box">
 
-                <h2>Why Choose FoodVerse?</h2>
+                <h2>
+                    Why Choose FoodVerse?
+                </h2>
 
                 <div class="features">
 
@@ -814,7 +853,9 @@
             <!-- How It Works -->
             <div class="box">
 
-                <h2>🛍️ How It Works</h2>
+                <h2>
+                    🛍️ How It Works
+                </h2>
 
                 <div class="steps">
 
@@ -882,10 +923,95 @@
 
             </div>
 
+            <!-- FoodVerse Promise -->
+            <div class="box">
+
+                <h2>
+                    ❤️ The FoodVerse Promise
+                </h2>
+
+                <p class="promise-intro">
+                    Every meal we serve is prepared with care.
+                    Our goal is to make every FoodVerse experience delicious,
+                    safe, and satisfying.
+                </p>
+
+                <div class="promise-grid">
+
+                    <div class="promise-card">
+
+                        <div class="promise-icon">
+                            🌱
+                        </div>
+
+                        <h3>
+                            Quality
+                        </h3>
+
+                        <p>
+                            We focus on quality ingredients and careful preparation.
+                        </p>
+
+                    </div>
+
+                    <div class="promise-card">
+
+                        <div class="promise-icon">
+                            🧼
+                        </div>
+
+                        <h3>
+                            Hygiene
+                        </h3>
+
+                        <p>
+                            Clean preparation and hygienic food handling are our priorities.
+                        </p>
+
+                    </div>
+
+                    <div class="promise-card">
+
+                        <div class="promise-icon">
+                            ❤️
+                        </div>
+
+                        <h3>
+                            Made With Care
+                        </h3>
+
+                        <p>
+                            Every dish is prepared with attention to taste and freshness.
+                        </p>
+
+                    </div>
+
+                    <div class="promise-card">
+
+                        <div class="promise-icon">
+                            😊
+                        </div>
+
+                        <h3>
+                            Customer Happiness
+                        </h3>
+
+                        <p>
+                            Your satisfaction is what makes every meal worthwhile.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
             <!-- What We Offer -->
             <div class="box">
 
-                <h2>What We Offer</h2>
+                <h2>
+                    What We Offer
+                </h2>
 
                 <p>
                     Tiffins • Biriyanis • Starters • Desserts
