@@ -256,6 +256,49 @@
             margin-bottom: 10px;
         }
 
+        /* Popular Food Section */
+        .popular-box {
+            margin-top: 25px;
+        }
+
+        .popular-items {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .food-item {
+            flex: 1;
+            min-width: 180px;
+            padding: 18px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .food-item:hover {
+            transform: translateY(-6px);
+            background: rgba(255, 255, 255, 0.18);
+        }
+
+        .food-icon {
+            font-size: 34px;
+            margin-bottom: 8px;
+        }
+
+        .food-item h3 {
+            color: rgb(255, 217, 102);
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .food-item p {
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
         /* Cart Button */
         .cart-btn {
             margin-top: 10px;
@@ -342,6 +385,14 @@
                 display: inline-block;
                 margin: 8px;
             }
+
+            .popular-items {
+                flex-direction: column;
+            }
+
+            .food-item {
+                width: 100%;
+            }
         }
 
         @media (max-width: 600px) {
@@ -418,7 +469,6 @@
         <!-- Main Content -->
         <div class="content">
 
-            <!-- Hero Badge -->
             <div class="hero-badge">
                 🍴 Fresh • Delicious • Hygienic
             </div>
@@ -455,6 +505,65 @@
                 <a href="menu.html" class="offer-link">
                     View Special →
                 </a>
+
+            </div>
+
+            <!-- Popular Today -->
+            <div class="box popular-box">
+
+                <h2>🔥 Popular Today</h2>
+
+                <div class="popular-items">
+
+                    <div class="food-item">
+
+                        <div class="food-icon">
+                            🍛
+                        </div>
+
+                        <h3>
+                            Veg Biriyani
+                        </h3>
+
+                        <p>
+                            Rich, aromatic and freshly prepared.
+                        </p>
+
+                    </div>
+
+                    <div class="food-item">
+
+                        <div class="food-icon">
+                            🥘
+                        </div>
+
+                        <h3>
+                            Paneer Starter
+                        </h3>
+
+                        <p>
+                            Soft paneer with flavorful spices.
+                        </p>
+
+                    </div>
+
+                    <div class="food-item">
+
+                        <div class="food-icon">
+                            🍰
+                        </div>
+
+                        <h3>
+                            Desserts
+                        </h3>
+
+                        <p>
+                            A sweet finish for every meal.
+                        </p>
+
+                    </div>
+
+                </div>
 
             </div>
 
