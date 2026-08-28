@@ -187,11 +187,7 @@
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
         }
 
-        .explore-btn:active {
-            transform: scale(0.95);
-        }
-
-        /* Today's Special Offer */
+        /* Today's Special */
         .offer-box {
             margin-top: 25px;
             padding: 22px;
@@ -236,7 +232,7 @@
             text-decoration: underline;
         }
 
-        /* Information Boxes */
+        /* Common Box */
         .box {
             background: rgba(255, 255, 255, 0.1);
             padding: 20px;
@@ -247,20 +243,16 @@
         }
 
         .box:hover {
-            transform: translateY(-10px) scale(1.02);
-            background: rgba(255, 255, 255, 0.18);
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.16);
         }
 
         .box h2 {
             color: rgb(255, 183, 3);
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
-        /* Popular Food Section */
-        .popular-box {
-            margin-top: 25px;
-        }
-
+        /* Popular Food */
         .popular-items {
             display: flex;
             gap: 16px;
@@ -300,10 +292,6 @@
         }
 
         /* Customer Rating */
-        .rating-box {
-            text-align: center;
-        }
-
         .rating-stars {
             font-size: 30px;
             letter-spacing: 5px;
@@ -318,13 +306,12 @@
             margin-top: 8px;
         }
 
-        /* Why Choose FoodVerse */
+        /* Features */
         .features {
             display: flex;
             gap: 18px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 15px;
         }
 
         .feature-card {
@@ -355,6 +342,57 @@
         }
 
         .feature-card p {
+            font-size: 14px;
+            margin-bottom: 0;
+        }
+
+        /* How It Works */
+        .steps {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 190px;
+            padding: 20px 15px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            transition: 0.4s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-7px);
+            background: rgba(255, 183, 3, 0.15);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 12px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff7a18, #ffb347);
+            color: white;
+            font-weight: bold;
+        }
+
+        .step-icon {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+
+        .step h3 {
+            color: rgb(255, 217, 102);
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .step p {
             font-size: 14px;
             margin-bottom: 0;
         }
@@ -423,12 +461,14 @@
             }
 
             .popular-items,
-            .features {
+            .features,
+            .steps {
                 flex-direction: column;
             }
 
             .food-item,
-            .feature-card {
+            .feature-card,
+            .step {
                 width: 100%;
             }
         }
@@ -516,7 +556,6 @@
                 We bring together traditional recipes and modern flavors to satisfy every craving.
             </p>
 
-            <!-- Explore Menu Button -->
             <a href="menu.html" class="explore-btn">
                 Explore Our Menu 🍽️
             </a>
@@ -543,7 +582,7 @@
             </div>
 
             <!-- Popular Today -->
-            <div class="box popular-box">
+            <div class="box">
 
                 <h2>🔥 Popular Today</h2>
 
@@ -671,6 +710,77 @@
 
                         <p>
                             Enjoy great food at prices that are friendly to your pocket.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- How It Works -->
+            <div class="box">
+
+                <h2>🛍️ How It Works</h2>
+
+                <div class="steps">
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            1
+                        </div>
+
+                        <div class="step-icon">
+                            📋
+                        </div>
+
+                        <h3>
+                            Choose Your Food
+                        </h3>
+
+                        <p>
+                            Explore our menu and select your favorite dishes.
+                        </p>
+
+                    </div>
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            2
+                        </div>
+
+                        <div class="step-icon">
+                            🛒
+                        </div>
+
+                        <h3>
+                            Add to Cart
+                        </h3>
+
+                        <p>
+                            Add the dishes you love to your shopping cart.
+                        </p>
+
+                    </div>
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            3
+                        </div>
+
+                        <div class="step-icon">
+                            🍽️
+                        </div>
+
+                        <h3>
+                            Enjoy Your Meal
+                        </h3>
+
+                        <p>
+                            Place your order and enjoy fresh FoodVerse meals.
                         </p>
 
                     </div>
