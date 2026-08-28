@@ -191,6 +191,51 @@
             transform: scale(0.95);
         }
 
+        /* Today's Special Offer */
+        .offer-box {
+            margin-top: 25px;
+            padding: 22px;
+            border-radius: 14px;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 122, 24, 0.25),
+                rgba(255, 183, 3, 0.12)
+            );
+            border: 1px solid rgba(255, 183, 3, 0.7);
+            transition: 0.4s ease;
+        }
+
+        .offer-box:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(255, 183, 3, 0.2);
+        }
+
+        .offer-label {
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            color: rgb(255, 217, 102);
+        }
+
+        .offer-box h2 {
+            color: white;
+            margin: 10px 0;
+        }
+
+        .offer-box p {
+            margin-bottom: 12px;
+        }
+
+        .offer-link {
+            color: rgb(255, 217, 102);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .offer-link:hover {
+            text-decoration: underline;
+        }
+
         /* Information Boxes */
         .box {
             background: rgba(255, 255, 255, 0.1);
@@ -325,6 +370,10 @@
             .cart-btn {
                 width: 100%;
             }
+
+            .offer-box {
+                padding: 18px;
+            }
         }
     </style>
 </head>
@@ -345,11 +394,17 @@
                 <a href="index.html">Home</a>
 
                 <a href="tiffins.html">Tiffins</a>
+
                 <a href="vegstarters.html">Veg Starters</a>
+
                 <a href="vegbiriyani.html">Veg Biriyanis</a>
+
                 <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
+
                 <a href="desserts.html">Desserts</a>
+
                 <a href="aboutus.html">About Us</a>
+
                 <a href="contact.html">Contact</a>
 
                 <a href="cart.html">
@@ -363,6 +418,7 @@
         <!-- Main Content -->
         <div class="content">
 
+            <!-- Hero Badge -->
             <div class="hero-badge">
                 🍴 Fresh • Delicious • Hygienic
             </div>
@@ -380,6 +436,27 @@
             <a href="menu.html" class="explore-btn">
                 Explore Our Menu 🍽️
             </a>
+
+            <!-- Today's Special -->
+            <div class="offer-box">
+
+                <span class="offer-label">
+                    TODAY'S SPECIAL
+                </span>
+
+                <h2>
+                    🍛 Biriyani Feast
+                </h2>
+
+                <p>
+                    Enjoy authentic flavors prepared fresh for every order.
+                </p>
+
+                <a href="menu.html" class="offer-link">
+                    View Special →
+                </a>
+
+            </div>
 
             <!-- What We Offer -->
             <div class="box">
