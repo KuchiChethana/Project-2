@@ -8,6 +8,7 @@
     <title>FoodVerse | Home</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -33,6 +34,7 @@
         }
 
         /* Navigation */
+
         .top-bar {
             position: sticky;
             top: 0;
@@ -47,6 +49,7 @@
         }
 
         @keyframes slideDown {
+
             from {
                 transform: translateY(-60px);
                 opacity: 0;
@@ -56,6 +59,7 @@
                 transform: translateY(0);
                 opacity: 1;
             }
+
         }
 
         .logo {
@@ -100,11 +104,12 @@
             width: 100%;
         }
 
-        /* Main */
+        /* Main Content */
+
         .content {
             width: 900px;
             max-width: 90%;
-            margin: 80px auto;
+            margin: 70px auto;
             text-align: center;
             color: white;
             padding: 20px;
@@ -112,6 +117,7 @@
         }
 
         @keyframes fadeIn {
+
             from {
                 opacity: 0;
                 transform: translateY(30px);
@@ -121,6 +127,7 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
         .hero-badge {
@@ -142,6 +149,7 @@
         }
 
         @keyframes glow {
+
             from {
                 text-shadow: 0 0 10px orange;
             }
@@ -149,6 +157,7 @@
             to {
                 text-shadow: 0 0 30px gold;
             }
+
         }
 
         .content h3 {
@@ -163,10 +172,12 @@
             line-height: 1.6;
         }
 
-        /* Button */
-        .explore-btn {
+        /* Buttons */
+
+        .explore-btn,
+        .order-btn {
             display: inline-block;
-            margin: 10px 0 25px;
+            margin: 10px 8px 25px;
             padding: 12px 25px;
             background: linear-gradient(135deg, #ff7a18, #ffb347);
             color: white;
@@ -177,12 +188,14 @@
             transition: 0.3s ease;
         }
 
-        .explore-btn:hover {
+        .explore-btn:hover,
+        .order-btn:hover {
             transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.35);
         }
 
         /* Common Box */
+
         .box {
             background: rgba(255, 255, 255, 0.1);
             padding: 25px;
@@ -203,6 +216,7 @@
         }
 
         /* Categories */
+
         .categories {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -255,7 +269,8 @@
             transform: scale(1.08);
         }
 
-        /* Popular */
+        /* Popular Items */
+
         .popular-items {
             display: flex;
             gap: 16px;
@@ -295,6 +310,7 @@
         }
 
         /* Rating */
+
         .rating-stars {
             font-size: 30px;
             letter-spacing: 5px;
@@ -310,6 +326,7 @@
         }
 
         /* Features */
+
         .features {
             display: flex;
             gap: 18px;
@@ -349,7 +366,8 @@
             margin-bottom: 0;
         }
 
-        /* How It Works */
+        /* Steps */
+
         .steps {
             display: flex;
             justify-content: center;
@@ -400,11 +418,7 @@
             margin-bottom: 0;
         }
 
-        /* FoodVerse Promise */
-        .promise-intro {
-            max-width: 700px;
-            margin: 0 auto 22px;
-        }
+        /* Promise */
 
         .promise-grid {
             display: grid;
@@ -440,7 +454,52 @@
             margin-bottom: 0;
         }
 
+        /* NEW ORDER SECTION */
+
+        .order-section {
+            margin-top: 35px;
+            padding: 40px 25px;
+            border-radius: 18px;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 122, 24, 0.25),
+                rgba(255, 183, 3, 0.12)
+            );
+            border: 1px solid rgba(255, 183, 3, 0.45);
+            transition: 0.4s ease;
+        }
+
+        .order-section:hover {
+            transform: translateY(-5px);
+            background: linear-gradient(
+                135deg,
+                rgba(255, 122, 24, 0.35),
+                rgba(255, 183, 3, 0.18)
+            );
+        }
+
+        .order-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .order-section h2 {
+            color: rgb(255, 217, 102);
+            font-size: 30px;
+            margin-bottom: 12px;
+        }
+
+        .order-section p {
+            max-width: 650px;
+            margin: 0 auto 18px;
+        }
+
+        .order-btn {
+            margin-bottom: 0;
+        }
+
         /* Footer */
+
         .footer {
             background-color: rgb(255, 217, 102);
             color: black;
@@ -450,6 +509,7 @@
         }
 
         /* Responsive */
+
         @media (max-width: 1024px) {
 
             .content {
@@ -472,6 +532,7 @@
             .promise-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+
         }
 
         @media (max-width: 700px) {
@@ -509,6 +570,7 @@
             .step {
                 width: 100%;
             }
+
         }
 
         @media (max-width: 600px) {
@@ -530,7 +592,8 @@
                 font-size: 15px;
             }
 
-            .explore-btn {
+            .explore-btn,
+            .order-btn {
                 width: 100%;
                 max-width: 250px;
             }
@@ -538,15 +601,23 @@
             .rating-stars {
                 font-size: 24px;
             }
+
+            .order-section h2 {
+                font-size: 24px;
+            }
+
         }
+
     </style>
+
 </head>
 
 <body>
 
     <div class="overlay">
 
-        <!-- Navigation Bar -->
+        <!-- Navigation -->
+
         <div class="top-bar">
 
             <div class="logo">
@@ -556,12 +627,19 @@
             <div class="menu">
 
                 <a href="index.html">Home</a>
+
                 <a href="tiffins.html">Tiffins</a>
+
                 <a href="vegstarters.html">Veg Starters</a>
+
                 <a href="vegbiriyani.html">Veg Biriyanis</a>
+
                 <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
+
                 <a href="desserts.html">Desserts</a>
+
                 <a href="aboutus.html">About Us</a>
+
                 <a href="contact.html">Contact</a>
 
                 <a href="cart.html">
@@ -572,7 +650,9 @@
 
         </div>
 
+
         <!-- Main Content -->
+
         <div class="content">
 
             <div class="hero-badge">
@@ -596,7 +676,9 @@
                 Explore Our Menu 🍽️
             </a>
 
+
             <!-- Today's Special -->
+
             <div class="box">
 
                 <h2>
@@ -614,7 +696,9 @@
 
             </div>
 
+
             <!-- Categories -->
+
             <div class="box">
 
                 <h2>
@@ -643,6 +727,7 @@
 
                     </div>
 
+
                     <div class="category-card">
 
                         <div class="category-icon">
@@ -663,6 +748,7 @@
 
                     </div>
 
+
                     <div class="category-card">
 
                         <div class="category-icon">
@@ -682,6 +768,7 @@
                         </a>
 
                     </div>
+
 
                     <div class="category-card">
 
@@ -707,7 +794,9 @@
 
             </div>
 
-            <!-- Popular -->
+
+            <!-- Popular Items -->
+
             <div class="box">
 
                 <h2>
@@ -732,6 +821,7 @@
 
                     </div>
 
+
                     <div class="food-item">
 
                         <div class="food-icon">
@@ -747,6 +837,7 @@
                         </p>
 
                     </div>
+
 
                     <div class="food-item">
 
@@ -768,7 +859,9 @@
 
             </div>
 
+
             <!-- Rating -->
+
             <div class="box rating-box">
 
                 <h2>
@@ -789,7 +882,9 @@
 
             </div>
 
+
             <!-- Features -->
+
             <div class="box">
 
                 <h2>
@@ -814,6 +909,7 @@
 
                     </div>
 
+
                     <div class="feature-card">
 
                         <div class="feature-icon">
@@ -829,6 +925,7 @@
                         </p>
 
                     </div>
+
 
                     <div class="feature-card">
 
@@ -850,7 +947,9 @@
 
             </div>
 
+
             <!-- How It Works -->
+
             <div class="box">
 
                 <h2>
@@ -879,6 +978,7 @@
 
                     </div>
 
+
                     <div class="step">
 
                         <div class="step-number">
@@ -898,6 +998,7 @@
                         </p>
 
                     </div>
+
 
                     <div class="step">
 
@@ -923,14 +1024,16 @@
 
             </div>
 
+
             <!-- FoodVerse Promise -->
+
             <div class="box">
 
                 <h2>
                     ❤️ The FoodVerse Promise
                 </h2>
 
-                <p class="promise-intro">
+                <p>
                     Every meal we serve is prepared with care.
                     Our goal is to make every FoodVerse experience delicious,
                     safe, and satisfying.
@@ -954,6 +1057,7 @@
 
                     </div>
 
+
                     <div class="promise-card">
 
                         <div class="promise-icon">
@@ -970,6 +1074,7 @@
 
                     </div>
 
+
                     <div class="promise-card">
 
                         <div class="promise-icon">
@@ -985,6 +1090,7 @@
                         </p>
 
                     </div>
+
 
                     <div class="promise-card">
 
@@ -1006,7 +1112,37 @@
 
             </div>
 
+
+            <!-- FINAL CTA SECTION -->
+
+            <div class="order-section">
+
+                <div class="order-icon">
+                    🍽️
+                </div>
+
+                <h2>
+                    Ready to Taste the FoodVerse?
+                </h2>
+
+                <p>
+                    Discover delicious dishes, choose your favorites,
+                    add them to your cart, and enjoy a memorable food experience.
+                </p>
+
+                <a href="menu.html" class="order-btn">
+                    Order Now 🚀
+                </a>
+
+                <a href="cart.html" class="order-btn">
+                    View Cart 🛒
+                </a>
+
+            </div>
+
+
             <!-- What We Offer -->
+
             <div class="box">
 
                 <h2>
@@ -1023,7 +1159,9 @@
 
     </div>
 
+
     <!-- Footer -->
+
     <div class="footer">
 
         © 2026 FoodVerse | Taste the Best, Feel the Freshness
