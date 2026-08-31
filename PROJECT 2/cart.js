@@ -1,3 +1,6 @@
+let discount = 0;
+
+
 function addToCart(name, price) {
 
     let cart =
@@ -37,7 +40,9 @@ function updateCartCount() {
         document.getElementById("cartCount");
 
     if (cartCount) {
+
         cartCount.innerText = count;
+
     }
 }
 
@@ -88,10 +93,11 @@ function loadCart() {
         document.getElementById("deliveryFee").innerText =
             "₹0";
 
-        document.getElementById("grandTotal").innerText =
+        document.getElementById("discountAmount").innerText =
             "₹0";
 
-        updateCartCount();
+        document.getElementById("grandTotal").innerText =
+            "₹0";
 
         return;
     }
@@ -167,8 +173,17 @@ function loadCart() {
     }
 
 
+    let discountAmount =
+        total * discount / 100;
+
+
     let grandTotal =
-        total + deliveryFee;
+        total + deliveryFee - discountAmount;
+
+
+    if (grandTotal < 0) {
+        grandTotal = 0;
+    }
 
 
     document.getElementById("total").innerText =
@@ -182,11 +197,52 @@ function loadCart() {
             ? "FREE"
             : "₹" + deliveryFee;
 
-    document.getElementById("grandTotal").innerText =
-        "₹" + grandTotal;
+    document.getElementById("discountAmount").innerText =
+        "-₹" + discountAmount.toFixed(0);
 
+    document.getElementById("grandTotal").innerText =
+        "₹" + grandTotal.toFixed(0);
 
     updateCartCount();
+}
+
+
+function applyCoupon() {
+
+    let input =
+        document.getElementById("couponInput");
+
+    let message =
+        document.getElementById("couponMessage");
+
+    let coupon =
+        input.value.trim().toUpperCase();
+
+
+    if (coupon === "FOOD10") {
+
+        discount = 10;
+
+        message.innerText =
+            "Coupon applied! You saved 10% 🎉";
+
+    } else if (coupon === "") {
+
+        discount = 0;
+
+        message.innerText =
+            "Please enter a coupon code.";
+
+    } else {
+
+        discount = 0;
+
+        message.innerText =
+            "Invalid coupon code.";
+
+    }
+
+    loadCart();
 }
 
 
@@ -223,6 +279,7 @@ function decreaseQuantity(index) {
     let quantity =
         Number(cart[index].quantity) || 1;
 
+
     if (quantity > 1) {
 
         cart[index].quantity =
@@ -233,6 +290,7 @@ function decreaseQuantity(index) {
         cart.splice(index, 1);
 
     }
+
 
     localStorage.setItem(
         "cart",
@@ -271,15 +329,24 @@ function clearCart() {
         return;
     }
 
-    if (confirm("Are you sure you want to clear your cart?")) {
+
+    if (
+        confirm(
+            "Are you sure you want to clear your cart?"
+        )
+    ) {
 
         localStorage.removeItem("cart");
+
+        discount = 0;
 
         loadCart();
 
         updateCartCount();
 
-        alert("Cart cleared successfully!");
+        alert(
+            "Cart cleared successfully!"
+        );
 
     }
 }
