@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
     <title>Cart | FoodVerse</title>
 
     <style>
+
         body {
             font-family: 'Segoe UI', Arial, sans-serif;
             background: linear-gradient(to right, #eef2f3, #d9e4ec);
@@ -32,6 +35,7 @@
             color: white;
             text-decoration: none;
             margin: 0 10px;
+            transition: 0.3s;
         }
 
         .menu a:hover {
@@ -54,7 +58,7 @@
             border-collapse: collapse;
             width: 75%;
             background: white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
             border-radius: 12px;
             overflow: hidden;
         }
@@ -111,49 +115,71 @@
 
         #total {
             margin-top: 25px;
-            font-size: 24px;
+            font-size: 22px;
             color: #333;
         }
 
-        .cart-actions {
-            margin: 25px 0 40px;
+        .order-summary {
+            width: 50%;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            text-align: left;
         }
 
-        .order-btn,
-        .clear-btn {
-            margin: 5px;
-            padding: 12px 25px;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
+        .order-summary h2 {
+            text-align: center;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .grand-total {
+            font-size: 22px;
+            font-weight: bold;
+            color: orange;
+        }
+
+        button {
             cursor: pointer;
         }
 
         .order-btn {
+            margin: 10px;
+            padding: 12px 25px;
             background: orange;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
         }
 
         .clear-btn {
+            margin: 10px;
+            padding: 12px 25px;
             background: #555;
-        }
-
-        .order-btn:hover,
-        .clear-btn:hover {
-            transform: scale(1.05);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
         }
 
         .empty {
-            font-size: 18px;
             color: #777;
+            font-size: 18px;
         }
 
-        @media (max-width: 768px) {
+        @media(max-width: 768px) {
 
             .top-bar {
                 flex-direction: column;
                 gap: 15px;
-                padding: 15px;
             }
 
             .menu a {
@@ -163,15 +189,16 @@
 
             table {
                 width: 100%;
-                font-size: 14px;
             }
 
-            th,
-            td {
-                padding: 8px 5px;
+            .order-summary {
+                width: 85%;
             }
+
         }
+
     </style>
+
 </head>
 
 <body>
@@ -236,20 +263,44 @@
     </h2>
 
 
-    <div class="cart-actions">
+    <div class="order-summary">
 
-        <button class="order-btn" onclick="placeOrder()">
-            Place Order
-        </button>
+        <h2>Order Summary</h2>
 
-        <button class="clear-btn" onclick="clearCart()">
-            Clear Cart
-        </button>
+        <div class="summary-row">
+
+            <span>Items Total</span>
+
+            <span id="itemsTotal">
+                ₹0
+            </span>
+
+        </div>
+
+        <div class="summary-row grand-total">
+
+            <span>Grand Total</span>
+
+            <span id="grandTotal">
+                ₹0
+            </span>
+
+        </div>
 
     </div>
+
+
+    <button class="order-btn" onclick="placeOrder()">
+        Place Order
+    </button>
+
+    <button class="clear-btn" onclick="clearCart()">
+        Clear Cart
+    </button>
 
 
     <script src="cart.js"></script>
 
 </body>
+
 </html>
