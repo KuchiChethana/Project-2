@@ -1,6 +1,7 @@
 function addToCart(name, price) {
 
-    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let cart =
+        JSON.parse(localStorage.getItem("cart")) || [];
 
     cart.push({
         name: name,
@@ -36,9 +37,7 @@ function updateCartCount() {
         document.getElementById("cartCount");
 
     if (cartCount) {
-
         cartCount.innerText = count;
-
     }
 }
 
@@ -81,9 +80,12 @@ function loadCart() {
         `;
 
         document.getElementById("total").innerText =
-            "Total: ₹0";
+            "Items Total: ₹0";
 
         document.getElementById("itemsTotal").innerText =
+            "₹0";
+
+        document.getElementById("deliveryFee").innerText =
             "₹0";
 
         document.getElementById("grandTotal").innerText =
@@ -111,7 +113,6 @@ function loadCart() {
 
         let row = table.insertRow();
 
-
         row.insertCell(0).innerText =
             item.name;
 
@@ -122,7 +123,6 @@ function loadCart() {
         let quantityCell =
             row.insertCell(2);
 
-
         quantityCell.innerHTML = `
             <div class="quantity-control">
 
@@ -130,7 +130,7 @@ function loadCart() {
                     −
                 </button>
 
-                <span class="quantity">
+                <span>
                     ${quantity}
                 </span>
 
@@ -149,7 +149,6 @@ function loadCart() {
         let actionCell =
             row.insertCell(4);
 
-
         actionCell.innerHTML = `
             <button
                 class="remove-btn"
@@ -161,14 +160,30 @@ function loadCart() {
     });
 
 
+    let deliveryFee = 0;
+
+    if (total > 0 && total < 500) {
+        deliveryFee = 40;
+    }
+
+
+    let grandTotal =
+        total + deliveryFee;
+
+
     document.getElementById("total").innerText =
-        "Total: ₹" + total;
+        "Items Total: ₹" + total;
 
     document.getElementById("itemsTotal").innerText =
         "₹" + total;
 
+    document.getElementById("deliveryFee").innerText =
+        deliveryFee === 0
+            ? "FREE"
+            : "₹" + deliveryFee;
+
     document.getElementById("grandTotal").innerText =
-        "₹" + total;
+        "₹" + grandTotal;
 
 
     updateCartCount();
@@ -184,11 +199,8 @@ function increaseQuantity(index) {
         return;
     }
 
-    let quantity =
-        Number(cart[index].quantity) || 1;
-
     cart[index].quantity =
-        quantity + 1;
+        (Number(cart[index].quantity) || 1) + 1;
 
     localStorage.setItem(
         "cart",
@@ -259,12 +271,7 @@ function clearCart() {
         return;
     }
 
-    let answer =
-        confirm(
-            "Are you sure you want to clear your cart?"
-        );
-
-    if (answer) {
+    if (confirm("Are you sure you want to clear your cart?")) {
 
         localStorage.removeItem("cart");
 
@@ -272,9 +279,8 @@ function clearCart() {
 
         updateCartCount();
 
-        alert(
-            "Cart cleared successfully!"
-        );
+        alert("Cart cleared successfully!");
+
     }
 }
 

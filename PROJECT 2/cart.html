@@ -35,7 +35,6 @@
             color: white;
             text-decoration: none;
             margin: 0 10px;
-            transition: 0.3s;
         }
 
         .menu a:hover {
@@ -82,40 +81,26 @@
         }
 
         .quantity-control button {
-            margin: 0;
             padding: 5px 12px;
             background: #333;
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
         }
 
         .quantity-control button:hover {
             background: orange;
         }
 
-        .quantity {
-            font-weight: bold;
-        }
-
         .remove-btn {
-            margin: 0;
             padding: 7px 12px;
             background: #d9534f;
             color: white;
             border: none;
             border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .remove-btn:hover {
-            background: #c9302c;
         }
 
         #total {
-            margin-top: 25px;
-            font-size: 22px;
             color: #333;
         }
 
@@ -146,28 +131,23 @@
             color: orange;
         }
 
-        button {
+        .order-btn,
+        .clear-btn {
+            margin: 10px;
+            padding: 12px 25px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
             cursor: pointer;
         }
 
         .order-btn {
-            margin: 10px;
-            padding: 12px 25px;
             background: orange;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
         }
 
         .clear-btn {
-            margin: 10px;
-            padding: 12px 25px;
             background: #555;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
         }
 
         .empty {
@@ -175,7 +155,7 @@
             font-size: 18px;
         }
 
-        @media(max-width: 768px) {
+        @media(max-width:768px) {
 
             .top-bar {
                 flex-direction: column;
@@ -194,7 +174,6 @@
             .order-summary {
                 width: 85%;
             }
-
         }
 
     </style>
@@ -212,21 +191,13 @@
         <div class="menu">
 
             <a href="index.html">Home</a>
-
             <a href="menu.html">Menu</a>
-
             <a href="tiffins.html">Tiffins</a>
-
             <a href="vegstarters.html">Veg Starters</a>
-
             <a href="vegbiriyani.html">Veg Biriyanis</a>
-
             <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
-
             <a href="desserts.html">Desserts</a>
-
             <a href="aboutus.html">About Us</a>
-
             <a href="contact.html">Contact</a>
 
             <a href="cart.html">
@@ -259,7 +230,7 @@
 
 
     <h2 id="total">
-        Total: ₹0
+        Items Total: ₹0
     </h2>
 
 
@@ -268,23 +239,18 @@
         <h2>Order Summary</h2>
 
         <div class="summary-row">
-
             <span>Items Total</span>
+            <span id="itemsTotal">₹0</span>
+        </div>
 
-            <span id="itemsTotal">
-                ₹0
-            </span>
-
+        <div class="summary-row">
+            <span>Delivery Fee</span>
+            <span id="deliveryFee">₹0</span>
         </div>
 
         <div class="summary-row grand-total">
-
             <span>Grand Total</span>
-
-            <span id="grandTotal">
-                ₹0
-            </span>
-
+            <span id="grandTotal">₹0</span>
         </div>
 
     </div>
