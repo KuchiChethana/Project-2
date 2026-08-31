@@ -1,16 +1,14 @@
-let discount = 0;
-
-
-function addToCart(name, price, image) {
+function addToCart(name, price) {
 
     let cart =
         JSON.parse(localStorage.getItem("cart")) || [];
 
+    price = Number(price);
+
     cart.push({
         name: name,
-        price: Number(price),
-        quantity: 1,
-        image: image || ""
+        price: price,
+        quantity: 1
     });
 
     localStorage.setItem(
@@ -31,9 +29,10 @@ function updateCartCount() {
 
     let count = 0;
 
-    cart.forEach(function(item) {
+    cart.forEach(function (item) {
 
-        count += Number(item.quantity) || 1;
+        count +=
+            Number(item.quantity) || 1;
 
     });
 
@@ -56,16 +55,13 @@ function loadCart() {
     let table =
         document.getElementById("cartTable");
 
-    if (!table) {
-        return;
-    }
-
     let total = 0;
+
+    let totalQuantity = 0;
 
 
     table.innerHTML = `
         <tr>
-            <th>Image</th>
             <th>Item</th>
             <th>Price</th>
             <th>Quantity</th>
@@ -79,53 +75,19 @@ function loadCart() {
 
         table.innerHTML += `
             <tr>
-
-                <td colspan="6">
-
-                    <div class="empty-cart">
-
-                        <div class="empty-icon">
-                            🛒
-                        </div>
-
-                        <h2>
-                            Your Cart is Empty
-                        </h2>
-
-                        <p>
-                            Add delicious food
-                            to your cart!
-                        </p>
-
-                        <button
-                            class="shop-btn"
-                            onclick="continueShopping()">
-
-                            Browse Menu
-
-                        </button>
-
-                    </div>
-
+                <td colspan="5">
+                    <p class="empty">
+                        Your cart is empty 😔
+                    </p>
                 </td>
-
             </tr>
         `;
 
         document.getElementById("total").innerText =
-            "Items Total: ₹0";
+            "Total: ₹0";
 
-        document.getElementById("itemsTotal").innerText =
-            "₹0";
-
-        document.getElementById("deliveryFee").innerText =
-            "₹0";
-
-        document.getElementById("discountAmount").innerText =
-            "₹0";
-
-        document.getElementById("grandTotal").innerText =
-            "₹0";
+        document.getElementById("cartItemSummary").innerText =
+            "0 items in your cart";
 
         updateCartCount();
 
@@ -133,55 +95,37 @@ function loadCart() {
     }
 
 
-    cart.forEach(function(item, index) {
+    cart.forEach(function (item, index) {
 
         let quantity =
             Number(item.quantity) || 1;
 
         let price =
-            Number(item.price) || 0;
+            Number(item.price);
 
         let subtotal =
             price * quantity;
 
+
         total += subtotal;
+
+        totalQuantity += quantity;
 
 
         let row =
             table.insertRow();
 
 
-        let imageCell =
-            row.insertCell(0);
-
-
-        if (item.image) {
-
-            imageCell.innerHTML =
-                '<img src="' +
-                item.image +
-                '" class="cart-image" alt="' +
-                item.name +
-                '">';
-
-        } else {
-
-            imageCell.innerText =
-                "🍽️";
-
-        }
-
-
-        row.insertCell(1).innerText =
+        row.insertCell(0).innerText =
             item.name;
 
 
-        row.insertCell(2).innerText =
+        row.insertCell(1).innerText =
             "₹" + price;
 
 
         let quantityCell =
-            row.insertCell(3);
+            row.insertCell(2);
 
 
         quantityCell.innerHTML = `
@@ -192,7 +136,7 @@ function loadCart() {
                     −
                 </button>
 
-                <span>
+                <span class="quantity">
                     ${quantity}
                 </span>
 
@@ -205,94 +149,35 @@ function loadCart() {
         `;
 
 
-        row.insertCell(4).innerText =
+        row.insertCell(3).innerText =
             "₹" + subtotal;
 
 
         let actionCell =
-            row.insertCell(5);
+            row.insertCell(4);
 
 
         actionCell.innerHTML = `
             <button
                 class="remove-btn"
                 onclick="removeItem(${index})">
-
                 Remove
-
             </button>
         `;
 
     });
 
 
-    let deliveryFee = 0;
-
-    if (total > 0 && total < 500) {
-        deliveryFee = 40;
-    }
-
-
-    let discountAmount =
-        total * discount / 100;
-
-
-    let grandTotal =
-        total + deliveryFee - discountAmount;
-
-
     document.getElementById("total").innerText =
-        "Items Total: ₹" + total;
+        "Total: ₹" + total;
 
-    document.getElementById("itemsTotal").innerText =
-        "₹" + total;
 
-    document.getElementById("deliveryFee").innerText =
-        deliveryFee === 0
-            ? "FREE"
-            : "₹" + deliveryFee;
-
-    document.getElementById("discountAmount").innerText =
-        "-₹" + discountAmount.toFixed(0);
-
-    document.getElementById("grandTotal").innerText =
-        "₹" + grandTotal.toFixed(0);
+    /* Contribution #7 */
+    document.getElementById("cartItemSummary").innerText =
+        totalQuantity + " item(s) in your cart";
 
 
     updateCartCount();
-}
-
-
-function applyCoupon() {
-
-    let coupon =
-        document.getElementById("couponInput")
-        .value
-        .trim()
-        .toUpperCase();
-
-    let message =
-        document.getElementById("couponMessage");
-
-
-    if (coupon === "FOOD10") {
-
-        discount = 10;
-
-        message.innerText =
-            "Coupon applied! 10% discount 🎉";
-
-    } else {
-
-        discount = 0;
-
-        message.innerText =
-            "Invalid coupon code.";
-
-    }
-
-
-    loadCart();
 }
 
 
@@ -301,12 +186,14 @@ function increaseQuantity(index) {
     let cart =
         JSON.parse(localStorage.getItem("cart")) || [];
 
-    if (!cart[index]) {
-        return;
+
+    if (cart[index]) {
+
+        cart[index].quantity =
+            (Number(cart[index].quantity) || 1) + 1;
+
     }
 
-    cart[index].quantity =
-        (Number(cart[index].quantity) || 1) + 1;
 
     localStorage.setItem(
         "cart",
@@ -322,9 +209,13 @@ function decreaseQuantity(index) {
     let cart =
         JSON.parse(localStorage.getItem("cart")) || [];
 
+
     if (!cart[index]) {
+
         return;
+
     }
+
 
     let quantity =
         Number(cart[index].quantity) || 1;
@@ -356,14 +247,19 @@ function removeItem(index) {
     let cart =
         JSON.parse(localStorage.getItem("cart")) || [];
 
+
     cart.splice(index, 1);
+
 
     localStorage.setItem(
         "cart",
         JSON.stringify(cart)
     );
 
+
     loadCart();
+
+    updateCartCount();
 }
 
 
@@ -372,42 +268,32 @@ function clearCart() {
     let cart =
         JSON.parse(localStorage.getItem("cart")) || [];
 
+
     if (cart.length === 0) {
 
-        alert(
-            "Your cart is already empty!"
-        );
+        alert("Your cart is already empty!");
 
         return;
     }
 
 
-    if (
+    let confirmClear =
         confirm(
             "Are you sure you want to clear your cart?"
-        )
-    ) {
+        );
+
+
+    if (confirmClear) {
 
         localStorage.removeItem("cart");
-
-        discount = 0;
 
         loadCart();
 
         updateCartCount();
 
-        alert(
-            "Cart cleared successfully!"
-        );
+        alert("Cart cleared successfully!");
 
     }
-}
-
-
-function continueShopping() {
-
-    window.location.href =
-        "menu.html";
 }
 
 
@@ -415,6 +301,7 @@ function placeOrder() {
 
     let cart =
         JSON.parse(localStorage.getItem("cart")) || [];
+
 
     if (cart.length === 0) {
 
@@ -425,18 +312,32 @@ function placeOrder() {
         return;
     }
 
+
     window.location.href =
         "order.html";
 }
 
 
+function continueShopping() {
+
+    window.location.href =
+        "menu.html";
+}
+
+
 document.addEventListener(
     "DOMContentLoaded",
-    function() {
+    function () {
 
         updateCartCount();
 
-        loadCart();
+        if (
+            document.getElementById("cartTable")
+        ) {
+
+            loadCart();
+
+        }
 
     }
 );
