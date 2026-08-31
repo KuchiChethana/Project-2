@@ -147,7 +147,6 @@
             width: 55%;
             border: 1px solid #ccc;
             border-radius: 6px;
-            font-size: 15px;
         }
 
         .coupon-box button {
@@ -162,7 +161,37 @@
 
         #couponMessage {
             font-weight: bold;
-            margin-top: 15px;
+        }
+
+        .empty-cart {
+            padding: 45px 20px;
+        }
+
+        .empty-icon {
+            font-size: 65px;
+        }
+
+        .empty-cart h2 {
+            color: #333;
+        }
+
+        .empty-cart p {
+            color: #777;
+            font-size: 17px;
+        }
+
+        .shop-btn {
+            padding: 12px 25px;
+            background: orange;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .shop-btn:hover {
+            transform: scale(1.05);
         }
 
         .order-btn,
@@ -182,11 +211,6 @@
 
         .clear-btn {
             background: #555;
-        }
-
-        .empty {
-            color: #777;
-            font-size: 18px;
         }
 
         @media(max-width:768px) {
@@ -256,14 +280,6 @@
 
         <table id="cartTable">
 
-            <tr>
-                <th>Item</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-                <th>Action</th>
-            </tr>
-
         </table>
 
     </div>
@@ -297,43 +313,23 @@
         <h2>Order Summary</h2>
 
         <div class="summary-row">
-
             <span>Items Total</span>
-
-            <span id="itemsTotal">
-                ₹0
-            </span>
-
+            <span id="itemsTotal">₹0</span>
         </div>
 
         <div class="summary-row">
-
             <span>Delivery Fee</span>
-
-            <span id="deliveryFee">
-                ₹0
-            </span>
-
+            <span id="deliveryFee">₹0</span>
         </div>
 
         <div class="summary-row">
-
             <span>Discount</span>
-
-            <span id="discountAmount">
-                ₹0
-            </span>
-
+            <span id="discountAmount">₹0</span>
         </div>
 
         <div class="summary-row grand-total">
-
             <span>Grand Total</span>
-
-            <span id="grandTotal">
-                ₹0
-            </span>
-
+            <span id="grandTotal">₹0</span>
         </div>
 
     </div>

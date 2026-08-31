@@ -40,9 +40,7 @@ function updateCartCount() {
         document.getElementById("cartCount");
 
     if (cartCount) {
-
         cartCount.innerText = count;
-
     }
 }
 
@@ -61,6 +59,7 @@ function loadCart() {
 
     let total = 0;
 
+
     table.innerHTML = `
         <tr>
             <th>Item</th>
@@ -77,9 +76,32 @@ function loadCart() {
         table.innerHTML += `
             <tr>
                 <td colspan="5">
-                    <p class="empty">
-                        Your cart is empty 😔
-                    </p>
+
+                    <div class="empty-cart">
+
+                        <div class="empty-icon">
+                            🛒
+                        </div>
+
+                        <h2>
+                            Your Cart is Empty
+                        </h2>
+
+                        <p>
+                            Looks like you haven't
+                            added anything yet.
+                        </p>
+
+                        <button
+                            class="shop-btn"
+                            onclick="continueShopping()">
+
+                            Browse Menu
+
+                        </button>
+
+                    </div>
+
                 </td>
             </tr>
         `;
@@ -99,6 +121,8 @@ function loadCart() {
         document.getElementById("grandTotal").innerText =
             "₹0";
 
+        updateCartCount();
+
         return;
     }
 
@@ -117,7 +141,9 @@ function loadCart() {
         total += subtotal;
 
 
-        let row = table.insertRow();
+        let row =
+            table.insertRow();
+
 
         row.insertCell(0).innerText =
             item.name;
@@ -129,10 +155,12 @@ function loadCart() {
         let quantityCell =
             row.insertCell(2);
 
+
         quantityCell.innerHTML = `
             <div class="quantity-control">
 
-                <button onclick="decreaseQuantity(${index})">
+                <button
+                    onclick="decreaseQuantity(${index})">
                     −
                 </button>
 
@@ -140,7 +168,8 @@ function loadCart() {
                     ${quantity}
                 </span>
 
-                <button onclick="increaseQuantity(${index})">
+                <button
+                    onclick="increaseQuantity(${index})">
                     +
                 </button>
 
@@ -155,11 +184,14 @@ function loadCart() {
         let actionCell =
             row.insertCell(4);
 
+
         actionCell.innerHTML = `
             <button
                 class="remove-btn"
                 onclick="removeItem(${index})">
+
                 Remove
+
             </button>
         `;
 
@@ -181,11 +213,6 @@ function loadCart() {
         total + deliveryFee - discountAmount;
 
 
-    if (grandTotal < 0) {
-        grandTotal = 0;
-    }
-
-
     document.getElementById("total").innerText =
         "Items Total: ₹" + total;
 
@@ -202,6 +229,7 @@ function loadCart() {
 
     document.getElementById("grandTotal").innerText =
         "₹" + grandTotal.toFixed(0);
+
 
     updateCartCount();
 }
@@ -226,13 +254,6 @@ function applyCoupon() {
         message.innerText =
             "Coupon applied! You saved 10% 🎉";
 
-    } else if (coupon === "") {
-
-        discount = 0;
-
-        message.innerText =
-            "Please enter a coupon code.";
-
     } else {
 
         discount = 0;
@@ -241,6 +262,7 @@ function applyCoupon() {
             "Invalid coupon code.";
 
     }
+
 
     loadCart();
 }
@@ -324,7 +346,9 @@ function clearCart() {
 
     if (cart.length === 0) {
 
-        alert("Your cart is already empty!");
+        alert(
+            "Your cart is already empty!"
+        );
 
         return;
     }
@@ -349,6 +373,13 @@ function clearCart() {
         );
 
     }
+}
+
+
+function continueShopping() {
+
+    window.location.href =
+        "menu.html";
 }
 
 
