@@ -1,82 +1,281 @@
-function addToCart(name, price){
+function addToCart(name, price) {
+
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    cart.push({name, price});
+    let item = {
+        name: name,
+        price: Number(price),
+        quantity: 1
+    };
+
+    cart.push(item);
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    updateCartCount(); 
+    updateCartCount();
 
     alert(name + " added to cart!");
 }
 
-function updateCartCount(){
+
+function updateCartCount() {
+
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
-    let count = cart.length;
+
+    let count = 0;
+
+    for (let i = 0; i < cart.length; i++) {
+
+        count += Number(cart[i].quantity) || 1;
+
+    }
 
     let cartCount = document.getElementById("cartCount");
-    if(cartCount){
+
+    if (cartCount) {
+
         cartCount.innerText = count;
+
     }
 }
 
-function loadCart(){
+
+function loadCart() {
+
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
     let table = document.getElementById("cartTable");
-    let total = 0;
+
+    if (!table) {
+        return;
+    }
 
     table.innerHTML = `
         <tr>
             <th>Item</th>
             <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
             <th>Action</th>
         </tr>
     `;
 
-    cart.forEach((item, index)=>{
+
+    if (cart.length === 0) {
+
+        table.innerHTML += `
+            <tr>
+                <td colspan="5">
+                    <p class="empty">
+                        Your cart is empty 😔
+                    </p>
+                </td>
+            </tr>
+        `;
+
+        document.getElementById("total").innerText = "Total: ₹0";
+
+        updateCartCount();
+
+        return;
+    }
+
+
+    let total = 0;
+
+
+    for (let i = 0; i < cart.length; i++) {
+
+        let item = cart[i];
+
+        let quantity = Number(item.quantity) || 1;
+
+        let price = Number(item.price) || 0;
+
+        let subtotal = price * quantity;
+
+        total += subtotal;
+
+
         let row = table.insertRow();
 
+
         row.insertCell(0).innerText = item.name;
-        row.insertCell(1).innerText = "₹" + item.price;
 
-        let removeBtn = document.createElement("button");
-        removeBtn.innerText = "Remove";
-        removeBtn.onclick = function(){
-            removeItem(index);
-        };
+        row.insertCell(1).innerText = "₹" + price;
 
-        row.insertCell(2).appendChild(removeBtn);
 
-        total += item.price;
-    });
+        let quantityCell = row.insertCell(2);
 
-    let totalDisplay = document.getElementById("total");
-    if(totalDisplay){
-        totalDisplay.innerText = "Total: ₹" + total;
+
+        quantityCell.innerHTML =
+            '<div class="quantity-control">' +
+
+            '<button onclick="decreaseQuantity(' + i + ')">' +
+            '-' +
+            '</button>' +
+
+            '<span class="quantity">' +
+            quantity +
+            '</span>' +
+
+            '<button onclick="increaseQuantity(' + i + ')">' +
+            '+' +
+            '</button>' +
+
+            '</div>';
+
+
+        row.insertCell(3).innerText =
+            "₹" + subtotal;
+
+
+        let actionCell = row.insertCell(4);
+
+
+        actionCell.innerHTML =
+            '<button class="remove-btn" ' +
+            'onclick="removeItem(' + i + ')">' +
+            'Remove' +
+            '</button>';
+
     }
+
+
+    document.getElementById("total").innerText =
+        "Total: ₹" + total;
+
+
+    updateCartCount();
 }
-function removeItem(index){
+
+
+function increaseQuantity(index) {
+
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-    cart.splice(index, 1);
+
+    if (!cart[index]) {
+        return;
+    }
+
+
+    let quantity = Number(cart[index].quantity) || 1;
+
+
+    cart[index].quantity = quantity + 1;
+
 
     localStorage.setItem("cart", JSON.stringify(cart));
 
-    loadCart();        
-    updateCartCount(); 
+
+    loadCart();
 }
 
-function placeOrder(){
+
+function decreaseQuantity(index) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+    if (!cart[index]) {
+        return;
+    }
+
+
+    let quantity = Number(cart[index].quantity) || 1;
+
+
+    if (quantity > 1) {
+
+        cart[index].quantity = quantity - 1;
+
+    } else {
+
+        cart.splice(index, 1);
+
+    }
+
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+
+    loadCart();
+}
+
+
+function removeItem(index) {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+    if (!cart[index]) {
+        return;
+    }
+
+
+    cart.splice(index, 1);
+
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+
+    loadCart();
+}
+
+
+function clearCart() {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+    if (cart.length === 0) {
+
+        alert("Your cart is already empty!");
+
+        return;
+    }
+
+
+    let confirmClear =
+        confirm("Are you sure you want to clear your cart?");
+
+
+    if (confirmClear) {
+
+        localStorage.removeItem("cart");
+
+        loadCart();
+
+        updateCartCount();
+
+        alert("Cart cleared successfully!");
+
+    }
+}
+
+
+function placeOrder() {
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
+    if (cart.length === 0) {
+
+        alert("Your cart is empty. Add some items first!");
+
+        return;
+    }
+
+
     window.location.href = "order.html";
 }
 
-function clearCart(){
-    localStorage.removeItem("cart");
-}
 
-document.addEventListener("DOMContentLoaded", function(){
+document.addEventListener("DOMContentLoaded", function () {
+
     updateCartCount();
-    if(document.getElementById("cartTable")){
-        loadCart();
-    }
+
+    loadCart();
+
 });

@@ -1,180 +1,255 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Cart | FoodVerse</title>
+    <title>Cart | FoodVerse</title>
 
-<style>
-body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(to right,#eef2f3,#d9e4ec);
-    margin:0;
-    text-align:center;
-}
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(to right, #eef2f3, #d9e4ec);
+            margin: 0;
+            text-align: center;
+        }
 
-.top-bar {
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(0,0,0,0.9);
-    padding:15px 40px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    animation: slideDown 0.7s ease;
-}
-@keyframes slideDown {
-    from {transform:translateY(-60px);opacity:0;}
-    to {transform:translateY(0);opacity:1;}
-}
-.logo {
-    color:white;
-    font-size:26px;
-    font-weight:bold;
-    transition:0.3s ease;
-}
-.logo:hover {
-    color:orange;
-    transform:scale(1.1);
-}
-.menu a {
-    color:white;
-    text-decoration:none;
-    margin:0 14px;
-    position:relative;
-    padding:6px 0;
-    transition:color 0.3s ease;
-}
-.menu a::after {
-    content:"";
-    position:absolute;
-    width:0%;
-    height:2px;
-    left:0;
-    bottom:0;
-    background:orange;
-    transition:width 0.35s ease;
-}
-.menu a:hover {color:orange;}
-.menu a:hover::after {width:100%;}
+        .top-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-h1 {
-    margin-top:30px;
-    color:#333;
-}
+        .logo {
+            color: white;
+            font-size: 26px;
+            font-weight: bold;
+        }
 
-.table-container {
-    display:flex;
-    justify-content:center;
-    margin-top:30px;
-}
-table {
-    border-collapse:collapse;
-    width:60%;
-    background:white;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-    border-radius:12px;
-    overflow:hidden;
-}
-th {
-    background:orange;
-    color:white;
-}
-th, td {
-    padding:15px;
-    border-bottom:1px solid #eee;
-}
-tr:hover {
-    background:#f9f9f9;
-}
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
 
-#total {
-    margin-top:20px;
-    font-size:22px;
-    color:#333;
-}
+        .menu a:hover {
+            color: orange;
+        }
 
-button {
-    margin-top:20px;
-    padding:12px 25px;
-    background:linear-gradient(to right,orange,darkorange);
-    color:white;
-    border:none;
-    border-radius:8px;
-    font-size:16px;
-    cursor:pointer;
-    transition:0.3s;
-}
-button:hover {
-    transform:scale(1.05);
-    box-shadow:0 5px 15px rgba(0,0,0,0.2);
-}
+        h1 {
+            margin-top: 30px;
+            color: #333;
+        }
 
-.empty {
-    margin-top:40px;
-    font-size:18px;
-    color:#777;
-}
+        .table-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 0 15px;
+        }
 
-@media(max-width:768px){
-    table {width:90%;}
-}
-</style>
+        table {
+            border-collapse: collapse;
+            width: 75%;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        th {
+            background: orange;
+            color: white;
+        }
+
+        th,
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .quantity-control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-control button {
+            margin: 0;
+            padding: 5px 12px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .quantity-control button:hover {
+            background: orange;
+        }
+
+        .quantity {
+            font-weight: bold;
+        }
+
+        .remove-btn {
+            margin: 0;
+            padding: 7px 12px;
+            background: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .remove-btn:hover {
+            background: #c9302c;
+        }
+
+        #total {
+            margin-top: 25px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .cart-actions {
+            margin: 25px 0 40px;
+        }
+
+        .order-btn,
+        .clear-btn {
+            margin: 5px;
+            padding: 12px 25px;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .order-btn {
+            background: orange;
+        }
+
+        .clear-btn {
+            background: #555;
+        }
+
+        .order-btn:hover,
+        .clear-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .empty {
+            font-size: 18px;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+
+            .top-bar {
+                flex-direction: column;
+                gap: 15px;
+                padding: 15px;
+            }
+
+            .menu a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            table {
+                width: 100%;
+                font-size: 14px;
+            }
+
+            th,
+            td {
+                padding: 8px 5px;
+            }
+        }
+    </style>
 </head>
+
 <body>
 
-<div class="top-bar">
-    <div class="logo">FoodVerse</div>
-    <div class="menu">
-        <a href="index.html">Home</a>
-        <a href="menu.html">Menu</a>
-        <a href="tiffins.html">Tiffins</a>
-        <a href="vegstarters.html">Veg Starters</a>
-        <a href="vegbiriyani.html">Veg Biriyanis</a>
-        <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
-        <a href="desserts.html">Desserts</a>
-        <a href="aboutus.html">About Us</a>
-        <a href="contact.html">Contact</a>
-        <a href="cart.html">Cart 🛒 (<span id="cartCount">0</span>)</a>
+    <div class="top-bar">
+
+        <div class="logo">
+            FoodVerse
+        </div>
+
+        <div class="menu">
+
+            <a href="index.html">Home</a>
+
+            <a href="menu.html">Menu</a>
+
+            <a href="tiffins.html">Tiffins</a>
+
+            <a href="vegstarters.html">Veg Starters</a>
+
+            <a href="vegbiriyani.html">Veg Biriyanis</a>
+
+            <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
+
+            <a href="desserts.html">Desserts</a>
+
+            <a href="aboutus.html">About Us</a>
+
+            <a href="contact.html">Contact</a>
+
+            <a href="cart.html">
+                Cart 🛒 (<span id="cartCount">0</span>)
+            </a>
+
+        </div>
+
     </div>
-</div>
 
-<h1>Your Cart</h1>
 
-<div class="table-container">
-    <table id="cartTable">
-        <tr>
-            <th>Item</th>
-            <th>Price</th>
-        </tr>
-    </table>
-</div>
+    <h1>Your Cart 🛒</h1>
 
-<h2 id="total"></h2>
 
-<button onclick="placeOrder()">Place Order</button>
+    <div class="table-container">
 
-<script>
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
-let table = document.getElementById("cartTable");
-let total = 0;
+        <table id="cartTable">
 
-if(cart.length === 0){
-    document.getElementById("total").innerHTML = "<p class='empty'>Your cart is empty 😔</p>";
-}else{
-    cart.forEach(item=>{
-        let row = table.insertRow();
-        row.insertCell(0).innerText = item.name;
-        row.insertCell(1).innerText = "₹" + item.price;
-        total += item.price;
-    });
-    document.getElementById("total").innerText = "Total: ₹" + total;
-}
+            <tr>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th>Action</th>
+            </tr>
 
-function placeOrder(){
-    window.location.href = "order.html";
-}
-</script>
+        </table>
+
+    </div>
+
+
+    <h2 id="total">
+        Total: ₹0
+    </h2>
+
+
+    <div class="cart-actions">
+
+        <button class="order-btn" onclick="placeOrder()">
+            Place Order
+        </button>
+
+        <button class="clear-btn" onclick="clearCart()">
+            Clear Cart
+        </button>
+
+    </div>
+
+
+    <script src="cart.js"></script>
 
 </body>
 </html>
-
