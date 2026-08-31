@@ -1,7 +1,7 @@
 let discount = 0;
 
 
-function addToCart(name, price) {
+function addToCart(name, price, image) {
 
     let cart =
         JSON.parse(localStorage.getItem("cart")) || [];
@@ -9,7 +9,8 @@ function addToCart(name, price) {
     cart.push({
         name: name,
         price: Number(price),
-        quantity: 1
+        quantity: 1,
+        image: image || ""
     });
 
     localStorage.setItem(
@@ -40,7 +41,9 @@ function updateCartCount() {
         document.getElementById("cartCount");
 
     if (cartCount) {
+
         cartCount.innerText = count;
+
     }
 }
 
@@ -62,6 +65,7 @@ function loadCart() {
 
     table.innerHTML = `
         <tr>
+            <th>Image</th>
             <th>Item</th>
             <th>Price</th>
             <th>Quantity</th>
@@ -75,7 +79,8 @@ function loadCart() {
 
         table.innerHTML += `
             <tr>
-                <td colspan="5">
+
+                <td colspan="6">
 
                     <div class="empty-cart">
 
@@ -88,8 +93,8 @@ function loadCart() {
                         </h2>
 
                         <p>
-                            Looks like you haven't
-                            added anything yet.
+                            Add delicious food
+                            to your cart!
                         </p>
 
                         <button
@@ -103,6 +108,7 @@ function loadCart() {
                     </div>
 
                 </td>
+
             </tr>
         `;
 
@@ -145,15 +151,37 @@ function loadCart() {
             table.insertRow();
 
 
-        row.insertCell(0).innerText =
-            item.name;
+        let imageCell =
+            row.insertCell(0);
+
+
+        if (item.image) {
+
+            imageCell.innerHTML =
+                '<img src="' +
+                item.image +
+                '" class="cart-image" alt="' +
+                item.name +
+                '">';
+
+        } else {
+
+            imageCell.innerText =
+                "🍽️";
+
+        }
+
 
         row.insertCell(1).innerText =
+            item.name;
+
+
+        row.insertCell(2).innerText =
             "₹" + price;
 
 
         let quantityCell =
-            row.insertCell(2);
+            row.insertCell(3);
 
 
         quantityCell.innerHTML = `
@@ -177,12 +205,12 @@ function loadCart() {
         `;
 
 
-        row.insertCell(3).innerText =
+        row.insertCell(4).innerText =
             "₹" + subtotal;
 
 
         let actionCell =
-            row.insertCell(4);
+            row.insertCell(5);
 
 
         actionCell.innerHTML = `
@@ -237,14 +265,14 @@ function loadCart() {
 
 function applyCoupon() {
 
-    let input =
-        document.getElementById("couponInput");
+    let coupon =
+        document.getElementById("couponInput")
+        .value
+        .trim()
+        .toUpperCase();
 
     let message =
         document.getElementById("couponMessage");
-
-    let coupon =
-        input.value.trim().toUpperCase();
 
 
     if (coupon === "FOOD10") {
@@ -252,7 +280,7 @@ function applyCoupon() {
         discount = 10;
 
         message.innerText =
-            "Coupon applied! You saved 10% 🎉";
+            "Coupon applied! 10% discount 🎉";
 
     } else {
 
