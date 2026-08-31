@@ -296,7 +296,6 @@ function clearCart() {
     }
 }
 
-
 function placeOrder() {
 
     let cart =
@@ -306,15 +305,47 @@ function placeOrder() {
     if (cart.length === 0) {
 
         alert(
-            "Your cart is empty. Add some items first!"
+            "Your cart is empty. Please add food items first."
         );
 
         return;
     }
 
 
-    window.location.href =
-        "order.html";
+    let totalQuantity = 0;
+
+
+    cart.forEach(function(item) {
+
+        totalQuantity +=
+            Number(item.quantity) || 1;
+
+    });
+
+
+    if (totalQuantity <= 0) {
+
+        alert(
+            "Please add at least one item."
+        );
+
+        return;
+    }
+
+
+    let confirmed =
+        confirm(
+            "Are you ready to place your order?"
+        );
+
+
+    if (confirmed) {
+
+        window.location.href =
+            "order.html";
+
+    }
+
 }
 
 
