@@ -17,6 +17,7 @@
             background-color: #f8f8f8;
             color: #333;
             scroll-behavior: smooth;
+            overflow-x: hidden;
         }
 
         /* Navigation Bar */
@@ -27,6 +28,7 @@
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
+            gap: 10px;
         }
 
         .logo {
@@ -45,12 +47,13 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
+            gap: 5px;
         }
 
         .menu a {
             color: white;
             text-decoration: none;
-            margin: 5px 8px;
+            margin: 5px 6px;
             font-size: 14px;
             transition: 0.3s ease;
         }
@@ -89,7 +92,7 @@
             }
         }
 
-        /* Intro */
+        /* Introduction */
         .intro {
             text-align: center;
             padding: 40px 20px 20px;
@@ -142,6 +145,7 @@
         /* Contact Form */
         .form-section {
             max-width: 800px;
+            width: 90%;
             margin: 40px auto;
             padding: 30px;
             background-color: white;
@@ -219,6 +223,7 @@
         /* Success Message */
         .success-message {
             display: none;
+            width: 90%;
             max-width: 800px;
             margin: 20px auto;
             padding: 15px;
@@ -245,6 +250,7 @@
 
         /* FAQ Section */
         .faq-section {
+            width: 90%;
             max-width: 900px;
             margin: 40px auto;
             padding: 30px;
@@ -291,6 +297,7 @@
 
         /* Social Media Section */
         .social-section {
+            width: 90%;
             max-width: 900px;
             margin: 40px auto;
             padding: 30px;
@@ -379,34 +386,55 @@
             margin-top: 40px;
         }
 
-        /* Responsive Design */
+        /* Tablet */
         @media (max-width: 900px) {
-            .contact-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
 
             .top-bar {
                 justify-content: center;
-                gap: 10px;
+            }
+
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
+
+            .menu {
+                width: 100%;
+            }
+
+            .contact-container {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
-        @media (max-width: 700px) {
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            .top-bar {
+                padding: 12px 10px;
+            }
+
+            .logo {
+                font-size: 24px;
+                margin-bottom: 5px;
+            }
+
             .menu {
                 width: 100%;
+                display: flex;
                 justify-content: center;
+                align-items: center;
+                gap: 2px;
             }
 
             .menu a {
-                font-size: 12px;
-                margin: 4px 6px;
+                font-size: 11px;
+                margin: 4px 5px;
+                padding: 3px;
             }
-        }
 
-        @media (max-width: 600px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-                padding: 15px;
+            .page-header {
+                padding: 45px 15px;
             }
 
             .page-header h1 {
@@ -417,32 +445,6 @@
                 font-size: 15px;
             }
 
-            .form-section,
-            .faq-section,
-            .social-section {
-                width: 92%;
-                padding: 20px;
-            }
-
-            .social-links {
-                flex-direction: column;
-            }
-
-            .social-link {
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 24px;
-            }
-
-            .menu a {
-                font-size: 11px;
-                margin: 3px 4px;
-            }
-
             .intro {
                 padding: 30px 15px 10px;
             }
@@ -451,10 +453,63 @@
                 font-size: 22px;
             }
 
+            .intro p {
+                font-size: 14px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                padding: 15px;
+                gap: 15px;
+            }
+
+            .contact-card {
+                padding: 22px 15px;
+            }
+
+            .form-section,
+            .faq-section,
+            .social-section {
+                width: 92%;
+                padding: 20px;
+                margin: 30px auto;
+            }
+
             .form-section h2,
             .faq-section h2,
             .social-section h2 {
                 font-size: 22px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                font-size: 14px;
+                padding: 11px;
+            }
+
+            .submit-btn {
+                font-size: 15px;
+                padding: 12px;
+            }
+
+            .faq-question {
+                font-size: 14px;
+                padding: 13px;
+            }
+
+            .faq-answer {
+                font-size: 14px;
+                padding: 13px;
+            }
+
+            .social-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .social-link {
+                width: 100%;
+                padding: 11px;
             }
 
             .back-to-top {
@@ -462,6 +517,43 @@
                 bottom: 15px;
                 width: 42px;
                 height: 42px;
+                font-size: 20px;
+            }
+
+            footer {
+                padding: 18px 10px;
+                font-size: 13px;
+            }
+        }
+
+        /* Small Mobile */
+        @media (max-width: 400px) {
+
+            .menu a {
+                font-size: 10px;
+                margin: 3px 4px;
+            }
+
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .page-header p {
+                font-size: 14px;
+            }
+
+            .contact-container {
+                padding: 10px;
+            }
+
+            .form-section,
+            .faq-section,
+            .social-section {
+                width: 94%;
+                padding: 17px;
+            }
+
+            .intro h2 {
                 font-size: 20px;
             }
         }
@@ -472,7 +564,10 @@
 
     <!-- Navigation -->
     <nav class="top-bar">
-        <a href="homepage.html" class="logo">FoodVerse</a>
+
+        <a href="homepage.html" class="logo">
+            FoodVerse
+        </a>
 
         <div class="menu">
             <a href="homepage.html">Home</a>
@@ -487,57 +582,80 @@
             <a href="contact.html">Contact</a>
             <a href="cart.html">Cart</a>
         </div>
+
     </nav>
 
     <!-- Page Header -->
     <section class="page-header">
+
         <h1>Contact Us</h1>
-        <p>We would love to hear from you!</p>
+
+        <p>
+            We would love to hear from you!
+        </p>
+
     </section>
 
     <!-- Introduction -->
     <section class="intro">
-        <h2>Get In Touch With FoodVerse</h2>
+
+        <h2>
+            Get In Touch With FoodVerse
+        </h2>
+
         <p>
             Have a question, suggestion, or feedback?
             Contact us using the details below or send us a message.
         </p>
+
     </section>
 
     <!-- Contact Cards -->
     <section class="contact-container">
 
         <div class="contact-card">
+
             <h3>Address</h3>
+
             <p>
                 FoodVerse Restaurant<br>
                 Hyderabad, Telangana<br>
                 India
             </p>
+
         </div>
 
         <div class="contact-card">
+
             <h3>Phone</h3>
+
             <p>
                 +91 98765 43210<br>
                 +91 91234 56789
             </p>
+
         </div>
 
         <div class="contact-card">
+
             <h3>Email</h3>
+
             <p>
                 foodverse@gmail.com<br>
                 support@foodverse.com
             </p>
+
         </div>
 
         <div class="contact-card">
+
             <h3>Working Hours</h3>
+
             <p>
                 Monday - Sunday<br>
                 10:00 AM - 10:00 PM
             </p>
+
         </div>
 
     </section>
@@ -545,12 +663,17 @@
     <!-- Contact Form -->
     <section class="form-section">
 
-        <h2>Send Us A Message</h2>
+        <h2>
+            Send Us A Message
+        </h2>
 
         <form id="contactForm">
 
             <div class="form-group">
-                <label for="name">Your Name</label>
+
+                <label for="name">
+                    Your Name
+                </label>
 
                 <input
                     type="text"
@@ -559,10 +682,14 @@
                 >
 
                 <span id="nameError" class="error"></span>
+
             </div>
 
             <div class="form-group">
-                <label for="email">Email Address</label>
+
+                <label for="email">
+                    Email Address
+                </label>
 
                 <input
                     type="text"
@@ -571,10 +698,14 @@
                 >
 
                 <span id="emailError" class="error"></span>
+
             </div>
 
             <div class="form-group">
-                <label for="message">Message</label>
+
+                <label for="message">
+                    Message
+                </label>
 
                 <textarea
                     id="message"
@@ -582,9 +713,13 @@
                 ></textarea>
 
                 <span id="messageError" class="error"></span>
+
             </div>
 
-            <button type="submit" class="submit-btn">
+            <button
+                type="submit"
+                class="submit-btn"
+            >
                 Send Message
             </button>
 
@@ -593,56 +728,93 @@
     </section>
 
     <!-- Success Message -->
-    <div id="successMessage" class="success-message">
+    <div
+        id="successMessage"
+        class="success-message"
+    >
         ✓ Your message has been submitted successfully!
     </div>
 
     <!-- FAQ Section -->
     <section class="faq-section">
 
-        <h2>Frequently Asked Questions</h2>
+        <h2>
+            Frequently Asked Questions
+        </h2>
 
         <div class="faq-box">
-            <div class="faq-question" onclick="toggleFAQ(1)">
+
+            <div
+                class="faq-question"
+                onclick="toggleFAQ(1)"
+            >
                 How can I place an order?
             </div>
 
-            <div class="faq-answer" id="answer1">
+            <div
+                class="faq-answer"
+                id="answer1"
+            >
                 You can browse our menu, select your favorite food,
                 add it to the cart, and place your order.
             </div>
+
         </div>
 
         <div class="faq-box">
-            <div class="faq-question" onclick="toggleFAQ(2)">
+
+            <div
+                class="faq-question"
+                onclick="toggleFAQ(2)"
+            >
                 Can I cancel my order?
             </div>
 
-            <div class="faq-answer" id="answer2">
+            <div
+                class="faq-answer"
+                id="answer2"
+            >
                 Yes, you can contact our support team as soon as possible
                 to request order cancellation.
             </div>
+
         </div>
 
         <div class="faq-box">
-            <div class="faq-question" onclick="toggleFAQ(3)">
+
+            <div
+                class="faq-question"
+                onclick="toggleFAQ(3)"
+            >
                 What are your working hours?
             </div>
 
-            <div class="faq-answer" id="answer3">
+            <div
+                class="faq-answer"
+                id="answer3"
+            >
                 FoodVerse is available every day from 10:00 AM to 10:00 PM.
             </div>
+
         </div>
 
         <div class="faq-box">
-            <div class="faq-question" onclick="toggleFAQ(4)">
+
+            <div
+                class="faq-question"
+                onclick="toggleFAQ(4)"
+            >
                 How can I contact FoodVerse?
             </div>
 
-            <div class="faq-answer" id="answer4">
+            <div
+                class="faq-answer"
+                id="answer4"
+            >
                 You can contact us through phone, email, or the contact
                 form available on this page.
             </div>
+
         </div>
 
     </section>
@@ -650,7 +822,9 @@
     <!-- Social Media Section -->
     <section class="social-section">
 
-        <h2>Connect With FoodVerse</h2>
+        <h2>
+            Connect With FoodVerse
+        </h2>
 
         <p>
             Follow us on social media for updates, offers,
@@ -658,10 +832,23 @@
         </p>
 
         <div class="social-links">
-            <a href="#" class="social-link">Instagram</a>
-            <a href="#" class="social-link">Facebook</a>
-            <a href="#" class="social-link">YouTube</a>
-            <a href="#" class="social-link">Twitter</a>
+
+            <a href="#" class="social-link">
+                Instagram
+            </a>
+
+            <a href="#" class="social-link">
+                Facebook
+            </a>
+
+            <a href="#" class="social-link">
+                YouTube
+            </a>
+
+            <a href="#" class="social-link">
+                Twitter
+            </a>
+
         </div>
 
     </section>
@@ -678,7 +865,11 @@
 
     <!-- Footer -->
     <footer>
-        <p>© 2026 FoodVerse. All Rights Reserved.</p>
+
+        <p>
+            © 2026 FoodVerse. All Rights Reserved.
+        </p>
+
     </footer>
 
     <script>
@@ -712,26 +903,43 @@
             let valid = true;
 
             if (name === "") {
+
                 nameError.textContent = "Please enter your name.";
-                document.getElementById("name").classList.add("input-error");
+
+                document.getElementById("name")
+                    .classList.add("input-error");
+
                 valid = false;
             }
 
             let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
             if (email === "") {
+
                 emailError.textContent = "Please enter your email.";
-                document.getElementById("email").classList.add("input-error");
+
+                document.getElementById("email")
+                    .classList.add("input-error");
+
                 valid = false;
+
             } else if (!emailPattern.test(email)) {
+
                 emailError.textContent = "Please enter a valid email.";
-                document.getElementById("email").classList.add("input-error");
+
+                document.getElementById("email")
+                    .classList.add("input-error");
+
                 valid = false;
             }
 
             if (message === "") {
+
                 messageError.textContent = "Please enter your message.";
-                document.getElementById("message").classList.add("input-error");
+
+                document.getElementById("message")
+                    .classList.add("input-error");
+
                 valid = false;
             }
 
@@ -753,27 +961,40 @@
         /* Remove Errors While Typing */
 
         document.getElementById("name").addEventListener("input", function() {
+
             if (this.value.trim() !== "") {
+
                 document.getElementById("nameError").textContent = "";
+
                 this.classList.remove("input-error");
             }
+
         });
+
 
         document.getElementById("email").addEventListener("input", function() {
 
             let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
             if (emailPattern.test(this.value.trim())) {
+
                 document.getElementById("emailError").textContent = "";
+
                 this.classList.remove("input-error");
             }
+
         });
 
+
         document.getElementById("message").addEventListener("input", function() {
+
             if (this.value.trim() !== "") {
+
                 document.getElementById("messageError").textContent = "";
+
                 this.classList.remove("input-error");
             }
+
         });
 
 
@@ -784,9 +1005,13 @@
             let answer = document.getElementById("answer" + number);
 
             if (answer.classList.contains("show")) {
+
                 answer.classList.remove("show");
+
             } else {
+
                 answer.classList.add("show");
+
             }
 
         }
@@ -799,9 +1024,13 @@
         window.addEventListener("scroll", function() {
 
             if (window.scrollY > 300) {
+
                 backToTop.style.display = "block";
+
             } else {
+
                 backToTop.style.display = "none";
+
             }
 
         });
