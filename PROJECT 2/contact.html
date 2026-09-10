@@ -339,6 +339,57 @@
       display: block;
     }
 
+    /* Social Media Section */
+
+    .social-section {
+      width: 80%;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.10);
+      animation: fadeInUp 1s ease forwards;
+    }
+
+    .social-section h2 {
+      color: rgb(183, 10, 217);
+      margin-bottom: 10px;
+    }
+
+    .social-section p {
+      color: rgb(80, 80, 80);
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      display: inline-block;
+      min-width: 120px;
+      padding: 13px 20px;
+      background-color: rgb(245, 238, 250);
+      color: rgb(100, 0, 120);
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: 0.3s ease;
+      border: 1px solid rgb(220, 200, 230);
+    }
+
+    .social-link:hover {
+      background-color: rgb(183, 10, 217);
+      color: white;
+      transform: translateY(-5px);
+      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+    }
+
     /* Footer */
 
     .footer {
@@ -412,6 +463,19 @@
         padding: 20px;
       }
 
+      .social-section {
+        width: 80%;
+        padding: 20px;
+      }
+
+      .social-links {
+        gap: 12px;
+      }
+
+      .social-link {
+        min-width: 100px;
+      }
+
     }
 
     /* Small Mobile */
@@ -477,6 +541,15 @@
       .faq-answer {
         font-size: 13px;
         padding: 0 15px 15px;
+      }
+
+      .social-section {
+        width: 80%;
+        padding: 15px;
+      }
+
+      .social-link {
+        width: 80%;
       }
 
       .footer {
@@ -804,6 +877,53 @@
         You can contact us through phone, email, or by using
         the contact form available on this page.
       </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- Social Media Section -->
+
+  <div class="social-section">
+
+    <h2>
+      Connect With FoodVerse
+    </h2>
+
+    <p>
+      Follow us on social media for updates, offers, and delicious food!
+    </p>
+
+    <div class="social-links">
+
+      <a
+        href="#"
+        class="social-link"
+      >
+        Instagram
+      </a>
+
+      <a
+        href="#"
+        class="social-link"
+      >
+        Facebook
+      </a>
+
+      <a
+        href="#"
+        class="social-link"
+      >
+        YouTube
+      </a>
+
+      <a
+        href="#"
+        class="social-link"
+      >
+        Twitter
+      </a>
 
     </div>
 
