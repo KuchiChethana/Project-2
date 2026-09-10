@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us | FoodVerse</title>
 
   <style>
+
     body {
       font-family: Arial;
       background-color: rgb(240, 248, 245);
@@ -12,28 +14,113 @@
       text-align: center;
     }
 
-    h2 {
-      background-color: rgb(183, 10, 217);
+    /* Navigation Bar */
+
+    .top-bar {
+      background: #000;
+      padding: 12px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      animation: slideDown 0.6s ease;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-40px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .logo {
       color: white;
-      padding: 18px;
+      font-size: 24px;
+      font-weight: bold;
+      padding-top: 5px;
+      padding-left: 40px;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .logo:hover {
+      color: orange;
+      transform: scale(1.08);
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      margin-left: 15px;
+      margin-right: 15px;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    .menu a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      left: 0;
+      bottom: -3px;
+      background: orange;
+      transition: width 0.35s ease;
+    }
+
+    .menu a:hover {
+      color: orange;
+    }
+
+    .menu a:hover::after {
+      width: 100%;
+    }
+
+    /* Contact Page Header */
+
+    .page-title {
+      background: linear-gradient(
+        135deg,
+        rgb(90, 0, 120),
+        rgb(130, 0, 170),
+        rgb(183, 10, 217),
+        rgb(200, 80, 230),
+        rgb(230, 160, 250)
+      );
+
+      color: white;
+      padding: 30px 15px;
       margin: 0;
+
+      animation: fadeInUp 1s ease forwards;
+
       transition: all 0.4s ease-in-out;
     }
-    h2:hover {
-      background: linear-gradient(245deg, rgb(90, 0, 120), rgb(130, 0, 170), rgb(183, 10, 217), rgb(200, 80, 230), rgb(230, 160, 250));
-      transform: scale(1.05);
-    }
-    h2:not(:hover){
-  animation: whiteFlash 0.3s ease;
-}
 
-@keyframes whiteFlash{
-  0%{ background:white; color:rgb(183, 10, 217); }
-  100%{ background:rgb(183, 10, 217); color:white; }
-}
+    .page-title:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .page-title h1 {
+      margin: 0;
+      font-size: 34px;
+      letter-spacing: 2px;
+    }
+
+    .page-title p {
+      margin: 10px 0 0;
+      font-size: 16px;
+    }
+
+    /* Introduction */
 
     .intro {
-padding: 30px;
+      padding: 30px;
       background-color: rgb(225, 240, 230);
       animation: fadeInUp 1s ease forwards;
     }
@@ -43,7 +130,10 @@ padding: 30px;
       color: rgb(60, 60, 60);
       font-size: 15px;
       display: inline-block;
+      line-height: 1.7;
     }
+
+    /* Contact Cards */
 
     .contact-section {
       padding: 30px;
@@ -57,7 +147,10 @@ padding: 30px;
       display: inline-block;
       border-radius: 10px;
       border: 1px solid rgb(200, 220, 210);
-      transition:0.35s ease;
+
+      transition: 0.35s ease;
+
+      animation: fadeInUp 1s ease forwards;
     }
 
     .contact-card h3 {
@@ -68,12 +161,15 @@ padding: 30px;
     .contact-card p {
       color: rgb(70, 70, 70);
       font-size: 14px;
+      line-height: 1.6;
     }
 
     .contact-card:hover {
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      transform:translateY(-10px) scale(1.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      transform: translateY(-10px) scale(1.05);
     }
+
+    /* Footer */
 
     .footer {
       background-color: rgb(183, 10, 217);
@@ -83,228 +179,262 @@ padding: 30px;
       text-align: center;
     }
 
-    .overlay {
-      background: rgba(0,0,0,0.65);
-    }
+    /* Animation */
 
-  
-
-.top-bar{
-  background:#000;
-  padding:12px 0;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-
-  animation: slideDown 0.6s ease;
-}
-
-@keyframes slideDown{
-  from{
-    transform:translateY(-40px);
-    opacity:0;
-  }
-  to{
-    transform:translateY(0);
-    opacity:1;
-  }
-}
-
-.logo{
-  color:white;
-  font-size:24px;
-  font-weight:bold;
-  padding-top:5px;
-  padding-left: 40px;
-  transition:transform 0.3s ease, color 0.3s ease;
-}
-
-.logo:hover{
-  color:orange;
-  transform:scale(1.08);
-}
-
-.menu a{
-  color:white;
-  text-decoration:none;
-  font-size:16px;
-  margin-left:15px;
-  margin-right:15px;
-  position:relative;
-  transition:color 0.3s ease;
-}
-.menu a::after{
-  content:"";
-  position:absolute;
-  width:0%;
-  height:2px;
-  left:0;
-  bottom:-3px;
-  background:orange;
-  transition:width 0.35s ease;
-}
-
-.menu a:hover{
-  color:orange;
-}
-
-.menu a:hover::after{
-  width:100%;
-}
     @keyframes fadeInUp {
       from {
         opacity: 0;
         transform: translateY(30px);
       }
+
       to {
         opacity: 1;
         transform: translateY(0);
       }
     }
+
+    /* Tablet */
+
     @media (max-width: 1024px) {
+
       .menu a {
         font-size: 14px;
         margin: 0 10px;
       }
+
       .contact-card {
         width: 220px;
       }
+
     }
 
+    /* Mobile */
+
     @media (max-width: 768px) {
+
       .top-bar {
         display: block;
         text-align: center;
       }
+
       .logo {
         display: block;
         margin-bottom: 10px;
+        padding-left: 0;
       }
+
       .menu {
         display: block;
       }
+
       .contact-card {
         width: 90%;
         margin: 15px auto;
       }
+
+    }
+
+    /* Small Mobile */
+
+    @media (max-width: 700px) {
+
+      .menu {
+        display: none;
+      }
+
+      .logo {
+        margin: auto;
+      }
+
     }
 
     @media (max-width: 480px) {
-      h2 {
-        font-size: 20px;
-padding: 12px;
+
+      .page-title {
+        padding: 22px 10px;
       }
-      .menu a {
-        display: block;
-        margin: 8px 0;
+
+      .page-title h1 {
+        font-size: 25px;
       }
+
+      .page-title p {
+        font-size: 14px;
+      }
+
+      .intro {
+        padding: 20px 10px;
+      }
+
       .intro p {
         width: 95%;
         font-size: 14px;
       }
-    }
-    @media(max-width:700px){
-  .menu{
-    display:none;
-  }
-  .logo{
-    margin:auto;
-  }
-}
-.cart-btn{
-    margin-top:10px;
-    padding:10px 18px;
-    background:linear-gradient(135deg, #ff7a18, #ffb347);
-    color:white;
-    border:none;
-    border-radius:8px;
-    font-size:14px;
-    font-weight:bold;
-    cursor:pointer;
-    transition: all 0.3s ease;
-}
 
-.cart-btn:hover{
-    background:linear-gradient(135deg, #ff5e00, #ffa500);
-    transform:translateY(-2px) scale(1.05);
-    box-shadow:0 6px 12px rgba(0,0,0,0.2);
-}
-.cart-btn:active{
-    transform:scale(0.95);
-}
-@media(max-width:600px){
-    .cart-btn{
-        width:100%;
+      .contact-section {
+        padding: 15px 5px;
+      }
+
+      .contact-card {
+        width: 85%;
+      }
+
+      .footer {
+        font-size: 13px;
+      }
+
     }
-}
+
   </style>
 </head>
 
 <body>
-  <div class="overlay">
-    <div class="top-bar">
-      <div class="logo">FoodVerse</div>
-      <div class="menu">
-        <a href="index.html">Home</a>
-            <a href="menu.html">Menu</a>
-            <a href="tiffins.html">Tiffins</a>
-            <a href="vegstarters.html">Veg Starters</a>
-            <a href="vegbiriyani.html">Veg Biriyanis</a>
-            <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
-            <a href="desserts.html">Desserts</a>
-            <a href="aboutus.html">About Us</a>
-            <a href="contact.html">Contact</a>
-            <a href="cart.html">Cart 🛒 (<span id="cartCount">0</span>)</a>
-      </div>
+
+  <!-- Navigation -->
+
+  <div class="top-bar">
+
+    <div class="logo">
+      FoodVerse
     </div>
+
+    <div class="menu">
+
+      <a href="index.html">Home</a>
+
+      <a href="menu.html">Menu</a>
+
+      <a href="tiffins.html">Tiffins</a>
+
+      <a href="vegstarters.html">Veg Starters</a>
+
+      <a href="vegbiriyani.html">Veg Biriyanis</a>
+
+      <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
+
+      <a href="desserts.html">Desserts</a>
+
+      <a href="aboutus.html">About Us</a>
+
+      <a href="contact.html">Contact</a>
+
+      <a href="cart.html">
+        Cart 🛒 (<span id="cartCount">0</span>)
+      </a>
+
+    </div>
+
   </div>
 
-  <h2>CONTACT US</h2>
+
+  <!-- Contact Page Header -->
+
+  <div class="page-title">
+
+    <h1>
+      CONTACT US
+    </h1>
+
+    <p>
+      We are always happy to hear from you!
+    </p>
+
+  </div>
+
+
+  <!-- Introduction -->
 
   <div class="intro">
+
     <p>
-      Contact Food Verse for orders, feedback, or any queries.
-      We are always happy to help our customers.
+
+      Contact FoodVerse for orders, feedback, reservations,
+      or any queries. Our team is always ready to help you
+      enjoy a delicious experience.
+
     </p>
+
   </div>
+
+
+  <!-- Contact Information -->
 
   <div class="contact-section">
+
     <div class="contact-card">
-      <h3>Address</h3>
+
+      <h3>
+        Address
+      </h3>
+
       <p>
+
         Food Verse Restaurant<br>
         Main Road, City Center<br>
-India
+        India
+
       </p>
+
     </div>
 
+
     <div class="contact-card">
-      <h3>Phone</h3>
+
+      <h3>
+        Phone
+      </h3>
+
       <p>
+
         +91 98765 43210<br>
         +91 91234 56789
+
       </p>
+
     </div>
 
+
     <div class="contact-card">
-      <h3>Email</h3>
+
+      <h3>
+        Email
+      </h3>
+
       <p>
+
         support@foodverse.com<br>
         orders@foodverse.com
+
       </p>
+
     </div>
+
 
     <div class="contact-card">
-      <h3>Working Hours</h3>
+
+      <h3>
+        Working Hours
+      </h3>
+
       <p>
+
         Monday – Sunday<br>
         8:00 AM – 10:00 PM
+
       </p>
+
     </div>
+
   </div>
 
+
+  <!-- Footer -->
+
   <div class="footer">
+
     © 2026 FoodVerse | Always Ready to Serve You
+
   </div>
+
 </body>
 </html>
