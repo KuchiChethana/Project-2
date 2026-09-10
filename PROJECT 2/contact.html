@@ -251,6 +251,32 @@
       box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
     }
 
+    /* Success Message */
+
+    .success-message {
+      display: none;
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 8px;
+      background-color: rgb(220, 250, 225);
+      color: rgb(20, 120, 50);
+      font-size: 15px;
+      font-weight: bold;
+      animation: successAnimation 0.5s ease;
+    }
+
+    @keyframes successAnimation {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
     /* Footer */
 
     .footer {
@@ -598,6 +624,16 @@
 
     </form>
 
+
+    <!-- Success Message -->
+
+    <div
+      class="success-message"
+      id="successMessage"
+    >
+      ✓ Your message has been submitted successfully!
+    </div>
+
   </div>
 
 
@@ -610,7 +646,7 @@
   </div>
 
 
-  <!-- JavaScript Validation -->
+  <!-- JavaScript -->
 
   <script>
 
@@ -626,45 +662,114 @@
       let emailError = document.getElementById("emailError");
       let messageError = document.getElementById("messageError");
 
+      let successMessage = document.getElementById("successMessage");
+
       let valid = true;
 
       nameError.style.display = "none";
       emailError.style.display = "none";
       messageError.style.display = "none";
 
+      successMessage.style.display = "none";
+
       name.classList.remove("input-error");
       email.classList.remove("input-error");
       message.classList.remove("input-error");
+
+
+      /* Name Validation */
 
       if (name.value.trim() === "") {
 
         nameError.style.display = "block";
         name.classList.add("input-error");
+
         valid = false;
 
       }
+
+
+      /* Email Validation */
 
       let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-      if (email.value.trim() === "" || !emailPattern.test(email.value.trim())) {
+      if (
+        email.value.trim() === "" ||
+        !emailPattern.test(email.value.trim())
+      ) {
 
         emailError.style.display = "block";
         email.classList.add("input-error");
+
         valid = false;
 
       }
+
+
+      /* Message Validation */
 
       if (message.value.trim() === "") {
 
         messageError.style.display = "block";
         message.classList.add("input-error");
+
         valid = false;
 
       }
 
+
+      /* Successful Submission */
+
       if (valid) {
 
-        alert("Please make sure all details are correct. Your message is ready to be sent!");
+        successMessage.style.display = "block";
+
+        document.getElementById("contactForm").reset();
+
+        window.scrollTo({
+          top: document.querySelector(".success-message").offsetTop - 100,
+          behavior: "smooth"
+        });
+
+      }
+
+    });
+
+
+    /* Remove Error When User Starts Typing */
+
+    document.getElementById("name").addEventListener("input", function() {
+
+      if (this.value.trim() !== "") {
+
+        this.classList.remove("input-error");
+        document.getElementById("nameError").style.display = "none";
+
+      }
+
+    });
+
+
+    document.getElementById("email").addEventListener("input", function() {
+
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+      if (emailPattern.test(this.value.trim())) {
+
+        this.classList.remove("input-error");
+        document.getElementById("emailError").style.display = "none";
+
+      }
+
+    });
+
+
+    document.getElementById("message").addEventListener("input", function() {
+
+      if (this.value.trim() !== "") {
+
+        this.classList.remove("input-error");
+        document.getElementById("messageError").style.display = "none";
 
       }
 
