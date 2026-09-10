@@ -297,29 +297,46 @@
     .faq-box {
       background-color: white;
       margin: 15px 0;
-      padding: 18px 20px;
       border-radius: 8px;
       border-left: 5px solid rgb(183, 10, 217);
       text-align: left;
       transition: 0.3s ease;
+      overflow: hidden;
     }
 
     .faq-box:hover {
-      transform: translateX(5px);
       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
     }
 
-    .faq-box h3 {
+    /* FAQ Question */
+
+    .faq-question {
+      padding: 18px 20px;
+      cursor: pointer;
       color: rgb(80, 40, 100);
-      margin: 0 0 8px;
       font-size: 16px;
+      font-weight: bold;
+      margin: 0;
+      transition: 0.3s ease;
     }
 
-    .faq-box p {
+    .faq-question:hover {
+      color: rgb(183, 10, 217);
+      background-color: rgb(250, 245, 252);
+    }
+
+    /* FAQ Answer */
+
+    .faq-answer {
+      display: none;
+      padding: 0 20px 18px;
       color: rgb(80, 80, 80);
-      margin: 0;
       line-height: 1.6;
       font-size: 14px;
+    }
+
+    .faq-answer.show {
+      display: block;
     }
 
     /* Footer */
@@ -452,16 +469,14 @@
         padding: 15px;
       }
 
-      .faq-box {
+      .faq-question {
+        font-size: 15px;
         padding: 15px;
       }
 
-      .faq-box h3 {
-        font-size: 15px;
-      }
-
-      .faq-box p {
+      .faq-answer {
         font-size: 13px;
+        padding: 0 15px 15px;
       }
 
       .footer {
@@ -715,11 +730,17 @@
 
     <div class="faq-box">
 
-      <h3>
+      <h3
+        class="faq-question"
+        onclick="toggleFAQ(1)"
+      >
         1. How can I place an order?
       </h3>
 
-      <p>
+      <p
+        class="faq-answer"
+        id="answer1"
+      >
         You can browse our menu, select your favorite food items,
         add them to the cart, and place your order.
       </p>
@@ -729,11 +750,17 @@
 
     <div class="faq-box">
 
-      <h3>
+      <h3
+        class="faq-question"
+        onclick="toggleFAQ(2)"
+      >
         2. Can I cancel my order?
       </h3>
 
-      <p>
+      <p
+        class="faq-answer"
+        id="answer2"
+      >
         Yes, you can contact our support team as soon as possible
         to request order cancellation.
       </p>
@@ -743,11 +770,17 @@
 
     <div class="faq-box">
 
-      <h3>
+      <h3
+        class="faq-question"
+        onclick="toggleFAQ(3)"
+      >
         3. What are your working hours?
       </h3>
 
-      <p>
+      <p
+        class="faq-answer"
+        id="answer3"
+      >
         FoodVerse is available from Monday to Sunday,
         8:00 AM to 10:00 PM.
       </p>
@@ -757,11 +790,17 @@
 
     <div class="faq-box">
 
-      <h3>
+      <h3
+        class="faq-question"
+        onclick="toggleFAQ(4)"
+      >
         4. How can I contact FoodVerse?
       </h3>
 
-      <p>
+      <p
+        class="faq-answer"
+        id="answer4"
+      >
         You can contact us through phone, email, or by using
         the contact form available on this page.
       </p>
@@ -783,6 +822,8 @@
   <!-- JavaScript -->
 
   <script>
+
+    /* Contact Form Validation */
 
     document.getElementById("contactForm").addEventListener("submit", function(event) {
 
@@ -908,6 +949,25 @@
       }
 
     });
+
+
+    /* Interactive FAQ */
+
+    function toggleFAQ(number) {
+
+      let answer = document.getElementById("answer" + number);
+
+      if (answer.classList.contains("show")) {
+
+        answer.classList.remove("show");
+
+      } else {
+
+        answer.classList.add("show");
+
+      }
+
+    }
 
   </script>
 
