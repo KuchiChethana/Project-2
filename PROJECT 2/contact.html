@@ -95,9 +95,7 @@
       color: white;
       padding: 30px 15px;
       margin: 0;
-
       animation: fadeInUp 1s ease forwards;
-
       transition: all 0.4s ease-in-out;
     }
 
@@ -147,9 +145,7 @@
       display: inline-block;
       border-radius: 10px;
       border: 1px solid rgb(200, 220, 210);
-
       transition: 0.35s ease;
-
       animation: fadeInUp 1s ease forwards;
     }
 
@@ -222,6 +218,21 @@
       height: 120px;
       resize: vertical;
     }
+
+    /* Validation Error */
+
+    .error {
+      color: red;
+      font-size: 13px;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .input-error {
+      border: 1px solid red !important;
+    }
+
+    /* Submit Button */
 
     .submit-btn {
       background-color: rgb(183, 10, 217);
@@ -517,7 +528,7 @@
       Send Us a Message
     </h2>
 
-    <form>
+    <form id="contactForm">
 
       <div class="form-group">
 
@@ -532,6 +543,10 @@
           placeholder="Enter your name"
         >
 
+        <div class="error" id="nameError">
+          Please enter your name.
+        </div>
+
       </div>
 
 
@@ -542,11 +557,15 @@
         </label>
 
         <input
-          type="email"
+          type="text"
           id="email"
           name="email"
           placeholder="Enter your email"
         >
+
+        <div class="error" id="emailError">
+          Please enter a valid email address.
+        </div>
 
       </div>
 
@@ -562,6 +581,10 @@
           name="message"
           placeholder="Write your message here..."
         ></textarea>
+
+        <div class="error" id="messageError">
+          Please enter your message.
+        </div>
 
       </div>
 
@@ -585,6 +608,69 @@
     © 2026 FoodVerse | Always Ready to Serve You
 
   </div>
+
+
+  <!-- JavaScript Validation -->
+
+  <script>
+
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+
+      event.preventDefault();
+
+      let name = document.getElementById("name");
+      let email = document.getElementById("email");
+      let message = document.getElementById("message");
+
+      let nameError = document.getElementById("nameError");
+      let emailError = document.getElementById("emailError");
+      let messageError = document.getElementById("messageError");
+
+      let valid = true;
+
+      nameError.style.display = "none";
+      emailError.style.display = "none";
+      messageError.style.display = "none";
+
+      name.classList.remove("input-error");
+      email.classList.remove("input-error");
+      message.classList.remove("input-error");
+
+      if (name.value.trim() === "") {
+
+        nameError.style.display = "block";
+        name.classList.add("input-error");
+        valid = false;
+
+      }
+
+      let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+      if (email.value.trim() === "" || !emailPattern.test(email.value.trim())) {
+
+        emailError.style.display = "block";
+        email.classList.add("input-error");
+        valid = false;
+
+      }
+
+      if (message.value.trim() === "") {
+
+        messageError.style.display = "block";
+        message.classList.add("input-error");
+        valid = false;
+
+      }
+
+      if (valid) {
+
+        alert("Please make sure all details are correct. Your message is ready to be sent!");
+
+      }
+
+    });
+
+  </script>
 
 </body>
 </html>
