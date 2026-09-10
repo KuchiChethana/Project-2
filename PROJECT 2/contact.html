@@ -7,22 +7,24 @@
 
     <style>
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f8f8f8;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f7f4fb;
             color: #333;
-            scroll-behavior: smooth;
             overflow-x: hidden;
         }
 
-        /* Navigation Bar */
+        /* Navbar */
         .top-bar {
-            background-color: #111;
+            background: linear-gradient(90deg, #111, #222, #111);
             padding: 15px 20px;
             display: flex;
             align-items: center;
@@ -40,6 +42,7 @@
         }
 
         .logo:hover {
+            color: #d66cff;
             transform: scale(1.05);
         }
 
@@ -53,31 +56,38 @@
         .menu a {
             color: white;
             text-decoration: none;
-            margin: 5px 6px;
+            padding: 8px 10px;
             font-size: 14px;
+            border-radius: 6px;
             transition: 0.3s ease;
         }
 
         .menu a:hover {
-            color: rgb(183, 10, 217);
+            background-color: #b70ad9;
+            transform: translateY(-2px);
+        }
+
+        .menu a.active {
+            background-color: #b70ad9;
         }
 
         /* Page Header */
         .page-header {
-            background: linear-gradient(135deg, rgb(183, 10, 217), #6a00ff);
-            color: white;
             text-align: center;
-            padding: 60px 20px;
+            padding: 55px 20px;
+            background: linear-gradient(135deg, #8e2de2, #c218d8, #b70ad9);
+            color: white;
             animation: headerAnimation 1s ease;
         }
 
         .page-header h1 {
+            margin: 0;
             font-size: 42px;
-            margin-bottom: 10px;
         }
 
         .page-header p {
-            font-size: 18px;
+            margin-top: 12px;
+            font-size: 17px;
         }
 
         @keyframes headerAnimation {
@@ -92,27 +102,29 @@
             }
         }
 
-        /* Introduction */
+        /* Intro */
         .intro {
             text-align: center;
-            padding: 40px 20px 20px;
+            max-width: 850px;
+            margin: 35px auto 20px;
+            padding: 0 20px;
         }
 
         .intro h2 {
-            color: rgb(183, 10, 217);
+            color: #8e2de2;
             margin-bottom: 10px;
         }
 
         .intro p {
+            line-height: 1.7;
             font-size: 16px;
-            line-height: 1.6;
         }
 
         /* Contact Cards */
         .contact-container {
-            max-width: 1000px;
-            margin: 20px auto 40px;
-            padding: 20px;
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 20px;
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
@@ -120,42 +132,48 @@
 
         .contact-card {
             background-color: white;
-            padding: 25px 15px;
+            padding: 25px 18px;
             text-align: center;
-            border-radius: 12px;
+            border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: 0.3s ease;
+            transition: 0.35s ease;
+            border: 1px solid transparent;
         }
 
         .contact-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-color: #c218d8;
+            box-shadow: 0 12px 25px rgba(142, 45, 226, 0.2);
         }
 
         .contact-card h3 {
-            color: rgb(183, 10, 217);
-            margin-bottom: 10px;
+            color: #8e2de2;
+            margin-bottom: 12px;
         }
 
         .contact-card p {
+            margin: 5px 0;
             line-height: 1.5;
-            font-size: 14px;
         }
 
-        /* Contact Form */
+        /* Form Section */
         .form-section {
-            max-width: 800px;
-            width: 90%;
-            margin: 40px auto;
-            padding: 30px;
+            max-width: 850px;
+            margin: 45px auto;
+            padding: 35px;
             background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease;
+        }
+
+        .form-section:hover {
+            box-shadow: 0 12px 30px rgba(142, 45, 226, 0.15);
         }
 
         .form-section h2 {
             text-align: center;
-            color: rgb(183, 10, 217);
+            color: #8e2de2;
             margin-bottom: 25px;
         }
 
@@ -165,14 +183,14 @@
 
         .form-group label {
             display: block;
-            margin-bottom: 8px;
             font-weight: bold;
+            margin-bottom: 7px;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 12px;
+            padding: 13px;
             border: 1px solid #ccc;
             border-radius: 8px;
             font-size: 15px;
@@ -182,32 +200,32 @@
 
         .form-group input:focus,
         .form-group textarea:focus {
-            border-color: rgb(183, 10, 217);
-            box-shadow: 0 0 5px rgba(183, 10, 217, 0.3);
+            border-color: #b70ad9;
+            box-shadow: 0 0 8px rgba(183, 10, 217, 0.2);
         }
 
         .form-group textarea {
-            height: 130px;
             resize: vertical;
-        }
-
-        .error {
-            color: red;
-            font-size: 13px;
-            margin-top: 5px;
-            display: block;
+            min-height: 130px;
         }
 
         .input-error {
             border-color: red !important;
         }
 
+        .error-message {
+            color: red;
+            font-size: 13px;
+            margin-top: 5px;
+            display: block;
+        }
+
         .submit-btn {
             width: 100%;
-            padding: 13px;
+            padding: 14px;
             border: none;
             border-radius: 8px;
-            background: linear-gradient(135deg, rgb(183, 10, 217), #6a00ff);
+            background: linear-gradient(90deg, #8e2de2, #b70ad9);
             color: white;
             font-size: 16px;
             font-weight: bold;
@@ -216,22 +234,18 @@
         }
 
         .submit-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 12px rgba(183, 10, 217, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(142, 45, 226, 0.3);
         }
 
-        /* Success Message */
         .success-message {
             display: none;
-            width: 90%;
-            max-width: 800px;
-            margin: 20px auto;
+            margin-top: 20px;
             padding: 15px;
             text-align: center;
-            background-color: #e8f8ee;
-            color: #16803c;
-            border: 1px solid #8ed3a8;
             border-radius: 8px;
+            background-color: #e8f8ee;
+            color: #16833b;
             font-weight: bold;
             animation: successAnimation 0.5s ease;
         }
@@ -239,111 +253,74 @@
         @keyframes successAnimation {
             from {
                 opacity: 0;
-                transform: translateY(10px);
+                transform: scale(0.95);
             }
 
             to {
                 opacity: 1;
-                transform: translateY(0);
+                transform: scale(1);
             }
         }
 
-        /* FAQ Section */
+        /* FAQ */
         .faq-section {
-            width: 90%;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
+            max-width: 850px;
+            margin: 45px auto;
+            padding: 35px;
             background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
 
         .faq-section h2 {
             text-align: center;
-            color: rgb(183, 10, 217);
+            color: #8e2de2;
             margin-bottom: 25px;
         }
 
         .faq-box {
-            margin-bottom: 12px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
+            margin-bottom: 14px;
+            border-radius: 10px;
             overflow: hidden;
+            border: 1px solid #e2d5ed;
+            transition: 0.3s ease;
+        }
+
+        .faq-box:hover {
+            border-color: #b70ad9;
+            box-shadow: 0 5px 15px rgba(183, 10, 217, 0.12);
         }
 
         .faq-question {
-            background-color: #f4e9ff;
-            padding: 15px;
+            background: linear-gradient(90deg, #f4e9ff, #f9efff);
+            padding: 16px;
             font-weight: bold;
+            color: #6e1aa8;
             cursor: pointer;
             transition: 0.3s ease;
         }
 
         .faq-question:hover {
-            background-color: #ead5ff;
+            background: linear-gradient(90deg, #ead8ff, #f3ddff);
+            padding-left: 20px;
         }
 
         .faq-answer {
             display: none;
-            padding: 15px;
+            padding: 15px 16px;
             background-color: white;
             line-height: 1.6;
+            animation: faqAnimation 0.3s ease;
         }
 
         .faq-answer.show {
             display: block;
         }
 
-        /* Social Media Section */
-        .social-section {
-            width: 90%;
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 30px;
-            text-align: center;
-            background-color: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            animation: socialAnimation 0.8s ease;
-        }
-
-        .social-section h2 {
-            color: rgb(183, 10, 217);
-            margin-bottom: 10px;
-        }
-
-        .social-section p {
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .social-link {
-            text-decoration: none;
-            color: white;
-            background: linear-gradient(135deg, rgb(183, 10, 217), #6a00ff);
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-weight: bold;
-            transition: 0.3s ease;
-        }
-
-        .social-link:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 5px 12px rgba(183, 10, 217, 0.3);
-        }
-
-        @keyframes socialAnimation {
+        @keyframes faqAnimation {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(-5px);
             }
 
             to {
@@ -352,7 +329,58 @@
             }
         }
 
-        /* Back To Top Button */
+        /* Social Media */
+        .social-section {
+            max-width: 900px;
+            margin: 45px auto;
+            padding: 35px;
+            text-align: center;
+            background: linear-gradient(135deg, #ffffff, #fbf6ff);
+            border-radius: 18px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            transition: 0.3s ease;
+        }
+
+        .social-section:hover {
+            box-shadow: 0 12px 30px rgba(142, 45, 226, 0.18);
+        }
+
+        .social-section h2 {
+            color: #8e2de2;
+            margin-bottom: 10px;
+        }
+
+        .social-section p {
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: inline-block;
+            min-width: 120px;
+            padding: 12px 20px;
+            background: linear-gradient(90deg, #8e2de2, #b70ad9);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s ease;
+            box-shadow: 0 4px 10px rgba(142, 45, 226, 0.15);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 8px 18px rgba(142, 45, 226, 0.3);
+        }
+
+        /* Back To Top */
         .back-to-top {
             display: none;
             position: fixed;
@@ -362,7 +390,7 @@
             height: 45px;
             border: none;
             border-radius: 50%;
-            background-color: rgb(183, 10, 217);
+            background: linear-gradient(135deg, #8e2de2, #b70ad9);
             color: white;
             font-size: 22px;
             font-weight: bold;
@@ -373,22 +401,25 @@
         }
 
         .back-to-top:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 15px rgba(183, 10, 217, 0.4);
+            transform: translateY(-5px) scale(1.08);
+            box-shadow: 0 8px 18px rgba(183, 10, 217, 0.4);
         }
 
         /* Footer */
         footer {
-            background-color: rgb(183, 10, 217);
-            color: white;
+            margin-top: 50px;
+            padding: 25px 20px;
             text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+            color: white;
+            background: linear-gradient(90deg, #6a1b9a, #8e2de2, #b70ad9);
+        }
+
+        footer p {
+            margin: 5px;
         }
 
         /* Tablet */
         @media (max-width: 900px) {
-
             .top-bar {
                 justify-content: center;
             }
@@ -409,32 +440,25 @@
 
         /* Mobile */
         @media (max-width: 600px) {
-
             .top-bar {
                 padding: 12px 10px;
             }
 
             .logo {
                 font-size: 24px;
-                margin-bottom: 5px;
             }
 
             .menu {
-                width: 100%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
                 gap: 2px;
             }
 
             .menu a {
-                font-size: 11px;
-                margin: 4px 5px;
-                padding: 3px;
+                font-size: 12px;
+                padding: 7px 6px;
             }
 
             .page-header {
-                padding: 45px 15px;
+                padding: 40px 15px;
             }
 
             .page-header h1 {
@@ -445,116 +469,74 @@
                 font-size: 15px;
             }
 
-            .intro {
-                padding: 30px 15px 10px;
-            }
-
-            .intro h2 {
-                font-size: 22px;
-            }
-
-            .intro p {
-                font-size: 14px;
-            }
-
             .contact-container {
+                width: 92%;
+                padding: 0;
                 grid-template-columns: 1fr;
-                padding: 15px;
-                gap: 15px;
-            }
-
-            .contact-card {
-                padding: 22px 15px;
             }
 
             .form-section,
             .faq-section,
             .social-section {
                 width: 92%;
-                padding: 20px;
-                margin: 30px auto;
-            }
-
-            .form-section h2,
-            .faq-section h2,
-            .social-section h2 {
-                font-size: 22px;
+                padding: 25px 18px;
             }
 
             .form-group input,
             .form-group textarea {
                 font-size: 14px;
-                padding: 11px;
-            }
-
-            .submit-btn {
-                font-size: 15px;
-                padding: 12px;
             }
 
             .faq-question {
+                padding: 14px;
                 font-size: 14px;
-                padding: 13px;
             }
 
             .faq-answer {
-                font-size: 14px;
                 padding: 13px;
+                font-size: 14px;
             }
 
             .social-links {
                 flex-direction: column;
-                gap: 10px;
             }
 
             .social-link {
                 width: 100%;
-                padding: 11px;
             }
 
             .back-to-top {
+                width: 40px;
+                height: 40px;
                 right: 15px;
                 bottom: 15px;
-                width: 42px;
-                height: 42px;
-                font-size: 20px;
+                font-size: 19px;
             }
 
             footer {
-                padding: 18px 10px;
                 font-size: 13px;
             }
         }
 
         /* Small Mobile */
         @media (max-width: 400px) {
-
-            .menu a {
-                font-size: 10px;
-                margin: 3px 4px;
-            }
-
             .page-header h1 {
                 font-size: 28px;
             }
 
-            .page-header p {
+            .intro {
                 font-size: 14px;
-            }
-
-            .contact-container {
-                padding: 10px;
             }
 
             .form-section,
             .faq-section,
             .social-section {
-                width: 94%;
-                padding: 17px;
+                padding: 22px 15px;
             }
 
-            .intro h2 {
-                font-size: 20px;
+            .menu a {
+                font-size: 11px;
+                padding: 6px 5px;
             }
         }
     </style>
@@ -563,11 +545,9 @@
 <body>
 
     <!-- Navigation -->
-    <nav class="top-bar">
+    <div class="top-bar">
 
-        <a href="homepage.html" class="logo">
-            FoodVerse
-        </a>
+        <a href="homepage.html" class="logo">FoodVerse</a>
 
         <div class="menu">
             <a href="homepage.html">Home</a>
@@ -575,105 +555,73 @@
             <a href="tiffins.html">Tiffins</a>
             <a href="vegstarters.html">Veg Starters</a>
             <a href="vegbiriyani.html">Veg Biriyanis</a>
-            <a href="nonvegstarters.html">Non-Veg Starters</a>
             <a href="nonvegbiriyani.html">Non-Veg Biriyanis</a>
             <a href="desserts.html">Desserts</a>
             <a href="aboutus.html">About Us</a>
-            <a href="contact.html">Contact</a>
+            <a href="contact.html" class="active">Contact</a>
             <a href="cart.html">Cart</a>
         </div>
 
-    </nav>
+    </div>
 
     <!-- Page Header -->
-    <section class="page-header">
-
+    <div class="page-header">
         <h1>Contact Us</h1>
-
-        <p>
-            We would love to hear from you!
-        </p>
-
-    </section>
+        <p>We would love to hear from you!</p>
+    </div>
 
     <!-- Introduction -->
-    <section class="intro">
-
-        <h2>
-            Get In Touch With FoodVerse
-        </h2>
+    <div class="intro">
+        <h2>Get In Touch With FoodVerse</h2>
 
         <p>
             Have a question, suggestion, or feedback?
-            Contact us using the details below or send us a message.
+            Our FoodVerse team is always happy to help.
+            Feel free to contact us using the details below
+            or send us a message through the contact form.
         </p>
-
-    </section>
+    </div>
 
     <!-- Contact Cards -->
-    <section class="contact-container">
+    <div class="contact-container">
 
         <div class="contact-card">
-
             <h3>Address</h3>
-
-            <p>
-                FoodVerse Restaurant<br>
-                Hyderabad, Telangana<br>
-                India
-            </p>
-
+            <p>FoodVerse Restaurant</p>
+            <p>Hyderabad, Telangana</p>
+            <p>India</p>
         </div>
 
         <div class="contact-card">
-
             <h3>Phone</h3>
-
-            <p>
-                +91 98765 43210<br>
-                +91 91234 56789
-            </p>
-
+            <p>+91 98765 43210</p>
+            <p>+91 91234 56789</p>
         </div>
 
         <div class="contact-card">
-
             <h3>Email</h3>
-
-            <p>
-                foodverse@gmail.com<br>
-                support@foodverse.com
-            </p>
-
+            <p>foodverse@gmail.com</p>
+            <p>support@foodverse.com</p>
         </div>
 
         <div class="contact-card">
-
             <h3>Working Hours</h3>
-
-            <p>
-                Monday - Sunday<br>
-                10:00 AM - 10:00 PM
-            </p>
-
+            <p>Monday - Saturday</p>
+            <p>10:00 AM - 10:00 PM</p>
+            <p>Sunday: 11:00 AM - 9:00 PM</p>
         </div>
 
-    </section>
+    </div>
 
     <!-- Contact Form -->
-    <section class="form-section">
+    <div class="form-section">
 
-        <h2>
-            Send Us A Message
-        </h2>
+        <h2>Send Us a Message</h2>
 
         <form id="contactForm">
 
             <div class="form-group">
-
-                <label for="name">
-                    Your Name
-                </label>
+                <label for="name">Your Name</label>
 
                 <input
                     type="text"
@@ -681,15 +629,11 @@
                     placeholder="Enter your name"
                 >
 
-                <span id="nameError" class="error"></span>
-
+                <span id="nameError" class="error-message"></span>
             </div>
 
             <div class="form-group">
-
-                <label for="email">
-                    Email Address
-                </label>
+                <label for="email">Email Address</label>
 
                 <input
                     type="text"
@@ -697,134 +641,87 @@
                     placeholder="Enter your email"
                 >
 
-                <span id="emailError" class="error"></span>
-
+                <span id="emailError" class="error-message"></span>
             </div>
 
             <div class="form-group">
-
-                <label for="message">
-                    Message
-                </label>
+                <label for="message">Message</label>
 
                 <textarea
                     id="message"
-                    placeholder="Enter your message"
+                    placeholder="Write your message here..."
                 ></textarea>
 
-                <span id="messageError" class="error"></span>
-
+                <span id="messageError" class="error-message"></span>
             </div>
 
-            <button
-                type="submit"
-                class="submit-btn"
-            >
+            <button type="submit" class="submit-btn">
                 Send Message
             </button>
 
+            <div id="successMessage" class="success-message">
+                ✓ Your message has been submitted successfully!
+            </div>
+
         </form>
 
-    </section>
-
-    <!-- Success Message -->
-    <div
-        id="successMessage"
-        class="success-message"
-    >
-        ✓ Your message has been submitted successfully!
     </div>
 
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <div class="faq-section">
 
-        <h2>
-            Frequently Asked Questions
-        </h2>
+        <h2>Frequently Asked Questions</h2>
 
         <div class="faq-box">
-
-            <div
-                class="faq-question"
-                onclick="toggleFAQ(1)"
-            >
+            <div class="faq-question" onclick="toggleFAQ(1)">
                 How can I place an order?
             </div>
 
-            <div
-                class="faq-answer"
-                id="answer1"
-            >
-                You can browse our menu, select your favorite food,
-                add it to the cart, and place your order.
+            <div id="answer1" class="faq-answer">
+                You can browse our menu, select your favorite food items,
+                add them to the cart, and place your order.
             </div>
-
         </div>
 
         <div class="faq-box">
-
-            <div
-                class="faq-question"
-                onclick="toggleFAQ(2)"
-            >
+            <div class="faq-question" onclick="toggleFAQ(2)">
                 Can I cancel my order?
             </div>
 
-            <div
-                class="faq-answer"
-                id="answer2"
-            >
+            <div id="answer2" class="faq-answer">
                 Yes, you can contact our support team as soon as possible
-                to request order cancellation.
+                to request an order cancellation.
             </div>
-
         </div>
 
         <div class="faq-box">
-
-            <div
-                class="faq-question"
-                onclick="toggleFAQ(3)"
-            >
+            <div class="faq-question" onclick="toggleFAQ(3)">
                 What are your working hours?
             </div>
 
-            <div
-                class="faq-answer"
-                id="answer3"
-            >
-                FoodVerse is available every day from 10:00 AM to 10:00 PM.
+            <div id="answer3" class="faq-answer">
+                We are open from 10:00 AM to 10:00 PM from Monday to Saturday.
+                On Sunday, we are open from 11:00 AM to 9:00 PM.
             </div>
-
         </div>
 
         <div class="faq-box">
-
-            <div
-                class="faq-question"
-                onclick="toggleFAQ(4)"
-            >
+            <div class="faq-question" onclick="toggleFAQ(4)">
                 How can I contact FoodVerse?
             </div>
 
-            <div
-                class="faq-answer"
-                id="answer4"
-            >
+            <div id="answer4" class="faq-answer">
                 You can contact us through phone, email, or the contact
                 form available on this page.
             </div>
-
         </div>
 
-    </section>
+    </div>
 
     <!-- Social Media Section -->
-    <section class="social-section">
+    <div class="social-section">
 
-        <h2>
-            Connect With FoodVerse
-        </h2>
+        <h2>Connect With FoodVerse</h2>
 
         <p>
             Follow us on social media for updates, offers,
@@ -851,7 +748,7 @@
 
         </div>
 
-    </section>
+    </div>
 
     <!-- Back To Top Button -->
     <button
@@ -866,9 +763,8 @@
     <!-- Footer -->
     <footer>
 
-        <p>
-            © 2026 FoodVerse. All Rights Reserved.
-        </p>
+        <p>© 2026 FoodVerse. All Rights Reserved.</p>
+        <p>Delicious Food | Great Taste | Happy Moments</p>
 
     </footer>
 
@@ -880,9 +776,9 @@
 
             event.preventDefault();
 
-            let name = document.getElementById("name").value.trim();
-            let email = document.getElementById("email").value.trim();
-            let message = document.getElementById("message").value.trim();
+            let name = document.getElementById("name");
+            let email = document.getElementById("email");
+            let message = document.getElementById("message");
 
             let nameError = document.getElementById("nameError");
             let emailError = document.getElementById("emailError");
@@ -894,52 +790,36 @@
             emailError.textContent = "";
             messageError.textContent = "";
 
-            document.getElementById("name").classList.remove("input-error");
-            document.getElementById("email").classList.remove("input-error");
-            document.getElementById("message").classList.remove("input-error");
+            name.classList.remove("input-error");
+            email.classList.remove("input-error");
+            message.classList.remove("input-error");
 
             successMessage.style.display = "none";
 
             let valid = true;
 
-            if (name === "") {
-
+            if (name.value.trim() === "") {
                 nameError.textContent = "Please enter your name.";
-
-                document.getElementById("name")
-                    .classList.add("input-error");
-
+                name.classList.add("input-error");
                 valid = false;
             }
 
             let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-            if (email === "") {
-
+            if (email.value.trim() === "") {
                 emailError.textContent = "Please enter your email.";
-
-                document.getElementById("email")
-                    .classList.add("input-error");
-
+                email.classList.add("input-error");
                 valid = false;
-
-            } else if (!emailPattern.test(email)) {
-
+            }
+            else if (!email.value.match(emailPattern)) {
                 emailError.textContent = "Please enter a valid email.";
-
-                document.getElementById("email")
-                    .classList.add("input-error");
-
+                email.classList.add("input-error");
                 valid = false;
             }
 
-            if (message === "") {
-
+            if (message.value.trim() === "") {
                 messageError.textContent = "Please enter your message.";
-
-                document.getElementById("message")
-                    .classList.add("input-error");
-
+                message.classList.add("input-error");
                 valid = false;
             }
 
@@ -963,10 +843,8 @@
         document.getElementById("name").addEventListener("input", function() {
 
             if (this.value.trim() !== "") {
-
-                document.getElementById("nameError").textContent = "";
-
                 this.classList.remove("input-error");
+                document.getElementById("nameError").textContent = "";
             }
 
         });
@@ -976,11 +854,9 @@
 
             let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-            if (emailPattern.test(this.value.trim())) {
-
-                document.getElementById("emailError").textContent = "";
-
+            if (this.value.match(emailPattern)) {
                 this.classList.remove("input-error");
+                document.getElementById("emailError").textContent = "";
             }
 
         });
@@ -989,16 +865,14 @@
         document.getElementById("message").addEventListener("input", function() {
 
             if (this.value.trim() !== "") {
-
-                document.getElementById("messageError").textContent = "";
-
                 this.classList.remove("input-error");
+                document.getElementById("messageError").textContent = "";
             }
 
         });
 
 
-        /* FAQ Function */
+        /* FAQ */
 
         function toggleFAQ(number) {
 
@@ -1008,7 +882,8 @@
 
                 answer.classList.remove("show");
 
-            } else {
+            }
+            else {
 
                 answer.classList.add("show");
 
@@ -1017,7 +892,7 @@
         }
 
 
-        /* Back To Top Button */
+        /* Back To Top */
 
         let backToTop = document.getElementById("backToTop");
 
@@ -1027,7 +902,8 @@
 
                 backToTop.style.display = "block";
 
-            } else {
+            }
+            else {
 
                 backToTop.style.display = "none";
 
